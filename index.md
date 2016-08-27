@@ -10,7 +10,7 @@
   {{ part | remove: self }}
   {% endfor %}
 {% endcapture %}
-{% capture backurl %}{{ parts | reverse }}{% endcapture %}
+{% capture backurl %}{{ node.url | split: "/" | reverse }}{% endcapture %}
 {% if self_depth == 1 %}
 {% assign parent = 'root' %}
 {% endif %}
