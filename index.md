@@ -24,9 +24,14 @@ child_depth = {{ child_depth }} <br>
 p = {{ p }} <br>
 {% endfor %}
 
-
 {% assign beatles = "John, Paul, George, Ringo" | split: ", " %}
-
 {% for member in beatles %}
   {{ member }}
 {% endfor %}
+
+{% assign my_array = "apples, oranges, peaches, plums" | split: ", " %}
+
+{{ my_array | reverse | join: ", " }}
+
+{% assign product.tags = "sale", "mens", "womens", "awesome" %}
+{{ product.tags[2] }}
