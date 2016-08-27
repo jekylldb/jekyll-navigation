@@ -6,7 +6,7 @@
 {% if node.url != '/' %}
 {% assign self = node.url | split: "/" | last %}
 {% capture parent %}{% for part in parts %}{{ part | remove: self }}{% endfor %}{% endcapture %}
-{% assign p = node.url | split: "/" | last %}
+{% capture p %}{% for item in parts %}{{ item }}{% endfor %}{% endcapture %}
 {% if self_depth == 1 %}{% assign parent = 'root' %}{% endif %}
 {% assign self_depth = parts | size | minus:1 %}
 {% assign child_depth = self_depth | plus:1 %}
@@ -21,6 +21,5 @@ node.url = {{ node.url }} <br>
 parent_depth = {{ parent_depth }} <br>
 self_depth = {{ self_depth }} <br>
 child_depth = {{ child_depth }} <br>
-{% capture p %}{% for item in node.url | split: "/" %}{{ item }}{% endfor %}{% endcapture %}
 p = {{ p }} <br>
 {% endfor %}
