@@ -10,6 +10,7 @@
   {{ part | remove: self }}
   {% endfor %}
 {% endcapture %}
+{% capture backurl %}{{ parts | reverse }}{% endcapture %}
 {% if self_depth == 1 %}
 {% assign parent = 'root' %}
 {% endif %}
@@ -23,7 +24,8 @@
 {% assign child_depth = 1 %}
 {% endif %}
 parts = {{ parts }} <br>
-parts[2] = {{ parts[2] }} <br>
+backurl = {{ backurl }} <br>
+backurl[2] = {{ backurl[2] }} <br>
 self = {{ self }} <br>
 node.url = {{ node.url }} <br>
 parent_depth = {{ parent_depth }} <br>
