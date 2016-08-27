@@ -20,5 +20,5 @@ parent_depth = {{ parent_depth }} <br>
 self_depth = {{ self_depth }} <br>
 child_depth = {{ child_depth }} <br>
 self = {{ self }} <br>
-parent = {{ parts.second }} }} <br>
+parent = {% for part in parts %}{{ part[2] }}{% endfor %} <br>
 {% endfor %}
