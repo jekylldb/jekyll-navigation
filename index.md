@@ -3,6 +3,11 @@
 
 {% for node in site.pages %}
 {{ node.url }}
-{% assign directory = node.url | split: "/" %}
-{{ directory | size }}
+{% assign parts = node.url | split: "/" %}
+{% if node.url != '/' %}
+{% assign depth = parts | size | minus:1 %}
+{% else %}
+{% assign depth = parts | size %}
+{% endif %}
+{{ depth }}
 {% endfor %}
