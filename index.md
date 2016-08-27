@@ -21,3 +21,10 @@ parent_depth = {{ parent_depth }} <br>
 self_depth = {{ self_depth }} <br>
 child_depth = {{ child_depth }} <br>
 {% endfor %}
+
+{% assign fruits = "apples, oranges, peaches, tomatoes" | split: ", " %}
+{% assign vegetables = "broccoli, carrots, lettuce, tomatoes" | split: ", " %}
+
+{% assign plants = fruits | concat: vegetables %}
+
+{{ plants | join: ", " }}
