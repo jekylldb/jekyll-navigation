@@ -34,4 +34,12 @@ p = {{ p }} <br>
 {{ my_array | reverse | join: ", " }}
 
 {% assign product.tags = "sale", "mens", "womens", "awesome" %}
+
 {{ product.tags[2] }}
+{% for i in (1..5) %}
+  {% if i == 4 %}
+    {% continue %}
+  {% else %}
+    {{ i }}
+  {% endif %}
+{% endfor %}
