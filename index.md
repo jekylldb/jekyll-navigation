@@ -14,10 +14,10 @@
 {% assign self_depth = parts | size %}
 {% assign self = 'root' %}
 {% endif %}
-node.url = {{ node.url | newline_to_br }}
-self_depth = {{ self_depth | newline_to_br }}
-child_depth = {{ child_depth | newline_to_br }}
-parent_depth = {{ parent_depth | newline_to_br }}
-self = {{ self | newline_to_br }}
-parent = {{ parent | newline_to_br }}
+node.url = {{ node.url }} <br>
+parent_depth = {{ parent_depth }} <br>
+self_depth = {{ self_depth }} <br>
+child_depth = {{ child_depth }} <br>
+self = {{ self }} <br>
+parent = {{ parent }} <br>
 {% endfor %}
