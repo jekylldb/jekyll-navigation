@@ -12,7 +12,7 @@
   {%- endfor -%}
 {%- endcapture -%}
 {%- if self_depth == 1 %}
-{% assign parent = 'root' -%}
+{%- assign parent = 'root' -%}
 {%- endif -%}
 {%- assign self_depth = parts | size | minus:1 -%}
 {%- assign child_depth = self_depth | plus:1 -%}
