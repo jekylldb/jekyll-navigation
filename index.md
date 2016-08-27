@@ -3,13 +3,13 @@
 
 {%- for node in site.pages -%}
 {%- assign parts = node.url | split: "/" -%}
-{%- if node.url != '/' -%}
+{%- if node.url != "/" -%}
 {%- assign item = node.url | split: '/' | join: ', ' -%}
 {%- assign self = node.url | split: '/' | last -%}
 {%- capture parent -%}
-{%- for part in parts -%}
-{{ part | remove: self }}
-{%- endfor -%}
+  {%- for part in parts -%}
+  {{ part | remove: self }}
+  {%- endfor -%}
 {%- endcapture -%}
 {%- if self_depth == 1 %}
 {% assign parent = 'root' -%}
@@ -23,6 +23,8 @@
 {%- assign parent_depth = nil -%}
 {%- assign child_depth = 1 -%}
 {%- endif -%}
+{%- endfor -%}
+
 parts = {{ parts }} <br>
 self = {{ self }} <br>
 node.url = {{ node.url }} <br>
@@ -30,4 +32,4 @@ parent_depth = {{ parent_depth }} <br>
 self_depth = {{ self_depth }} <br>
 child_depth = {{ child_depth }} <br>
 item = {{ item }} <br>
-{%- endfor -%}
+
