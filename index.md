@@ -14,10 +14,11 @@
 {% assign self_depth = parts | size %}
 {% assign self = 'root' %}
 {% endif %}
+parts = {{ parts }} <br>
 node.url = {{ node.url }} <br>
 parent_depth = {{ parent_depth }} <br>
 self_depth = {{ self_depth }} <br>
 child_depth = {{ child_depth }} <br>
 self = {{ self }} <br>
-parent = {{ parent | reverse | last }} <br>
+parent = {{ parts | reverse | last }} <br>
 {% endfor %}
