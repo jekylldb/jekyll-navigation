@@ -4,7 +4,7 @@
 {% for node in site.pages %}
 {% assign parts = node.url | split: "/" %}
 {% if node.url != "/" %}
-{% assign item = node.url | split: '/' | join: ', ' %}
+{% assign item = node.url | split: '/' %}
 {% assign self = node.url | split: '/' | last %}
 {% capture parent %}
   {% for part in parts %}
