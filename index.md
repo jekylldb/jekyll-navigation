@@ -9,7 +9,6 @@
 {% assign self_depth = parts | size | minus:1 %}
 {% assign child_depth = self_depth | plus:1 %}
 {% assign parent_depth = self_depth | minus:1 %}
-
 {% else %}
 {% assign self_depth = parts | size %}
 {% assign self = 'root' %}
