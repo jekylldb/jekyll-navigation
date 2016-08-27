@@ -9,7 +9,7 @@
 {% assign self = node.url | split: "/" | last %}
 {% else %}
 {% assign depth = parts | size %}
-{% assign self = root %}
+{% assign self = 'root' %}
 {% endif %}
 {{ depth }}
 {{ self }}
