@@ -10,4 +10,6 @@
 {% assign depth = parts | size %}
 {% endif %}
 {{ depth }}
+{% assign self = node.url | split: "/" | last %}
+{{ self }}
 {% endfor %}
