@@ -23,6 +23,7 @@
 {% assign child_depth = 1 %}
 {% endif %}
 parts = {{ parts }} <br>
+parts[2] = {{ parts[2] }} <br>
 self = {{ self }} <br>
 node.url = {{ node.url }} <br>
 parent_depth = {{ parent_depth }} <br>
