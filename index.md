@@ -14,5 +14,7 @@
 {% endif %}
 {{ node.url }}
 {{ depth }}
+{{ child_depth }}
+{{ parent_depth }}
 {{ self }}
 {% endfor %}
