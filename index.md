@@ -24,13 +24,9 @@ child_depth = {{ child_depth }} <br>
 p = {{ p }} <br>
 {% endfor %}
 
-{% for node in site.pages %}
-{% assign i = node.url | split: "/" %}
-{% for i in (1..i) %}
-  {% if i == 2 %}
-    {% continue %}
-  {% else %}
-    {{ i }}
-  {% endif %}
-{% endfor %}
+
+{% assign beatles = "John, Paul, George, Ringo" | split: ", " %}
+
+{% for member in beatles %}
+  {{ member }}
 {% endfor %}
