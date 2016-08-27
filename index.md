@@ -12,7 +12,7 @@
 {% endcapture %}
 {% if self_depth == 1 %}
 {% assign parent = 'root' %}
-{% endif -%}
+{% endif %}
 {% assign self_depth = parts | size | minus:1 %}
 {% assign child_depth = self_depth | plus:1 %}
 {% assign parent_depth = self_depth | minus:1 %}
@@ -23,7 +23,7 @@
 {% assign child_depth = 1 %}
 {% endif %}
 parts = {{ parts }} <br>
-parts[2] = {{ parts[2] }} <br>
+node.parts[2] = {{ node.parts[2] }} <br>
 self = {{ self }} <br>
 node.url = {{ node.url }} <br>
 parent_depth = {{ parent_depth }} <br>
