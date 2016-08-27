@@ -16,9 +16,11 @@
 {% assign self = 'root' %}
 {% endif %}
 parts = {{ parts }} <br>
+self = {{ self }} <br>
 node.url = {{ node.url }} <br>
 parent_depth = {{ parent_depth }} <br>
 self_depth = {{ self_depth }} <br>
 child_depth = {{ child_depth }} <br>
-{% capture parent %}{% for item in array[2] %}{{ item }}{% endfor %}{% endcapture %}
+{% capture p %}{% for item in node.url | split: "/" %}{{ item }}{% endfor %}{% endcapture %}
+p = {{ p }} <br>
 {% endfor %}
