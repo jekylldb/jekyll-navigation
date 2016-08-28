@@ -14,11 +14,13 @@ array_reversed = {{array_reversed}} <br>
 array_depth = {{array_depth}} <br>
 child_depth = {{child_depth}} <br>
 parent_depth = {{parent_depth}} <br>
-{{ forloop.length   }}   
-{{ forloop.index      }}
-{{ forloop.index0     }}
-{{ forloop.rindex    }}
-{{ forloop.rindex0    }}
-{{ forloop.first     }}
-{{ forloop.last }}
+
+{{ forloop.length }} <br>
+{{ forloop.index }} <br>
+{{ forloop.index0 }} <br>
+{{ forloop.rindex }} <br>
+{{ forloop.rindex0 }} <br>
+{{ forloop.first }} <br>
+{{ forloop.last }} <br>
+
 {% endfor %} 
