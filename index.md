@@ -30,4 +30,5 @@ child_depth = {{ child_depth }} <br>
 {% for node in site.pages %}
 {% assign item = node.url | split: '/' | join: ' ' %} item = {{item}} <br>
 {% assign item_reverse = node.url | split: '/' | reverse | join: ' ' %} item_reverse = {{item_reverse}} <br>
+{% assign item_size = node.url | split: '/' | join: ' ' | size %} item_size = {{item_size}} <br>
 {% endfor %}
