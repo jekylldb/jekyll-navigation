@@ -15,10 +15,12 @@ array_depth = {{array_depth}} <br>
 child_depth = {{child_depth}} <br>
 parent_depth = {{parent_depth}} <br>
 item = {% for item in array_reversed %}{{ item.first }}{% endfor %}
-
+array inside = {{ array }}
 {% endfor %}
 
-{% for item in items %}
+array outside = {{ array }}
+
+{% for item in array %}
     {% assign next_i = forloop.index0 | plus: 1 %}
     {% assign prev_i = forloop.index0 | minus: 1 %}
     {{ items[next_i] }}
