@@ -2,12 +2,12 @@
 ---
 
 {% for node in site.pages %}
-{% assign path = node.url | split: '/' | join: ' ' %}
-{% assign path_depth = node.url | split: '/' | size | minus:1 %}
+{% assign array = node.url | split: '/' | join: ' ' %}
+{% assign array_depth = node.url | split: '/' | size | minus:1 %}
 {% assign child_depth = node.url | split: '/' | size %}
 {% assign parent_depth = node.url | split: '/' | size | minus:2 %}
-path = {{path}} <br>
-path_depth = {{path_depth}} <br>
+array = {{array}} <br>
+array_depth = {{array_depth}} <br>
 child_depth = {{child_depth}} <br>
 parent_depth = {{parent_depth}} <br>
 {% endfor %}
