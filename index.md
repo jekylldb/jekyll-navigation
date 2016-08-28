@@ -18,7 +18,7 @@ item = {% for item in array_reversed %}{{ item.first }}{% endfor %}
 
 {% capture plus_one %}{{ 0 | plus: 1 }}{% endcapture %}
 <div>-Value of plus_one: {{plus_one}}</div>
-<div>-This works: {{site.posts[1].title}}</div>
-<div>-This doesn't: {{site.posts[plus_one].title}}</div>
+<div>-This works: {{site.page[1].url}}</div>
+<div>-This doesn't: {{site.page[plus_one].url}}</div>
 
 {% endfor %}
