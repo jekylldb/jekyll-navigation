@@ -30,7 +30,7 @@ child_depth = {{ child_depth }} <br>
 {% for node in site.pages %}
 {% assign url_array = node.url | split: '/' | join: ' ' %} url_array = {{url_array}} <br>
 {% assign url_array_reverse = url_array | split ' ' | reverse | join: ' ' %} url_array_reverse = {{url_array_reverse}} <br>
-{% if page.url == '/' %}{% continue %}{% else %}{% assign depth = node.url | split: '/' | size | minus:1 %}{% endif %} depth = {{depth}} <br>
+{% if node.url == '/' %}{% assign depth = 0 %}{% else %}{% assign depth = node.url | split: '/' | size | minus:1 %}{% endif %} depth = {{depth}} <br>
 {% assign child = depth | plus:1 %} child = {{child}} <br>
 {% assign parent = depth | minus:1 %} parent = {{parent}} <br>
 {% endfor %}
