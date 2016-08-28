@@ -21,3 +21,7 @@ item = {% for item in array_reversed %}{{ item }}{% endfor %}
 {% for i in (array_reversed) %}
   {{ i }}
 {% endfor %}
+
+{% for item in array limit:2 %}
+    {{ item }}
+  {% endfor %}
