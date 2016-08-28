@@ -9,11 +9,9 @@
 {% assign parent_depth = node.url | split: '/' | size | minus:2 %}
 array = {{array}} <br>
 first = {{ array.first }} <br>
-new_array = {{ array | remove_first: first }}
+new_array = {{ array | remove_first: first }} <br>
 array_reversed = {{array_reversed}} <br>
 array_depth = {{array_depth}} <br>
 child_depth = {{child_depth}} <br>
 parent_depth = {{parent_depth}} <br>
 {% endfor %}
-
-{{ array.first }}
