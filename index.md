@@ -16,12 +16,20 @@ child_depth = {{child_depth}} <br>
 parent_depth = {{parent_depth}} <br>
 item = {% for item in array_reversed %}{{ item }}{% endfor %}
 
+{% for item in array %}
+  {% if forloop.last %}
+    Last!
+  {% else %}
+    Not last
+  {% endif %}
 {% endfor %}
 
-{% for i in (array_reversed) %}
-  {{ i }}
 {% endfor %}
 
-{% for item in array limit:2 %}
-    {{ item }}
-  {% endfor %}
+{% for item in array %}
+  {% if forloop.last %}
+    Last!
+  {% else %}
+    Not last
+  {% endif %}
+{% endfor %}
