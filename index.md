@@ -14,13 +14,13 @@ array_reversed = {{array_reversed}} <br>
 array_depth = {{array_depth}} <br>
 child_depth = {{child_depth}} <br>
 parent_depth = {{parent_depth}} <br>
-item = {% for item in node.url | split: '/' | reverse | join: ' ' %}{{ item }}{% endfor %}
+item = {% for item in array_reversed %}{{ item }}{% endfor %}
 
 {% endfor %}
 
-{% for i in (1..5) %}
-  {% if i == 4 %}
-    {% break %}
+{% for i in array_reversed %}
+  {% if i != 1 %}
+    {% continue %}
   {% else %}
     {{ i }}
   {% endif %}
