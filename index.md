@@ -32,3 +32,8 @@ parent_depth = {{ parent_depth }} <br>
 self_depth = {{ self_depth }} <br>
 child_depth = {{ child_depth }} <br>
 {% endfor %}
+
+{% for node in site.pages %}
+{% assign item = node.url | split: '/' | join: ' ' %}
+{{item}}
+{% endfor %}
