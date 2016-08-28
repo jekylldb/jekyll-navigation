@@ -16,9 +16,11 @@ child_depth = {{child_depth}} <br>
 parent_depth = {{parent_depth}} <br>
 item = {% for item in array_reversed %}{{ item.first }}{% endfor %}
 
-{% capture plus_one %}{{ 0 | plus: 1 }}{% endcapture %}
-<div>-Value of plus_one: {{plus_one}}</div>
-<div>-This works: {{site.page[1].url}}</div>
-<div>-This doesn't: {{site.page[plus_one].url}}</div>
+{% endfor %}
 
+{% for item in items %}
+    {% assign next_i = forloop.index0 | plus: 1 %}
+    {% assign prev_i = forloop.index0 | minus: 1 %}
+    {{ items[next_i] }}
+    {{ items[prev_i] }}
 {% endfor %}
