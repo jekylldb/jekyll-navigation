@@ -14,6 +14,6 @@ array_reversed = {{array_reversed}} <br>
 array_depth = {{array_depth}} <br>
 child_depth = {{child_depth}} <br>
 parent_depth = {{parent_depth}} <br>
-item = {% for item in array %}{{ item }}{% endfor %}
-  
+item = {% for item in node.url | split: '/' | reverse | join: ' ' %}{{ item[1] }}{% endfor %}
+item = {% for item in node.url | split: '/' | reverse | join: ' ' %}{{ node.url.item[1] }}{% endfor %}
 {% endfor %}
