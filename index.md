@@ -5,15 +5,9 @@
 {% assign parts = node.url | split: "/" %}
 {% if node.url != "/" %}
 {% assign self = node.url | split: '/' | last %}
-{% capture parent %}
-  {% for part in parts %}
-  {{ part | remove: self }}
-  {% endfor %}
-{% endcapture %}
+{% capture parent %}{% for part in parts %}{{ part | remove: self }}{% endfor %}{% endcapture %}
 {% assign backurl = node.url | reverse | split: "/" %}
-{% if self_depth == 1 %}
-{% assign parent = 'root' %}
-{% endif %}
+{% if self_depth == 1 %}{% assign parent = 'root' %}{% endif %}
 {% assign self_depth = parts | size | minus:1 %}
 {% assign child_depth = self_depth | plus:1 %}
 {% assign parent_depth = self_depth | minus:1 %}
@@ -34,6 +28,6 @@ child_depth = {{ child_depth }} <br>
 {% endfor %}
 
 {% for node in site.pages %}
-{% assign item = node.url | split: '/' | join: ' ' %}
-{{item}}
+{% assign item = node.url | split: '/' | join: ' ' %} item = {{item}} <br>
+{% assign item_reverse = node.url | split: '/' | join: ' ' %} item_reverse = {{item_reverse}} <br>
 {% endfor %}
