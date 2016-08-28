@@ -16,4 +16,6 @@ array_depth = {{array_depth}} <br>
 child_depth = {{child_depth}} <br>
 parent_depth = {{parent_depth}} <br>
 
+{% for item in array limit:2 offset:2 %}{{ item }}{% endfor %}
+
 {% endfor %}
