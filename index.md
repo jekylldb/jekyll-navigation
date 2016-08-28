@@ -28,7 +28,9 @@ child_depth = {{ child_depth }} <br>
 {% endfor %}
 
 {% for node in site.pages %}
-{% assign item = node.url | split: '/' | join: ' ' %} item = {{item}} <br>
-{% assign item_reverse = node.url | split: '/' | reverse | join: ' ' %} item_reverse = {{item_reverse}} <br>
-{% assign item_size = node.url | split: '/' | size %} item_size = {{item_size}} <br>
+{% assign url_array = node.url | split: '/' | join: ' ' %} url_array = {{url_array}} <br>
+{% assign url_array_reverse = node.url | split: '/' | reverse | join: ' ' %} url_array = {{url_array}} <br>
+{% assign depth = node.url | split: '/' | size %} depth = {{depth}} <br>
+{% assign child = node.url | split: '/' | size | plus:1 %} child = {{child}} <br>
+{% assign parent = node.url | split: '/' | size | minus:1 %} parent = {{parent}} <br>
 {% endfor %}
