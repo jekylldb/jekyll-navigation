@@ -10,12 +10,10 @@
 {% assign parent_depth = node.url | split: '/' | size | minus:2 %}
 
 array = {{array}} <br>
-array[2] = {{array[2]}}<br>
 array_reversed = {{array_reversed}} <br>
 array_depth = {{array_depth}} <br>
 child_depth = {{child_depth}} <br>
 parent_depth = {{parent_depth}} <br>
-
-item = {% for item in array offset:2 %}{{ item }}{% endfor %}
+item = {% for item in array %}{{ item[2] }}{% endfor %}
   
 {% endfor %}
