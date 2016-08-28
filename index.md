@@ -17,3 +17,11 @@ parent_depth = {{parent_depth}} <br>
 item = {% for item in node.url | split: '/' | reverse | join: ' ' %}{{ item[1] }}{% endfor %}
 item = {% for item in node.url | split: '/' | reverse | join: ' ' %}{{ node.url.item[1] }}{% endfor %}
 {% endfor %}
+
+{% for i in (1..5) %}
+  {% if i == 4 %}
+    {% break %}
+  {% else %}
+    {{ i }}
+  {% endif %}
+{% endfor %}
