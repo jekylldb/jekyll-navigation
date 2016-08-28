@@ -16,4 +16,9 @@ child_depth = {{child_depth}} <br>
 parent_depth = {{parent_depth}} <br>
 item = {% for item in array_reversed %}{{ item.first }}{% endfor %}
 
+{% capture plus_one %}{{ 0 | plus: 1 }}{% endcapture %}
+<div>-Value of plus_one: {{plus_one}}</div>
+<div>-This works: {{site.posts[1].title}}</div>
+<div>-This doesn't: {{site.posts[plus_one].title}}</div>
+
 {% endfor %}
