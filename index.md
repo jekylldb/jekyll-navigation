@@ -18,18 +18,6 @@ item = {% for item in array_reversed %}{{ item }}{% endfor %}
 
 {% endfor %}
 
-{% for i in array_reversed %}
-  {% if i != 1 %}
-    {% continue %}
-  {% else %}
-    {{ i }}
-  {% endif %}
-{% endfor %}
-
-{% for i in (1..5) %}
-  {% if i == 4 %}
-    {% continue %}
-  {% else %}
-    {{ i }}
-  {% endif %}
+{% for i in (array_reversed) %}
+  {{ i }}
 {% endfor %}
