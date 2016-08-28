@@ -16,7 +16,7 @@ child_depth = {{child_depth}} <br>
 parent_depth = {{parent_depth}} <br>
 item = {% for item in array_reversed %}{{ item }}{% endfor %}
 
-{% for item in node.url | split: '/' | reverse | join: ' ' %}
+{% for item in (node.url | split: '/' | reverse)  %}
   {% if forloop.last %}
     {{ item }}
   {% endif %}
