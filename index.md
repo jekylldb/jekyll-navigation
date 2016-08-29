@@ -25,11 +25,10 @@ parent_depth = {{parent_depth}} <br>
 
 {% for n in node.url %}
 
-n size {{ n | size }} <br>
-n split reverse join {{ n | split: '/' | reverse | join: ', ' }} <br>
-n split join size {{ n | reverse | split: '/' | join: ', ' | size }} <br>
-n reverse split size {{ n | reverse | split: '/' | size }} <br>
-n reverse split {{ n | reverse | split: '/' }} <br>
+n split reverse {{ n | split: '/' | reverse }} <br>
+n split reverse size {{ n | split: '/' | reverse | size }} <br>
+n split reverse join {{ n | split: '/' | reverse | join: ' ' }} <br>
+n split reverse join size {{ n | split: '/' | reverse | join: ' ' | size }} <br>
 
 {% endfor %} 
 {% endfor %} 
