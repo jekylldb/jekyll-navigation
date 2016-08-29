@@ -13,11 +13,11 @@ n split reverse join split size {{- n | split: '/' | reverse | join: ' ' | split
 
 {% for category in categories %}
 <br>
-{{ category }}
-forloop index2 {{ forloop.index[2] }}
-forloop index = 2 {% if forloop.index == 2 %} {{ category }} {% endif %}
-forloop index = '2' {% if forloop.index == '2' %} {{ category }} {% endif %}
-forloop index 2 category {% if forloop.index[2] %} {{ category }} {% endif %}
+{{ category }} <br>
+forloop index2 {{ forloop.index[2] }} <br>
+forloop index = 2 {% if forloop.index == 2 %} {{ category }} {% endif %} <br>
+forloop index = '2' {% if forloop.index == '2' %} {{ category }} {% endif %} <br>
+forloop index 2 category {% if forloop.index[2] %} {{ category }} {% endif %} <br>
 <br>
 {% endfor %} 
 
