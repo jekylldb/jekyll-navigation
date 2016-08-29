@@ -25,19 +25,11 @@ parent_depth = {{parent_depth}} <br>
 
 {% for n in node.url %}
 
-{{ n | size }} <br>
-{{ n | split: '/' | reverse | join: ', ' }} <br>
-{{ n | reverse | split: '/' | join: ', ' | size }} <br>
-{{ n | reverse | split: '/' | size }} <br>
-{{ n | reverse | split: '/' }} <br>
-
-{{ forloop.length }} <br>
-{{ forloop.index }} <br>
-{{ forloop.index0 }} <br>
-{{ forloop.rindex }} <br>
-{{ forloop.rindex0 }} <br>
-{{ forloop.first }} <br>
-{{ forloop.last }} <br>
+n size {{ n | size }} <br>
+n split reverse join {{ n | split: '/' | reverse | join: ', ' }} <br>
+n split join size {{ n | reverse | split: '/' | join: ', ' | size }} <br>
+n reverse split size {{ n | reverse | split: '/' | size }} <br>
+n reverse split {{ n | reverse | split: '/' }} <br>
 
 {% endfor %} 
 {% endfor %} 
