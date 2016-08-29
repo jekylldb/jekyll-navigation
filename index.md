@@ -24,7 +24,7 @@ parent_depth = {{parent_depth}} <br>
 {{ forloop.last }} <br>
 
 {% for n in node.url | reverse | split: '/' %}
-
+{{ n }}
 {{ forloop.length }} <br>
 {{ forloop.index }} <br>
 {{ forloop.index0 }} <br>
