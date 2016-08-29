@@ -7,8 +7,14 @@
 {% assign categories = n | split: '/' | reverse %} <br>
 n split reverse size {{ n | split: '/' | reverse | size }} <br>
 n split reverse join {{ n | split: '/' | reverse | join: ' ' }} <br>
+n split reverse size {{- n | split: '/' | reverse | size -}} <br>
+n split reverse join split size {{- n | split: '/' | reverse | join: ' ' | split: ' ' | size -}} <br>
+<br>
 {% for category in categories %}
+<br>
 {{ category }} <br>
+{{ forloop.index }} <br>
+<br>
 {% endfor %} 
 {% endfor %} 
 {% endfor %} 
