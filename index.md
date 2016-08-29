@@ -15,12 +15,23 @@ array_depth = {{array_depth}} <br>
 child_depth = {{child_depth}} <br>
 parent_depth = {{parent_depth}} <br>
 
-{{ array.length }} <br>
-{{ array.index }} <br>
-{{ array.index0 }} <br>
-{{ array.rindex }} <br>
-{{ array.rindex0 }} <br>
-{{ array.first }} <br>
-{{ array.last }} <br>
+{{ forloop.length }} <br>
+{{ forloop.index }} <br>
+{{ forloop.index0 }} <br>
+{{ forloop.rindex }} <br>
+{{ forloop.rindex0 }} <br>
+{{ forloop.first }} <br>
+{{ forloop.last }} <br>
 
+{% for n in node.url | reverse | split: '/' %}
+
+{{ forloop.length }} <br>
+{{ forloop.index }} <br>
+{{ forloop.index0 }} <br>
+{{ forloop.rindex }} <br>
+{{ forloop.rindex0 }} <br>
+{{ forloop.first }} <br>
+{{ forloop.last }} <br>
+
+{% endfor %} 
 {% endfor %} 
