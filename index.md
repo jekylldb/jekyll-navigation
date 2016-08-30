@@ -2,9 +2,7 @@
 ---
 
 {% for page in site.pages %}
-{% if page.url == '/' %}
-{{next}}
-{% else %}
+{% if page.url == '/' %}{{next}}{% else %}
 url path = {{page.url}}  
 depth = {{ page.url | split: '/' | size }}  
 current depth = {{ page.url | split: '/' | size | minus:1 }}  
