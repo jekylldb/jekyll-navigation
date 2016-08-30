@@ -1,7 +1,26 @@
 ---
 ---
 
-<!--- define current page variables --->
+<!--- ROOT --->
+
+<!--- CURRENT --->
+<!--- url --->
+<!--- name --->
+<!--- depth--->
+<!--- parent --->
+<!--- parent depth --->
+<!--- children --->
+<!--- children depth --->
+
+
+<!--- LOOP --->
+<!--- url --->
+<!--- name --->
+<!--- depth--->
+<!--- parent --->
+<!--- parent depth --->
+<!--- children --->
+<!--- children depth --->
 
 {% for page in site.pages %}
 {% if page.url == '/' %}{{next}}{% else %}
