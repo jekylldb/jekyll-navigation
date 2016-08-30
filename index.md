@@ -1,6 +1,8 @@
 ---
 ---
 
+<!--- define current page variables --->
+
 {% for page in site.pages %}
 {% if page.url == '/' %}{{next}}{% else %}
 url path = {{page.url}}  
