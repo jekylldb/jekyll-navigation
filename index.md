@@ -7,10 +7,10 @@ page url = {{page.url}}
 
 {% for section in page.url %}
 {% assign current = page.url | split: '/' | last %}
-{% assign depth = page.url | split: '/' | size %}
-depth = {{depth}}
 current = {{current}}
 {% assign categories = section | split: '/' | reverse %}
-{% for parent in categories %}{% if forloop.index == 2 %}
-parent = {{ parent }}
+{% for unit in categories %}
+depth = {{forloop.index}}
+{% if forloop.index == 2 %}
+parent = {{ unit }}
 {% endif %}{% endfor %}{% endfor %}{% endfor %}
