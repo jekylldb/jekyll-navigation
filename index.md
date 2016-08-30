@@ -3,10 +3,10 @@
 
 {% for page in site.pages %}
 page url = {{page.url}}
-depth = {{forloop.index}}
+
 {% for section in page.url %}
-{% assign current = page.url | split: '/' | last %}
-current = {{current}}
+current = {{ page.url | split: '/' | last }}
+depth = {{ page.url | split: '/' | last | size }}
 {% assign categories = section | split: '/' | reverse %}
 {% for unit in categories %}
 {% if forloop.index == 2 %}
