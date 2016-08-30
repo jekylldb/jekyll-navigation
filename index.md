@@ -6,7 +6,7 @@
 {{next}}
 {% else %}
 url path = {{page.url}}  
-child depth = {{ page.url | split: '/' | size }}  
+depth = {{ page.url | split: '/' | size }}  
 current depth = {{ page.url | split: '/' | size | minus:1 }}  
 parent depth = {{ page.url | split: '/' | size | minus:2 }}
 {% for section in page.url %}  
@@ -17,5 +17,3 @@ current = {{current}}
 {% if forloop.index == 2 %}  
 parent category = {{ unit }}
 {% endif %}{% endfor %}{% endfor %}{% endif %}{% endfor %}
-
-{% if current == node_parent and subdir_level == node_level %}<a href='{{node.url}}'>{{node.title}}</a>{% endif %}
