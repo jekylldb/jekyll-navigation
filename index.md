@@ -5,7 +5,7 @@
 url = {{page.url}}
 {% for section in page.url %}
 current = {{ page.url | split: '/' | last }}
-depth = {{ page.url | split: '/' | last | size }}
+depth = {{ forloop.index | last | size }}
 {% assign categories = section | split: '/' | reverse %}
 {% for unit in categories %}
 
