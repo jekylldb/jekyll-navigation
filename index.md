@@ -2,6 +2,9 @@
 ---
 
 {% for page in site.pages %}
+{% if page.url == '/' %}
+{{next}}
+{% else %}
 url path = {{page.url}}  
 child depth = {{ page.url | split: '/' | size }}  
 current depth = {{ page.url | split: '/' | size | minus:1 }}  
@@ -12,4 +15,4 @@ current category = {{ page.url | split: '/' | last }}
 {% for unit in categories %}
 {% if forloop.index == 2 %}  
 parent category = {{ unit }}
-{% endif %}{% endfor %}{% endfor %}{% endfor %}
+{% endif %}{% endfor %}{% endfor %}{% endif %}{% endfor %}
