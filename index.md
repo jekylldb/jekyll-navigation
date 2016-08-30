@@ -1,14 +1,21 @@
 ---
 ---
 
+
 {% for page in site.pages %}
+
 url = {{page.url}}
+
+depth = {{ page.url | split: '/' | size }}
+
 {% for section in page.url %}
+
 current = {{ page.url | split: '/' | last }}
-depth = {{ forloop.index | last | size }}
+
 {% assign categories = section | split: '/' | reverse %}
 {% for unit in categories %}
+{% if forloop.index == 2 %}
 
-{% if forloop.index == 2 %}parent = {{ unit }}{% endif %}
+parent = {{ unit }}
 
-{% endfor %}{% endfor %}{% endfor %}
+{% endif %}{% endfor %}{% endfor %}{% endfor %}
