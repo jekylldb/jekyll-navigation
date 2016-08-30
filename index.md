@@ -2,6 +2,14 @@
 ---
 
 <!--- ROOT --->
+{% for page in site.pages %}{% if page.url == '/' %}
+{% assign _path = '/' %}
+{% assign _name = 'root' %}
+{% assign _depth = '0' %}
+{% assign _parent = nil %}
+{% assign _parent_depth = nil %}
+{% assign _children = '' %}
+{% assign _children_depth = '1' %}
 
 <!--- CURRENT --->
 <!--- url --->
@@ -11,7 +19,6 @@
 <!--- parent depth --->
 <!--- children --->
 <!--- children depth --->
-
 
 <!--- LOOP --->
 <!--- url --->
