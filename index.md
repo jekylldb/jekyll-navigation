@@ -2,23 +2,30 @@
 ---
 
 <!--- ROOT --->
-{% for page in site.pages %}{% if page.url == '/' %}
-{% assign _path = '/' %}
-{% assign _name = 'root' %}
-{% assign _depth = '0' %}
-{% assign _parent = nil %}
-{% assign _parent_depth = nil %}
-{% assign _children = '' %}
-{% assign _children_depth = '1' %}
+{% for page in site.pages %}
+{% if page.url == '/' %}
+{% assign _root_path = '/' %}
+{% assign _root_page = 'root' %}
+{% assign _root_depth = '0' %}
+{% assign _root_parent = nil %}
+{% assign _root_parent_depth = nil %}
+{% assign _root_children = '' %}
+{% assign _root_children_depth = '1' %}
+{% endif %}
+{% endfor %}
 
-<!--- CURRENT --->
-<!--- url --->
-<!--- name --->
-<!--- depth--->
-<!--- parent --->
-<!--- parent depth --->
-<!--- children --->
-<!--- children depth --->
+<!--- LOOP --->
+{% for node in site.pages %}
+{% if node.url != '/' %}
+{% assign _node_path = node.url %}{% for section in page.url %} 
+{% assign _node = node.url | split: '/' | last %}{% assign _node_path_reversed = section | split: '/' | reverse %}{% for _parent in _node_path_reversed %}{% if forloop.index == 2 %}
+{% assign _node_parent = _parent %}{% endif %}{% endfor %}
+{% assign _node_children = '' %}
+{% assign _node_depth = node.url | split: '/' | size | minus:1 %}{% for section in page.url %}
+{% assign _node_parent_depth =  node.url | split: '/' | size | minus:2 %}
+{% assign _node_children_depth = node.url | split: '/' | size %}
+{% endif %}
+{% endfor %}
 
 <!--- LOOP --->
 <!--- url --->
