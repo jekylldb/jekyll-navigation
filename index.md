@@ -6,7 +6,7 @@
 
 url = {{page.url}}
 
-depth = {{ page.path | split: '/' | size }}
+depth = {{ page.url | split: '/' | size | minus:1 }}
 
 {% for section in page.url %}
 
