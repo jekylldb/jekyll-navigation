@@ -1,0 +1,15 @@
+{% assign _root_path = '/' %}
+{% assign _root = 'root' %}
+{% assign _root_depth = '0' %}
+{% assign _root_parent = nil %}
+{% assign _root_parent_depth = nil %}
+{% assign _root_children = '' %}
+{% assign _root_children_depth = '1' %}
+
+{{ _root_path }}<br>
+{{ _root }}<br>
+{{ _root_depth }}<br>
+{{ _root_parent }}<br>
+{{ _root_parent_depth }}<br>
+{{ _root_children }}<br>
+{{ _root_children_depth }}<br>
