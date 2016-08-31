@@ -22,9 +22,16 @@
 {{ _root_children }}<br>
 {{ _root_children_depth }}<br>
 <br>
+
 <!--- LOOP --->
 {% for node in site.pages %}
-{% if node.url != '/' %}{{}}
+{{ _node_page }}<br>
+{{ _node_depth }}<br>
+{{ _node_parent }}<br>
+{{ _node_parent_depth }}<br>
+{{ _node_children }}<br>
+{{ _node_children_depth }}<br>
+{% if page.url == '/' %}{{next}}{% else %}
 {% assign _node_path = node.url %}{% for section in page.url %} 
 {% assign _node = node.url | split: '/' | last %}{% assign _node_path_reversed = section | split: '/' | reverse %}{% for _parent in _node_path_reversed %}{% if forloop.index == 2 %}
 {% assign _node_parent = _parent %}{% endif %}{% endfor %}
@@ -35,21 +42,6 @@
 {% endif %}
 {% endfor %}
 <br>
-
-{{ _node_page }}<br>
-{{ _node_depth }}<br>
-{{ _node_parent }}<br>
-{{ _node_parent_depth }}<br>
-{{ _node_children }}<br>
-{{ _node_children_depth }}<br>
-<!--- LOOP --->
-<!--- url --->
-<!--- name --->
-<!--- depth--->
-<!--- parent --->
-<!--- parent depth --->
-<!--- children --->
-<!--- children depth --->
 
 {% for page in site.pages %}
 {% if page.url == '/' %}{{next}}{% else %}
