@@ -21,14 +21,17 @@
 
 <!--- LOOP --->
 {% for node in site.pages %}
-{% if page.url == '/' %}{{next}}{% else %}
-{% assign _node_path = node.url %}{% for section in page.url %} 
+{% if node.url == '/' %}
+{{ next }}
+{% else %}
+{% assign _node_path = node.url %}{% for section in node.url %} 
 {% assign _node = node.url | split: '/' | last %}{% assign _node_path_reversed = section | split: '/' | reverse %}{% for _parent in _node_path_reversed %}{% if forloop.index == 2 %}
 {% assign _node_parent = _parent %}{% endif %}{% endfor %}
 {% assign _node_children = '' %}
-{% assign _node_depth = node.url | split: '/' | size | minus:1 %}{% for section in page.url %}
+{% assign _node_depth = node.url | split: '/' | size | minus:1 %}{% for section in node.url %}
 {% assign _node_parent_depth =  node.url | split: '/' | size | minus:2 %}
 {% assign _node_children_depth = node.url | split: '/' | size %}
+<br>
 {{ _node_path }}<br>
 {{ _node }}<br>
 {{ _node_depth }}<br>
