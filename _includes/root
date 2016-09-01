@@ -1,15 +1,15 @@
 {% assign _root_path = '/' %}
-{% assign _root = 'root' %}
+{% assign _root_name = 'root' %}
 {% assign _root_depth = '0' %}
 {% assign _root_parent = nil %}
 {% assign _root_parent_depth = nil %}
 {% assign _root_children = '' %}
 {% assign _root_children_depth = '1' %}
 
-root path {{ _root_path }}<br>
-root {{ _root }}<br>
-root depth{{ _root_depth }}<br>
-root parent{{ _root_parent }}<br>
-root parent depth{{ _root_parent_depth }}<br>
-root children {{ _root_children }}<br>
-root children depth {{ _root_children_depth }}<br>
+path = {{ _root_path }}<br>
+name = {{ _root }}<br>
+depth = {{ _root_depth }}<br>
+parent = {{ _root_parent }}<br>
+parent depth = {{ _root_parent_depth }}<br>
+children = {{ _root_children }}<br>
+children depth = {{ _root_children_depth }}<br>
