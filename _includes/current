@@ -1,7 +1,6 @@
 <h3> CURRENT <h3>
 
 <ul>
-{% for page in site.pages %}
 {% if page.url == '/' %}{{next}}{% else %}
 {% capture current_path %}{{page.url}}{% endcapture %}<li><a>path = {{ current_path }}</a></li>
 {% capture current_child_depth %}{{ page.url | split: '/' | size }}{% endcapture %}<li><a>child depth = {{ current_child_depth }}</a></li>
@@ -12,5 +11,4 @@
 {% capture current_parent_name %}{% assign categories = section | split: '/' | reverse %}{% for unit in categories %}{% if forloop.index == 2 %}{{ unit }}{% endif %}{% endfor %}{% endcapture %}<li><a>parent name = {{ current_parent_name }}</a></li>
 {% endfor %}
 {% endif %}
-{% endfor %}
 </ul>
