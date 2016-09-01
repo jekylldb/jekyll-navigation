@@ -1,0 +1,11 @@
+{% for node in site.pages %}
+  {% for section in node.url %}
+    {% assign _node_path_reversed = section | split: '/' | reverse %}
+    {% for _directory in _node_path_reversed %}
+      {% if forloop.index == 2 %}
+        {% assign _node_parent = _directory %}
+        {{ _node_parent }}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+{% endfor %}
