@@ -6,10 +6,10 @@
 {% assign _root_children = '' %}
 {% assign _root_children_depth = '1' %}
 
-{{ _root_path }}<br>
-{{ _root }}<br>
-{{ _root_depth }}<br>
-{{ _root_parent }}<br>
-{{ _root_parent_depth }}<br>
-{{ _root_children }}<br>
-{{ _root_children_depth }}<br>
+root path {{ _root_path }}<br>
+root {{ _root }}<br>
+root depth{{ _root_depth }}<br>
+root parent{{ _root_parent }}<br>
+root parent depth{{ _root_parent_depth }}<br>
+root children {{ _root_children }}<br>
+root children depth {{ _root_children_depth }}<br>
