@@ -4,8 +4,6 @@
 <li><a>path = {{ _root_path }}</a></li>
 <li><a>name = {{ _root }}</a></li>
 <li><a>depth = {{ _root_depth }}</a></li>
-<li><a>parent = {{ _root_parent }}</a></li>
-<li><a>parent depth = {{ _root_parent_depth }}</a></li>
 <li><a>children = {{ _root_children }}</a></li>
 <li><a>children depth = {{ _root_children_depth }}</a></li>
 </ul>
