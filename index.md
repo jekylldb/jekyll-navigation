@@ -1,5 +1,4 @@
 ---
 ---
 
-{% include definitions/root %}
-{% include test/root %}
+{% include if_root %}
