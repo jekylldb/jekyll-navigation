@@ -1,14 +1,7 @@
----
----
-
-<h3> ROOT <h3>
-
-<ul>
-<li><a>path = {{ _root_path }}</a></li>
-<li><a>name = {{ _root }}</a></li>
-<li><a>depth = {{ _root_depth }}</a></li>
-<li><a>parent = {{ _root_parent }}</a></li>
-<li><a>parent depth = {{ _root_parent_depth }}</a></li>
-<li><a>children = {{ _root_children }}</a></li>
-<li><a>children depth = {{ _root_children_depth }}</a></li>
-</ul>
+{% assign _root_path = '/' %}
+{% assign _root_name = 'root' %}
+{% assign _root_depth = '0' %}
+{% assign _root_parent = nil %}
+{% assign _root_parent_depth = nil %}
+{% assign _root_children = '' %}
+{% assign _root_children_depth = '1' %}
