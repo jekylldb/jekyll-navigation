@@ -1,6 +1,5 @@
 ---
 ---
 
-{% include root %}
-{% include tree %}
 {% include definitions/root %}
+{% include test/root %}
