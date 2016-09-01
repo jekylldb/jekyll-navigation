@@ -2,6 +2,8 @@
 {% if node.url == '/' %}{{ next }}{% else %}
 {% assign _node_path = node.url %} path = {{ _node_path }}<br>
 {% assign _node_depth = node.url | split: '/' | size | minus:1 %} depth = {{ _node_depth }}<br>
+{% assign _node_child_depth = node.url | split: '/' | size %} child depth = {{ _node_child_depth }}<br>
+{% assign _node_c_depth = node.url | split: '/' | size | minus:1 | size | minus: 1 %} c depth = {{ _node_c_depth }}<br>
 {% assign _node_children_depth = node.url | split: '/' | size }} children depth = {{ _node_children_depth }}<br>
 {% assign _node_parent_depth = _node_depth | minus:1 %} parent depth = {{ _node_parent_depth }}<br>
 {% for section in node.url %}{% assign _node = node.url | split: '/' | last %} node = {{ _node }}<br>{% assign _node_path_reversed = section | split: '/' | reverse %}
