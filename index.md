@@ -3,4 +3,4 @@
 
 {% include root %}
 {% include tree %}
-{% test_definitions %}
+{% include test_definitions %}
