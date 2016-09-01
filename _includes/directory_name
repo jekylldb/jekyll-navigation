@@ -1,0 +1,6 @@
+{% for node in site.pages %}
+  {% for section in node.url %}
+    {% capture _directory_name %}{{ node.url | split: '/' | last }}{% endcapture %}
+    {{ _directory_name }}
+  {% endfor %}
+{% endfor %}
