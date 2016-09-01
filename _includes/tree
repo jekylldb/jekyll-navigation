@@ -1,0 +1,11 @@
+{% for node in site.pages %}
+{% if node.url == '/' %}{{ next }}{% else %}
+{% assign _node_path = node.url %}{{ _node_path }}
+{% assign _node_children_depth = node.url | split: '/' | size }}  
+{% assign _node_depth = node.url | split: '/' | size | minus:1 %}
+{% assign _node_parent_depth = node.url | split: '/' | size | minus:2 %}
+{% for section in node.url %} 
+{% assign _node = node.url | split: '/' | last %}
+{% assign _node_path_reversed = section | split: '/' | reverse %}
+{% for _node_parent in _node_path_reversed %}{% if forloop.index == 2 %}{% capture _node_parent %}{{ _node_parent }}{% endcapture %}{% endif %}{% endfor %}
+{% endfor %}{% endif %}{% endfor %}
