@@ -1,0 +1,14 @@
+---
+---
+
+<h2> ROOT <h2>
+
+<ul>
+<li> path = {{ _root_path }} </li>
+<li> name = {{ _root }}</li>
+<li> depth = {{ _root_depth }}</li>
+<li> parent = {{ _root_parent }}</li>
+<li> parent depth = {{ _root_parent_depth }}</li>
+<li> children = {{ _root_children }}</li>
+<li> children depth = {{ _root_children_depth }}</li>
+</ul>
