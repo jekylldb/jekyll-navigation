@@ -9,6 +9,8 @@ children depth = {{ _node_children_depth }}<br>
 depth = {{ _node_depth }}<br>
 {% assign _node_parent_depth = node.url | split: '/' | size | minus:2 | %} 
 parent depth = {{ _node_parent_depth }}<br>
+{% capture subdirs %}{% for uno in _node_parent_depth = '1' %}{{ uno }}{% endfor %}{% endcapture %}
+subdirs = {{subdirs}}
 {% for section in node.url %}
 {% assign _node = node.url | split: '/' | last %}
 node = {{ _node }}<br>
