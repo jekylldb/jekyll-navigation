@@ -1,23 +1,18 @@
-{% capture _root_path %}/{% endcapture %}<li><a> _root_path = {{ _root_path }}</a></li>
-
-{% for node in site.pages %}<br>
-{% if node.url == page.url %}
-  {% capture PAGE_PATH %}{{node.url}}{% endcapture %}<li><a>PAGE_PATH: {{PAGE_PATH}}</a></li>
-  {% capture PAGE_DEPTH %}{{node.url | split: '/' | size | minus:1}}{% endcapture %}<li><a>PAGE_DEPTH: {{PAGE_DEPTH}}</a></li>
-  {% for section in page.url %}  
-  PAGE_TITLE: {{node.url | split: '/' | last}}
-  {% endfor %}
-{% else %}
-  {% capture NODE_PATH %}{{node.url}}{% endcapture %}<li><a>NODE_PATH:{{NODE_PATH}}</a></li>
-  {% capture _node_depth %}{{ node.url | split: '/' | size | minus:1 }}{% endcapture %}<li><a>_node_depth = {{ _node_depth }}</a></li>
-  {% capture _parent_depth %}{{ node.url | split: '/' | size | minus:2 }}{% endcapture %}<li><a>_parent_depth = {{ _parent_depth }}</a></li>
-  {% capture _child_depth %}{{ _depth | plus:1 }}{% endcapture %}<li><a> _child_depth = {{ _child_depth }}</a></li>
+{% capture R_PATH %}/{% endcapture %}<li><a> R_PATH = {{R_PATH}}</a></li>
+{% capture P_PATH %}{{page.url}}{% endcapture %}<li><a>P_PATH: {{P_PATH}}</a></li>
+{% capture P_DEPTH %}{{page.url | split: '/' | size | minus:1}}{% endcapture %}<li><a>P_DEPTH: {{P_DEPTH}}</a></li>
+{% for section in page.url %}{% capture P_TITLE %}{{page.url | split: '/' | last}}{% endfor %}<li><a>P_TITLE: {{P_TITLE}}</a></li>
+{% for node in site.pages %}
+  {% capture N_PATH %}{{node.url}}{% endcapture %}<li><a>N_PATH:{{N_PATH}}</a></li>
+  {% capture N_DEPTH %}{{ node.url | split: '/' | size | minus:1 }}{% endcapture %}<li><a>N_DEPTH = {{N_DEPTH}}</a></li>
+  {% capture N_DEPTH_PARENT %}{{ node.url | split: '/' | size | minus:2 }}{% endcapture %}<li><a>N_DEPTH_PARENT: {{N_DEPTH_PARENT}}</a></li>
+  {% capture N_DEPTH_CHILD %}{{ N_DEPTH | plus:1 }}{% endcapture %}<li><a>N_DEPTH_CHILD: {{N_DEPTH_CHILD}}</a></li>
   {% for section in node.url %}  
-    {% capture _node_title %}{{ node.url | split: '/' | last }}{% endcapture %}<li><a>_node_title = {{ _node_title }}</a></li>
+    {% capture N_TITLE %}{{ node.url | split: '/' | last }}{% endcapture %}<li><a>N_TITLE: {{N_TITLE}}</a></li>
     {% if _depth == '1' %}
-      {% capture _node_parent_name %}root{% endcapture %}
+      {% capture N_PARENT %}root{% endcapture %}
     {% else %}
-      {% capture _node_parent_name %}
+      {% capture N_PARENT %}
         {% assign reversed = section | split: '/' | reverse %}
         {% for unit in reversed %}
           {% if forloop.index == 2 %}
@@ -25,7 +20,7 @@
           {% endif %}
         {% endfor %}
       {% endcapture %}
-   {% endif %}<li><a>_node_parent_name = {{ _node_parent_name }}</a></li>
+   {% endif %}<li><a>N_PARENT: {{N_PARENT}}</a></li>
   {% endfor %}
 {% endif %}
 {% endfor %}
