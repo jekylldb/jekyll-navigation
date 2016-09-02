@@ -1,5 +1,0 @@
-{% for node in site.pages %}
-{% if page.url == site.baseurl and node.url | split: '/' | size == 1 %}
-<li><a href='{{node.url}}'>{{node.url  | split: '/' | last }}</a></li>
-{% endif %}
-{% endfor %}
