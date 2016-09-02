@@ -25,12 +25,12 @@
    {% endif %}
   {% endfor %}
 
-  {% for page in site.pages %}
-  {% if N_DEPTH_PARENT == N_DEPTH %}
-  {{page}}
-  {% endif %}
-  {% endfor %}
+
 
 
 {% endfor %}
 
+  {% for page in site.pages %}
+  {{N_DEPTH_PARENT}}
+  {{N_DEPTH}}
+  {% endfor %}
