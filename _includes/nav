@@ -2,10 +2,10 @@
 
 {% for node in site.pages %}<br>
 {% if node.url == page.url %}
-  {% capture PAGE_PATH %}{{node.url}}{% endcapture %}<li><a>PAGE_PATH:{{PAGE_PATH}}</a></li>
-  {% capture PAGE_DEPTH %}{{node.url | split: '/' | size | minus:1}}{% endcapture %}<li><a>PAGE_DEPTH:{{PAGE_DEPTH}}</a></li>
-  {% for section in node.url %}  
-    {% capture PAGE_TITLE %}{{ node.url | split: '/' | last }}{% endcapture %}<li><a>PAGE_TITLE:{{PAGE_TITLE}}</a></li>
+  {% capture PAGE_PATH %}{{node.url}}{% endcapture %}<li><a>PAGE_PATH: {{PAGE_PATH}}</a></li>
+  {% capture PAGE_DEPTH %}{{node.url | split: '/' | size | minus:1}}{% endcapture %}<li><a>PAGE_DEPTH: {{PAGE_DEPTH}}</a></li>
+  {% for section in page.url %}  
+  PAGE_TITLE: {{node.url | split: '/' | last}}
   {% endfor %}
 {% else %}
   {% capture NODE_PATH %}{{node.url}}{% endcapture %}<li><a>NODE_PATH:{{NODE_PATH}}</a></li>
