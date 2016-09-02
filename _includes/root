@@ -4,16 +4,11 @@
 {% assign _root_parent = nil %}
 {% assign _root_parent_depth = nil %}
 
-
+{% capture _root_children %}
 {% for page in site.pages %}
-{% for each in page.url | split: '/' | size | minus:1 %}
-
-{% capture _root_children %}{% for page in site.pages %}{% if page.url | split: '/' | size | minus:1 == '1' %}{{page.url}}{% endif %}{% endfor %}
-
+{% if page.url | split: '/' | size | minus:1 == '1' %}{{page.url}}{% endif %}
 {% endfor %}
-{% endfor %}
-
-
+{% endcapture %}
 {% assign _root_children_depth = '1' %}
 
 <h3> ROOT <h3>
@@ -25,6 +20,3 @@
 <li><a>children = {{ _root_children }}</a></li>
 <li><a>children depth = {{ _root_children_depth }}</a></li>
 </ul>
-
-
-{% capture current_name %}{% endcapture %}<li><a>name = {{ current_name }}</a></li>
