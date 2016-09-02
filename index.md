@@ -1,6 +1,3 @@
 ---
+layout: default
 ---
-
-{% include current %}
-{% include root %}
-{% include loop %}
