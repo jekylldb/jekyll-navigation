@@ -8,13 +8,9 @@
 {% capture current_parent_depth %}{{ page.url | split: '/' | size | minus:2 }}{% endcapture %}<li><a>parent depth = {{ current_parent_depth }}</a></li>
 {% for section in page.url %}  
 {% capture current_name %}{{ page.url | split: '/' | last }}{% endcapture %}<li><a>name = {{ current_name }}</a></li>
-{% capture current_parent_name %}
 {% if current_depth == 1 %}
-root
-{% else %}{% assign categories = section | split: '/' | reverse %}
-{% for unit in categories %}{% if forloop.index == 2 %}{{ unit }}{% endif %}{% endfor %}
-{% endif %}
-{% endcapture %}<li><a>parent name = {{ current_parent_name }}</a></li>
+{% capture current_parent_name %}root{% endcapture %}{% else %}{% capture current_parent_name %}{% assign reversed = section | split: '/' | reverse %}{% for unit in reversed %}{% if forloop.index == 2 %}{{ unit }}{% endif %}{% endfor %}{% endcapture %}
+{% endif %}<li><a>parent name = {{ current_parent_name }}</a></li>
 {% endfor %}
 {% endif %}
 </ul>
