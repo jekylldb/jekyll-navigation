@@ -27,7 +27,8 @@
    {% endif %}<li><a>_node_parent_name = {{ _node_parent_name }}</a></li>
   {% endfor %}
 {% endif %}
-{% for _page_title == _node_parent_name %}
-<li><a> _page_subdir = </a></li>{{node.url}}<br>
+{% for %}
+{% capture subdir %}{% for part in node.url | split: '/ %}{{ part | remove: node.url | split: '/ | last}}{% endfor %}{% endcapture %}
+<li><a> subdir = </a></li>{{subdir}}<br>
 {% endfor %}
 {% endfor %}
