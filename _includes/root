@@ -8,9 +8,9 @@
 {% for page in site.pages %}
 {% if page.url | split: '/' | size | minus:1 == '1' %}
 {% capture _root_children %}{{ page.url | split: '/' | last }}{% endcapture %}
-{{ _root_children }}
-{{ _root_children | size }}
-{{ _root_children | join: ' ' }}
+{{ _root_children }}<br>
+{{ _root_children | size }}<br>
+{{ _root_children | join: ' ' }}<br>
 {% endif %}
 {% endfor %}
 
