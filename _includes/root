@@ -4,14 +4,16 @@
 {% assign _root_parent = nil %}
 {% assign _root_parent_depth = nil %}
 
-{% capture _root_children %}
+
 {% for page in site.pages %}
-{% if page.url | split: '/' | size == '1' %}
-page url = {{page.url }} <br>
-page url last with depth 1 = {{ page.url | split: '/' | last }} <br>
+{% if page.url | split: '/' | size | minus:1 %}
+{% capture _root_children %}{{ page.url | split: '/' | last }}{% endcapture %}
+{{ _root_children }}
+{{ _root_children | size }}
+{{ _root_children | join: ' ' }}
 {% endif %}
 {% endfor %}
-{% endcapture %}
+
 
 {% assign _root_children_depth = '1' %}
 
