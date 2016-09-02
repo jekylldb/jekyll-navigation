@@ -28,5 +28,7 @@
    {% endif %}<li><a>_node_parent_name = {{ _node_parent_name }}</a></li>
   {% endfor %}
 {% endif %}
-_page_title == _node_parent_name ==  {{node.url}}<br>
+{% if _page_title == _node_parent_name %}
+<li><a> _page_subdir = </a></li>{{node.url}}<br>
+{% endif %}
 {% endfor %}
