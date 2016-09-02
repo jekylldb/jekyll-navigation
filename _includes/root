@@ -20,3 +20,16 @@
 <li><a>children = {{ _root_children }}</a></li>
 <li><a>children depth = {{ _root_children_depth }}</a></li>
 </ul>
+
+{% for page in site.pages %}
+{% assign current = page.url | split: '/' | last %}
+{% assign level = page.url | split: '/' | size %}
+{% assign subdir_level = page.url | split: '/' | size | minus: 1 %}
+{% capture parent %}
+{% for part in page.url | split: '/' %}
+<br>
+part = {{ part | remove: current }} <br>
+<br>
+{% endfor %}
+{% endcapture %}
+{% endfor %}
