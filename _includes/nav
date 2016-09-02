@@ -1,9 +1,7 @@
 {% capture R_PATH %}/{% endcapture %}<li><a> R_PATH = {{R_PATH}}</a></li>
 {% capture P_PATH %}{{page.url}}{% endcapture %}<li><a>P_PATH: {{P_PATH}}</a></li>
 {% capture P_DEPTH %}{{page.url | split: '/' | size | minus:1}}{% endcapture %}<li><a>P_DEPTH: {{P_DEPTH}}</a></li>
-{% for section in page.url %}
-{% capture P_TITLE %}{{page.url | split: '/' | last}}{% endcapture %}<li><a>P_TITLE: {{P_TITLE}}</a></li>
-{% endfor %}
+{% for section in page.url %}{% capture P_TITLE %}{{page.url | split: '/' | last}}{% endcapture %}<li><a>P_TITLE: {{P_TITLE}}</a></li>{% endfor %}
 {% for node in site.pages %}
   {% capture N_PATH %}{{node.url}}{% endcapture %}<li><a>N_PATH:{{N_PATH}}</a></li>
   {% capture N_DEPTH %}{{ node.url | split: '/' | size | minus:1 }}{% endcapture %}<li><a>N_DEPTH = {{N_DEPTH}}</a></li>
@@ -18,11 +16,10 @@
         {% assign reversed = section | split: '/' | reverse %}
         {% for unit in reversed %}
           {% if forloop.index == 2 %}
-            {{ unit }}
+            {{ unit }}<li><a>N_PARENT: {{N_PARENT}}</a></li>
           {% endif %}
         {% endfor %}
       {% endcapture %}
-   {% endif %}<li><a>N_PARENT: {{N_PARENT}}</a></li>
+   {% endif %}
   {% endfor %}
-{% endif %}
 {% endfor %}
