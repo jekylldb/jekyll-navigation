@@ -4,8 +4,8 @@
 {% if node.url == page.url %}
   {% capture _page_path %}{{page.url}}{% endcapture %}<li><a> _page_path = {{ _page_path }}</a></li>
   {% capture _page_depth %}{{page.url | split: '/' | size | minus:1}}{% endcapture %}<li><a> _page_depth = {{ _page_depth }}</a></li>
-  {% for _path in page.url %}  
-    {% capture _page_name %}{{ _path | split: '/' | last }}{% endcapture %}<li><a> _page_name = {{ _page_name }}</a></li>
+  {% for section in page.url %}  
+    {% capture _page_title %}{{ page.url | split: '/' | last }}{% endcapture %}<li><a>_page_title = {{ _page_title }}</a></li>
   {% endfor %}
 {% else %}
   {% capture _path %}{{node.url}}{% endcapture %}<li><a>_path = {{ _path }}</a></li>
@@ -28,7 +28,5 @@
    {% endif %}<li><a>_node_parent_name = {{ _node_parent_name }}</a></li>
   {% endfor %}
 {% endif %}
-{% if _page_name == _node_parent_name %}
-  _page_name == _node_parent_name ==  {{node.url}}<br>
-{% endif %}
+_page_title == _node_parent_name ==  {{node.url}}<br>
 {% endfor %}
