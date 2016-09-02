@@ -2,11 +2,13 @@
 
 {% for node in site.pages %}<br>
 {% if node.url == page.url %}
-  {% capture _page_path %}{{page.url}}{% endcapture %}<li><a> _page_path = {{ _page_path }}</a></li>
-  {% capture _page_depth %}{{page.url | split: '/' | size | minus:1}}{% endcapture %}<li><a> _page_depth = {{ _page_depth }}</a></li>
-  {% capture _page_title %}{{ page.url | split: '/' | last }}{% endcapture %}<li><a>_page_title = {{ _page_title }}</a></li>
+  {% capture PAGE_PATH %}{{node.url}}{% endcapture %}<li><a>PAGE_PATH:{{PAGE_PATH}}</a></li>
+  {% capture PAGE_DEPTH %}{{node.url | split: '/' | size | minus:1}}{% endcapture %}<li><a>PAGE_DEPTH:{{PAGE_DEPTH}}</a></li>
+  {% for section in node.url %}  
+    {% capture PAGE_TITLE %}{{ node.url | split: '/' | last }}{% endcapture %}<li><a>PAGE_TITLE:{{PAGE_TITLE}}</a></li>
+  {% endfor %}
 {% else %}
-  {% capture _path %}{{node.url}}{% endcapture %}<li><a>_path = {{ _path }}</a></li>
+  {% capture NODE_PATH %}{{node.url}}{% endcapture %}<li><a>NODE_PATH:{{NODE_PATH}}</a></li>
   {% capture _node_depth %}{{ node.url | split: '/' | size | minus:1 }}{% endcapture %}<li><a>_node_depth = {{ _node_depth }}</a></li>
   {% capture _parent_depth %}{{ node.url | split: '/' | size | minus:2 }}{% endcapture %}<li><a>_parent_depth = {{ _parent_depth }}</a></li>
   {% capture _child_depth %}{{ _depth | plus:1 }}{% endcapture %}<li><a> _child_depth = {{ _child_depth }}</a></li>
