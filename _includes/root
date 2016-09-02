@@ -3,7 +3,7 @@
 {% assign _root_depth = '0' %}
 {% assign _root_parent = nil %}
 {% assign _root_parent_depth = nil %}
-{% assign _root_children = '' %}
+{% capture _root_children %}{% for page in site.pages %}{% if page.url | split: '/' | size == '1' %}{{ page.url | split: '/' | last }}{% endif %}{% endfor %}{% endcapture %}
 {% assign _root_children_depth = '1' %}
 
 <h3> ROOT <h3>
