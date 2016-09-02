@@ -2,7 +2,10 @@
 <head>
 </head>
 <body>
-<div>{% include current %}</div>
-<div>{% include root %}</div>
+{% if page.url == site.baseurl %}
+  <div>{% include root %}</div>
+{% else %}
+  <div>{% include current %}</div>
+{% endif %}
 </body>
 </html>
