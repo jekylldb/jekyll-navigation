@@ -1,23 +1,24 @@
+{% capture _root_path %}/{% endcapture %}<li><a> _root_path = {{ _root_path }}</a></li>
+
 {% for node in site.pages %}<br>
 {% if node.url == page.url %}
   {% capture _page_path %}{{page.url}}{% endcapture %}<li><a> _page_path = {{ _page_path }}</a></li>
   {% capture _page_depth %}{{page.url | split: '/' | size | minus:1}}{% endcapture %}<li><a> _page_depth = {{ _page_depth }}</a></li>
   {% for section in page.url %}  
     {% capture _page_path_section %}{{ section | split: '/' }}{% endcapture %}
-    {% capture _page_title %}{{ _page_path_section | last }}{% endcapture %}<li><a> _page_title = {{ _page_title }}</a></li>
+    {% capture _page_name %}{{ _page_path_section | last }}{% endcapture %}<li><a> _page_name = {{ _page_name }}</a></li>
   {% endfor %}
 {% else %}
-  {% capture _root_path %}/{% endcapture %}<li><a> _root_path = {{ _root_path }}</a></li>
   {% capture _path %}{{node.url}}{% endcapture %}<li><a>_path = {{ _path }}</a></li>
-  {% capture _depth %}{{ node.url | split: '/' | size | minus:1 }}{% endcapture %}<li><a>_depth = {{ _depth }}</a></li>
+  {% capture _node_depth %}{{ node.url | split: '/' | size | minus:1 }}{% endcapture %}<li><a>_node_depth = {{ _node_depth }}</a></li>
   {% capture _parent_depth %}{{ node.url | split: '/' | size | minus:2 }}{% endcapture %}<li><a>_parent_depth = {{ _parent_depth }}</a></li>
   {% capture _child_depth %}{{ _depth | plus:1 }}{% endcapture %}<li><a> _child_depth = {{ _child_depth }}</a></li>
   {% for section in node.url %}  
-    {% capture _name %}{{ node.url | split: '/' | last }}{% endcapture %}<li><a>_name = {{ _name }}</a></li>
+    {% capture _node_title %}{{ node.url | split: '/' | last }}{% endcapture %}<li><a>_node_title = {{ _node_title }}</a></li>
     {% if _depth == '1' %}
-      {% capture _parent_name %}root{% endcapture %}
+      {% capture _node_parent_name %}root{% endcapture %}
     {% else %}
-      {% capture _parent_name %}
+      {% capture _node_parent_name %}
         {% assign reversed = section | split: '/' | reverse %}
         {% for unit in reversed %}
           {% if forloop.index == 2 %}
@@ -25,7 +26,10 @@
           {% endif %}
         {% endfor %}
       {% endcapture %}
-   {% endif %}<li><a>_parent_name = {{ _parent_name }}</a></li>
+   {% endif %}<li><a>_node_parent_name = {{ _node_parent_name }}</a></li>
   {% endfor %}
+{% endif %}
+{% if _node_parent_name == _page_name %}
+  {{node.url}}
 {% endif %}
 {% endfor %}
