@@ -1,7 +1,13 @@
-{% for node in site.pages %}
-<br>
-{% if node.url == '/' or node.url == page.url %}
-  {% capture _path %}{{page.url}}{% endcapture %}<li><a>_path = {{ _path }}</a></li>
+{% for node in site.pages %}<br>
+{% if node.url == '/' %}
+  {% capture _root_path %}{{page.url}}{% endcapture %}<li><a> _root_path = {{ _root_path }}</a></li>
+{% elsif node.url == page.url %}
+  {% capture _page_path %}{{page.url}}{% endcapture %}<li><a> _page_path = {{ _page_path }}</a></li>
+  {% capture _page_depth %}{{page.url | split: '/' | size | minus:1}}{% endcapture %}<li><a> _page_depth = {{ _page_depth }}</a></li>
+  {% for section in page.url %}  
+    {% capture _page_section %}{{ node.url | split: '/' }}{% endcapture %}<li><a> _page_section = {{ _page_section }}</a></li>
+  {% endfor %}
+  {% capture _page_title %}{{ _page_section | last }}{% endcapture %}<li><a> _page_title = {{ _page_title }}</a></li>
 {% else %}
   {% capture _path %}{{node.url}}{% endcapture %}<li><a>_path = {{ _path }}</a></li>
   {% capture _depth %}{{ node.url | split: '/' | size | minus:1 }}{% endcapture %}<li><a>_depth = {{ _depth }}</a></li>
