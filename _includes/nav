@@ -28,7 +28,7 @@
    {% endif %}<li><a>_node_parent_name = {{ _node_parent_name }}</a></li>
   {% endfor %}
 {% endif %}
-{% if _node_parent_name == _page_name %}
-  {{node.url}}
+{% if _page_name == _node_parent_name %}
+  _page_name == _node_parent_name ==  {{node.url}}<br>
 {% endif %}
 {% endfor %}
