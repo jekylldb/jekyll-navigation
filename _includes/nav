@@ -6,7 +6,7 @@
   {% capture _path %}{{node.url}}{% endcapture %}<li><a>_path = {{ _path }}</a></li>
   {% capture _depth %}{{ node.url | split: '/' | size | minus:1 }}{% endcapture %}<li><a>_depth = {{ _depth }}</a></li>
   {% capture _parent_depth %}{{ node.url | split: '/' | size | minus:2 }}{% endcapture %}<li><a>_parent_depth = {{ _parent_depth }}</a></li>
-  {% capture _childen_depth %}{{ node.url | split: '/' | size | minus:0 }}{% endcapture %}<li><a>_children_depth = {{ _children_depth }}</a></li>
+  {% capture _childen_depth %}{{ _depth | plus:1 }}{% endcapture %}<li><a>_children_depth = {{ _children_depth }}</a></li>
   {% for section in node.url %}  
     {% capture _name %}{{ node.url | split: '/' | last }}{% endcapture %}<li><a>_name = {{ _name }}</a></li>
     {% if _depth == '1' %}
