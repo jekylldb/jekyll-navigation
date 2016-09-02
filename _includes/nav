@@ -6,8 +6,8 @@
   {% capture _page_depth %}{{page.url | split: '/' | size | minus:1}}{% endcapture %}<li><a> _page_depth = {{ _page_depth }}</a></li>
   {% for section in page.url %}  
     {% capture _page_section %}{{ node.url | split: '/' }}{% endcapture %}<li><a> _page_section = {{ _page_section }}</a></li>
+    {% capture _page_title %}{{ _page_section | last }}{% endcapture %}<li><a> _page_title = {{ _page_title }}</a></li>
   {% endfor %}
-  {% capture _page_title %}{{ _page_section | last }}{% endcapture %}<li><a> _page_title = {{ _page_title }}</a></li>
 {% else %}
   {% capture _path %}{{node.url}}{% endcapture %}<li><a>_path = {{ _path }}</a></li>
   {% capture _depth %}{{ node.url | split: '/' | size | minus:1 }}{% endcapture %}<li><a>_depth = {{ _depth }}</a></li>
