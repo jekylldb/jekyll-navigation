@@ -24,4 +24,7 @@
       {% endcapture %}
    {% endif %}
   {% endfor %}
+  {% if N_DEPTH_PARENT == N_DEPTH %}
+  {{node}}
+  {% endif %}
 {% endfor %}
