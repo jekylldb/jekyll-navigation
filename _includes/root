@@ -6,8 +6,10 @@
 
 
 {% for page in site.pages %}
-{% for each in page.url | split: '/' | size | minus:1 == '1' %}
+{% for each in page.url | split: '/' | size | minus:1 %}
+
 {% capture _root_children %}{% for page in site.pages %}{% if page.url | split: '/' | size | minus:1 == '1' %}{{page.url}}{% endif %}{% endfor %}
+
 {% endfor %}
 {% endfor %}
 
