@@ -7,7 +7,8 @@
 {% capture _root_children %}
 {% for page in site.pages %}
 {% if page.url | split: '/' | size == '1' %}
-{{ page.url | split: '/' | last }}
+page url = {{page.url }} <br>
+page url last with depth 1 = {{ page.url | split: '/' | last }} <br>
 {% endif %}
 {% endfor %}
 {% endcapture %}
