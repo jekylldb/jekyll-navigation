@@ -5,10 +5,15 @@
 {% capture current_path %}{{page.url}}{% endcapture %}<li><a>path = {{ current_path }}</a></li>
 {% capture current_child_depth %}{{ page.url | split: '/' | size }}{% endcapture %}<li><a>child depth = {{ current_child_depth }}</a></li>
 {% capture current_depth %}{{ page.url | split: '/' | size | minus:1 }}{% endcapture %}<li><a>depth = {{ current_depth }}</a></li>
+{% capture current_depth %}{{ page.url | split: '/' | size | minus:1 }}{% endcapture %}<li><a>depth = {{ current_depth }}</a></li>
 {% capture current_parent_depth %}{{ page.url | split: '/' | size | minus:2 }}{% endcapture %}<li><a>parent depth = {{ current_parent_depth }}</a></li>
 {% for section in page.url %}  
 {% capture current_name %}{{ page.url | split: '/' | last }}{% endcapture %}<li><a>name = {{ current_name }}</a></li>
-{% capture current_parent_name %}{% assign categories = section | split: '/' | reverse %}{% for unit in categories %}{% if forloop.index == 2 %}{{ unit }}{% endif %}{% endfor %}{% endcapture %}<li><a>parent name = {{ current_parent_name }}</a></li>
+{% if current_depth == 1 %}
+{% capture current_parent_name %}root{% endcapture %}
+{% else %}
+{% capture current_parent_name %}
+{% assign categories = section | split: '/' | reverse %}{% for unit in categories %}{% if forloop.index == 2 %}{{ unit }}{% endif %}{% endfor %}{% endcapture %}{% endif %}<li><a>parent name = {{ current_parent_name }}</a></li>
 {% endfor %}
 {% endif %}
 </ul>
