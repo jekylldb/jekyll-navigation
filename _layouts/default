@@ -1,0 +1,8 @@
+<html>
+<head>
+</head>
+<body>
+<div>{% include current %}</div>
+<div>{% include root %}</div>
+</body>
+</html>
