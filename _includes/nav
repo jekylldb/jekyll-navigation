@@ -5,6 +5,7 @@
   {% capture _page_path %}{{page.url}}{% endcapture %}<li><a> _page_path = {{ _page_path }}</a></li>
   {% capture _page_depth %}{{page.url | split: '/' | size | minus:1}}{% endcapture %}<li><a> _page_depth = {{ _page_depth }}</a></li>
   {% capture _page_title %}{{ page.url | split: '/' | last }}{% endcapture %}<li><a>_page_title = {{ _page_title }}</a></li>
+
 {% else %}
   {% capture _path %}{{node.url}}{% endcapture %}<li><a>_path = {{ _path }}</a></li>
   {% capture _node_depth %}{{ node.url | split: '/' | size | minus:1 }}{% endcapture %}<li><a>_node_depth = {{ _node_depth }}</a></li>
@@ -26,7 +27,7 @@
    {% endif %}<li><a>_node_parent_name = {{ _node_parent_name }}</a></li>
   {% endfor %}
 {% endif %}
-{% if _page_title == _node_parent_name %}
+{% for _page_title == _node_parent_name %}
 <li><a> _page_subdir = </a></li>{{node.url}}<br>
-{% endif %}
+{% endfor %}
 {% endfor %}
