@@ -1,34 +1,4 @@
-
-{{node sort:"path"}}<br>
-
-<br>
-
-{{node sort:"url"}}<br>
-
-<br>
-
-{{node sort:"weight"}}<br>
-
-
 {% for node in site.pages %}
-{{node | split: '/' | sort:"path"}}<br>
+{% assign N_URL_SIZE = node.url | split: '/' | size<br>
+{{ N_URL_SIZE sort: "weight" }}
 {% endfor %}
-<br>
-{% for node in site.pages %}
-{{node | split: '/' | sort:"url"}}<br>
-{% endfor %}
-<br>
-{% for node in site.pages %}
-{{node | split: '/' | sort:"weight"}}<br>
-{% endfor %}
-
-
-{{node.url sort:"path"}}<br>
-
-<br>
-
-{{node.url sort:"url"}}<br>
-
-<br>
-
-{{node.url sort:"weight"}}<br>
