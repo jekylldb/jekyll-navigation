@@ -1,5 +1,5 @@
 {% for page in site.pages %}
-{{ page.url sort: "url" }}
+{{ page.url sort: "url" }}<br>
 {% endfor %}
 
 
