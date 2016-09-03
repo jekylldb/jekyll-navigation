@@ -5,16 +5,15 @@
 
 {% assign sorted_pages = site.pages | sort:"url" %}
 {% for node in sorted_pages %}
+{% for section in node.url %}
 {{node.url}} <br>
 {{node.url | split: '/'}} <br>
 {{node.url | split: '/' | size }} <br>
 {{forloop.length}} <br>
-{{forloop.index}} <br>
 {{forloop.index0}} <br>
-{{forloop.rindex}} <br>
-{{forloop.rindex0}} <br>
 {{forloop.first}} <br>
-{{forloop.last}} <br>
+{% if forloop.last == true %}{{section}}{% endif %} <br>
+{% endfor %}
 {% endfor %}
 
 <br>
