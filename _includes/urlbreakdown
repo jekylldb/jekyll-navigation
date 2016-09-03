@@ -1,11 +1,8 @@
-{% assign sorted_pages = site.pages | sort:"url" %}
-{% for node in sorted_pages %}
-{{node.url}} <br>
-{% endfor %}
+{% assign sorted_pages = site.pages | sort:"url" %}{% for node in sorted_pages %}{{node.url}}<br>{% endfor %}
 
 {% assign sorted_pages = site.pages | sort:"url" %}
-{% for node in sorted_pages %}
 
+{% for node in sorted_pages %}
 1node url = {{node.url}} <br>
 1node url split = {{node.url | split: '/'}} <br>
 1node url split size = {{node.url | split: '/' | size }} <br>
@@ -13,9 +10,8 @@
 1forloop index0 = {{forloop.index0}} <br>
 1forloop first = {{forloop.first}} <br>
 1forloop last = {{forloop.last}} <br>
-{% if forloop.last == true %}
-1if forloop last = true = {{section}} 
-{% endif %} <br>
+{% if forloop.last == true %}1if forloop last = true = {{section}}<br>{% endif %}<br>
+<br>
 {% for section in node.url %}
 node url = {{node.url}} <br>
 node url split = {{node.url | split: '/'}} <br>
