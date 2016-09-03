@@ -1,5 +1,5 @@
 {% for page in site.pages %}
-{% assign PAGES = site.pages %}
+{% assign PAGES = page.url %}
 {% assign PAGES = PAGES | sort: "url" %}
 {{ PAGES }} <br>
 {% endfor %}
