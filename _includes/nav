@@ -15,7 +15,7 @@ a {margin:0 4.25em;}
 
 {% capture R_PATH %}{{site.baseurl}}{% endcapture %}
 {% capture R_TITLE %}{% for section in node.url %}{% if N_DEPTH == '1' %}Home{% endif %}{% endfor %}{% endcapture %}
-{% capture R_CHILDREN %}{% for node in site.pages %}{% if N_DEPTH == 1 %}{{node.title}}{% endif %}{% endfor %}{% endcapture %}
+{% capture R_CHILDREN %}{% for node in site.pages %}{% if N_DEPTH == 1 %}{{N_TITLE}}{% endif %}{% endfor %}{% endcapture %}
 
 {% capture P_PATH %}{{page.url | strip }}{% endcapture %}
 {% capture P_PATH_PARTS %}{{ page.url | split: '/' }}{% endcapture %}
@@ -24,7 +24,7 @@ a {margin:0 4.25em;}
 {% capture P_LEVEL %}{{ P_PATH_PARTS | size }}{% endcapture %}
 {% capture P_LEVEL_CHILDREN %}{{ P_LEVEL | plus:1 }}{% endcapture %}
 {% capture P_PARENT %}{% if site.baseurl == page.url %}{% for part in P_PATH_PARTS %}{{ part | remove: P_TITLE }}{% endfor %}{% endif %}{% endcapture %}
-{% capture P_CRUMBS %}{{ page.url | remove:'/index.html' | split: '/' %}{% endcapture %}
+{% capture P_CRUMBS %}{{ page.url | remove:'/index.html' | split: '/' }}{% endcapture %}
 
 {% for node in site.pages %}
   {% capture N_TITLE %}{% for section in node.url %}{{ node.url | split: '/' | last }}{% endfor %}{% endcapture %}
@@ -37,7 +37,7 @@ a {margin:0 4.25em;}
   {% capture N_LEVEL_CHILD %}{{ N_LEVEL | plus:1 }}{% endcapture %}
   {% capture N_PARENT %}{% for part in node_parts %}{{ part | remove: node_current }}{% endfor %}{% endcapture %}
   {% capture _N_PARENT %}{% for unit in section | split: '/' | reverse %}{% if forloop.index == 2 %}{{ unit | strip }}{% endif %}{% endfor %}{% endcapture %}
-  {% capture N_CHILDREN %}{% if P_TITLE == N_PARENT and P_LEVEL_CHILDREN == N_LEVEL %}{{N_TITLE | join: ' ' }}{% endif %}{% endcapture %}
+  {% capture N_CHILDREN %}{% if P_TITLE == N_PARENT and P_LEVEL_CHILDREN == N_LEVEL %}{{N_TITLE}}{% endif %}{% endcapture %}
 {% endfor %}
 
 <div class="dropdown">
