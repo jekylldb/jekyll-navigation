@@ -55,24 +55,24 @@ a {margin:0 4.25em;}
 {% endfor %}
 </div>
 
-{{R_PATH}}
-{{R_TITLE }}
-{{R_CHILDREN}}
-{{P_PATH}}
-{{P_PATH_PARTS}}
-{{P_TITLE}}
-{{P_DEPTH}}
-{{P_LEVEL}}
-{{P_LEVEL_CHILDREN}}
-{{P_PARENT}}
-{{N_TITLE}}
-{{N_PATH}}
-{{N_DEPTH}}
-{{N_DEPTH_PARENT}}
-{{N_DEPTH_CHILD}}
-{{N_PATH_PARTS}}
-{{N_LEVE}}
-{{N_LEVEL_CHILD}}
-{{N_PARENT}}
-{{_N_PARENT}}
-{{N_CHILDREN}}
+{{R_PATH}}<br>
+{{R_TITLE }}<br>
+{{R_CHILDREN}}<br>
+{{P_PATH}}<br>
+{{P_PATH_PARTS}}<br>
+{{P_TITLE}}<br>
+{{P_DEPTH}}<br>
+{{P_LEVEL}}<br>
+{{P_LEVEL_CHILDREN}}<br>
+{{P_PARENT}}<br>
+{{N_TITLE}}<br>
+{{N_PATH}}<br>
+{{N_DEPTH}}<br>
+{{N_DEPTH_PARENT}}<br>
+{{N_DEPTH_CHILD}}<br>
+{{N_PATH_PARTS}}<br>
+{{N_LEVE}}<br>
+{{N_LEVEL_CHILD}}<br>
+{{N_PARENT}} <br>
+{{_N_PARENT}}<br>
+{{N_CHILDREN}}<br>
