@@ -1,1 +1,3 @@
-{{ site.pages.sort }}
+{% for page in site.pages %}
+{{ page.url.sort }}
+{% endfor %}
