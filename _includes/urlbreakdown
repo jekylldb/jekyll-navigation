@@ -1,6 +1,6 @@
 {%for node in site.pages%}
-{{node.url}}
-{{node.url | size}}
-{{node.url sort}}
+{{node.url}}<br>
+{{node.url | size}}<br>
+{{node.url sort}}<br>
 {%endfor%}
 
