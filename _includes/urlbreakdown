@@ -1,0 +1,6 @@
+{%for node in site.pages}
+{{node}}
+{{node size}}
+{{node sort}}
+{%endfor%}
+
