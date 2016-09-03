@@ -14,6 +14,6 @@
 {% endfor %}
 
 {% assign sorted_pages = site.pages | sort:"url" %}
-{% for node in sorted_pages limit:2 offset:2 %}
-  {{ node.url }}
+{% for node in sorted_pages %}
+  {{ node.url | split: '/' limit:1 offset:2}}
 {% endfor %}
