@@ -1,5 +1,5 @@
-{{ site.pages | sort: "url" }}<br>
-
-{%for node in site.pages%}
-  {{ node.url | split: '/' | size }}<br>
+{% for node in site.pages %}
+{% assign PAGES = site.pages %}
+{% assign PAGES = PAGES | sort: "url" %}
+{{ PAGES }} <br>
 {% endfor %}
