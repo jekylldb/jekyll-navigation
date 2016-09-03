@@ -10,5 +10,5 @@
 
 {% assign crumbs = page.url | split: '/' %}
 {% for crumb in crumbs offset: 1 %}
-  {{ forloop.last }} <br>
+  {{ forloop.index }} <br>
 {% endfor %}
