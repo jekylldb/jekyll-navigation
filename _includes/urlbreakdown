@@ -57,12 +57,9 @@ if forloop last = true = {{section}}
 <br>
 
 {% assign sorted_pages = site.pages | sort:"url" %}
-{% for node in sorted_pages %}
-{{node}} <br>
-{% for section in node.url %}
-{{section}}<br>
-{% for part in urlparts %}
-{{part}}<br>
+{% for node in sorted_pages %}node = {{node}} <br>
+{% for section in node.url %}section = {{section}}<br>
+{% for part in urlparts %}part = {{part}}<br>
 {% endfor %}
 {% endfor %}
 {% endfor %}
