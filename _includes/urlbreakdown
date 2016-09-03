@@ -2,5 +2,7 @@
 {{node.url}}<br>
 {{node.url | size}}<br>
 {{node.url sort}}<br>
+{{node.url | split: '/' | size}}<br>
+<br>
 {%endfor%}
 
