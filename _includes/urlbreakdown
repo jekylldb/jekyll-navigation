@@ -6,12 +6,38 @@
 {% assign sorted_pages = site.pages | sort:"url" %}
 {% for node in sorted_pages %}
 {{node.url}} <br>
+{{node.url | split: '/'}} <br>
+{{node.url | split: '/' | size }} <br>
+{{forloop.length}} <br>
+{{forloop.index}} <br>
+{{forloop.index0}} <br>
+{{forloop.rindex}} <br>
+{{forloop.rindex0}} <br>
+{{forloop.first}} <br>
+{{forloop.last}} <br>
 {% endfor %}
-
+<br>
 {% for i in (1..5) %}
-  {% if i == 4 %}
+  {% if i != 2 %}
     {% continue %}
   {% else %}
     {{ i }}
   {% endif %}
+{% endfor %}
+<br>
+
+{% assign sorted_pages = site.pages | sort:"url" %}
+{% for node in sorted_pages %}
+{% for section in node.url %}
+{{node.url}} <br>
+{{node.url | split: '/'}} <br>
+{{node.url | split: '/' | size }} <br>
+{{forloop.length}} <br>
+{{forloop.index}} <br>
+{{forloop.index0}} <br>
+{{forloop.rindex}} <br>
+{{forloop.rindex0}} <br>
+{{forloop.first}} <br>
+{{forloop.last}} <br>
+{% endfor %}
 {% endfor %}
