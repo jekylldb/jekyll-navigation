@@ -54,3 +54,25 @@ a {margin:0 4.25em;}
 {% endif %}
 {% endfor %}
 </div>
+
+{{R_PATH}}
+{{R_TITLE }}
+{{R_CHILDREN}}
+{{P_PATH}}
+{{P_PATH_PARTS}}
+{{P_TITLE}}
+{{P_DEPTH}}
+{{P_LEVEL}}
+{{P_LEVEL_CHILDREN}}
+{{P_PARENT}}
+{{N_TITLE}}
+{{N_PATH}}
+{{N_DEPTH}}
+{{N_DEPTH_PARENT}}
+{{N_DEPTH_CHILD}}
+{{N_PATH_PARTS}}
+{{N_LEVE}}
+{{N_LEVEL_CHILD}}
+{{N_PARENT}}
+{{_N_PARENT}}
+{{N_CHILDREN}}
