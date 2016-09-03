@@ -1,4 +1,1 @@
-{% for node in site.pages %}
-{% assign N_URL_SIZE = node.url | split: '/' | size<br>
-{{ N_URL_SIZE sort: "weight" }}
-{% endfor %}
+{{ site.pages.sort }}
