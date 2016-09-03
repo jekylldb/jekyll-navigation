@@ -1,6 +1,7 @@
 {%for node in site.pages%}
-  {{ node.url | size }}<br>
   {{ node.url sort:"url" }}<br>
+{% endfor %}
+
+{%for node in site.pages%}
   {{ node.url | split: '/' | size }}<br>
-  <br>
 {% endfor %}
