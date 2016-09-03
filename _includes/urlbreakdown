@@ -1,13 +1,11 @@
-<ul>
-{% for weight in (1..10) %}
-  {% for p in site.pages %}
-    {% if p.weight == weight %}
-      <li>
-        <a {% if p.url == page.url %}class="active"{% endif %} href="{{ p.url }}">
-          {{ p.title }}
-        </a>
-      </li>
-    {% endif %}
-  {% endfor %}
+{% for node in site.pages %}
+{{node.url sort:"path"}}<br>
 {% endfor %}
-</ul>
+<br>
+{% for node in site.pages %}
+{{node.url sort:"url"}}<br>
+{% endfor %}
+<br>
+{% for node in site.pages %}
+{{node.url sort:"weight"}}<br>
+{% endfor %}
