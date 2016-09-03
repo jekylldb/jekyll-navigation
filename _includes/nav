@@ -25,3 +25,97 @@
    {% endif %}
   {% endfor %}
 {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+.dropbtn {background-color: #4CAF50;  color: white;  padding: 16px;  font-size: 16px;  border: none;  cursor: pointer;}
+.dropbtn:hover, .dropbtn:focus {background-color: #3e8e41;}
+.dropdown {position: relative;  display: inline-block;}
+.dropdown-content {display: none; position: absolute; background-color: #f9f9f9; min-width: 160px;box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);}
+.dropdown-content a {color black; padding: 12px 16px; text-decoration: none;  display: block;}
+.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+.show {display:block;}
+.icon-arrow {font-size: 1.5em;vertical-align: text-top;font-weight: 500;}
+.breadcrumbs {width: 95%;margin: 0.5em;height: 1em;}
+a {margin:0 4.25em;}
+</style>
+
+<div class="dropdown">
+{% if site.baseurl == page.url%}
+<button onclick="myFunction()" class="dropbtn">Home</button>
+<div id="myDropdown" class="dropdown-content">
+
+{% assign parts = page.url | split: '/' %} 
+{% assign level = parts | size %} 
+{% assign subdir_level = level | plus:1 %}
+{% assign current = parts | last %}
+
+{% capture parent %}
+{% for part in urlparts %}
+{{ part | remove: current }}
+{% endfor %}
+{% endcapture %} 
+
+{% for node in site.pages %}
+{% assign node_parts = node.url | split: '/' %}
+{% assign node_level = node_parts | size %}
+{% assign node_subdir_level = node_level | plus:1 %}
+{% assign node_current = node_parts | last %}
+
+{% capture node_parent %}
+{% for part in node_parts %}
+{{ part | remove: node_current }}
+{% endfor %}
+{% endcapture %}
+
+{% if page.url == site.baseurl %}
+{% if node_level == 2 %}
+<a href='{{node.url}}'>{{node.title}}</a>
+{% endif %}
+{% endif %}
+
+{% if current == node_parent and subdir_level == node_level %}
+<a href='{{node.url}}'>{{node.title}}</a>
+{% endif %}
+{% endfor %}
+</div>
+{% else %}
+<a>Home</a>{% endif %}
+{% assign crumbs = page.url | remove:'/index.html' | split: '/' %}
+{% for crumb in crumbs offset: 1 %}
+{% if forloop.last %}
+<span class="icon-arrow" aria-hidden="true">&rsaquo;</span>
+<button onclick="myFunction()" class="dropbtn">
+  {{ crumb | replace:'-',' ' | remove:'.html' | capitalize }}
+</button>
+<div id="myDropdown" class="dropdown-content">
+  {% include subdirs.html %}
+</div>
+{% else %}
+<span class="icon-arrow" aria-hidden="true">&rsaquo;</span>
+<a href="{% assign crumb_limit = forloop.index | plus: 1 %}{% for crumb in crumbs limit: crumb_limit %}{{ crumb | append: '/' }}{% endfor %}">{{ crumb | replace:'-',' ' | remove:'.html' | capitalize }}</a>
+{% endif %}
+{% endfor %}
+</div>
+
