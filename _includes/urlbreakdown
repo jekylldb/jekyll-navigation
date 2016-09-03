@@ -6,13 +6,16 @@
 {% assign sorted_pages = site.pages | sort:"url" %}
 {% for node in sorted_pages %}
 {% for section in node.url %}
-{{node.url}} <br>
-{{node.url | split: '/'}} <br>
-{{node.url | split: '/' | size }} <br>
-{{forloop.length}} <br>
-{{forloop.index0}} <br>
-{{forloop.first}} <br>
-{% if forloop.last == true %}{{section}}{% endif %} <br>
+node url = {{node.url}} <br>
+node url split = {{node.url | split: '/'}} <br>
+node url split size = {{node.url | split: '/' | size }} <br>
+forloop length = {{forloop.length}} <br>
+forloop index0 = {{forloop.index0}} <br>
+forloop first = {{forloop.first}} <br>
+forloop last = {{forloop.last}} <br>
+{% if forloop.last == true %}
+if forloop last = true = {{section}} 
+{% endif %} <br>
 {% endfor %}
 {% endfor %}
 
