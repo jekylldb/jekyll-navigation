@@ -12,7 +12,7 @@
 1forloop first = {{forloop.first}} <br>
 1forloop last = {{forloop.last}} <br>
 {% if forloop.last == true %}
-1if forloop last = true = {{section}}
+1if forloop last = true = {{ section  | split: '/' }}
 {% endif %}
 
 {% for section in node.url %}
@@ -36,5 +36,23 @@ if forloop last = true = {{section}}
   {% else %}
     {{ i }}
   {% endif %}
+{% endfor %}
+<br>
+
+{% for section in node.url %}
+{% assign parts = node.url | split: '/' %}
+{% assign level = parts | size %} 
+{% assign subdir_level = level | minus:1 %}
+{% assign subdir_lvl = forloop.index0 %}
+{% assign current = parts | last %}
+{{parts}}<br>
+{{level}}<br>
+{{subdir_level}}<br>
+{{subdir_lvl}}<br>
+{{current}}<br>
+  {% for part in urlparts %}
+    {% assign parent = part | remove: current %}
+    {{parent}}<br>
+  {% endfor %}
 {% endfor %}
 <br>
