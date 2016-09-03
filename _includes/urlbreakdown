@@ -8,12 +8,10 @@
 {{node.url}} <br>
 {% endfor %}
 
-{% assign crumbs = page.url | split: '/' %}
-{% for crumb in crumbs offset: 1 %}
-  {{ forloop.index }} <br>
-{% endfor %}
-
-{% assign sorted_pages = site.pages | sort:"url" %}
-{% for node in sorted_pages %}
-  {{ node.url | split: '/' limit:1 offset:2}}
+{% for i in (1..5) %}
+  {% if i == 4 %}
+    {% continue %}
+  {% else %}
+    {{ i }}
+  {% endif %}
 {% endfor %}
