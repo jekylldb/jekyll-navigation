@@ -3,5 +3,5 @@
 {% endfor %}
 
 {% for node in site.pages %}
-{{ node.url | split: '/' | size sort:"weight" }}<br>
+{{ node.url | split: '/' | size | sort:"weight" }}<br>
 {% endfor %}
