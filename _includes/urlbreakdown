@@ -12,3 +12,8 @@
 {% for crumb in crumbs offset: 1 %}
   {{ forloop.index }} <br>
 {% endfor %}
+
+{% assign sorted_pages = site.pages | sort:"url" %}
+{% for node in sorted_pages limit:2 offset:2 %}
+  {{ node.url }}
+{% endfor %}
