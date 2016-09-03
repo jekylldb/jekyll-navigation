@@ -5,3 +5,8 @@
 {% for node in site.pages %}
 {{ node.url | split: '/'}}<br>
 {% endfor %}
+
+{% assign pages = site.pages | sort:"weight"  %}
+{% for p in pages %}
+{{ p.url }}
+{% endfor %}
