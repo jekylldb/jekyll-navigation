@@ -11,13 +11,25 @@
 {% endfor %}
 
 {% for node in site.pages %}
-{{node sort:'path'}}<br>
+{{node | split: '/' | sort:"path"}}<br>
 {% endfor %}
 <br>
 {% for node in site.pages %}
-{{node sort:'url'}}<br>
+{{node | split: '/' | sort:"url"}}<br>
 {% endfor %}
 <br>
 {% for node in site.pages %}
-{{node sort:'weight'}}<br>
+{{node | split: '/' | sort:"weight"}}<br>
+{% endfor %}
+
+{% for node in site.pages %}
+{{node.url sort:"path"}}<br>
+{% endfor %}
+<br>
+{% for node in site.pages %}
+{{node.url sort:"url"}}<br>
+{% endfor %}
+<br>
+{% for node in site.pages %}
+{{node.url sort:"weight"}}<br>
 {% endfor %}
