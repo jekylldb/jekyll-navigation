@@ -47,7 +47,7 @@ a {margin:0 4.25em;}
 {% if forloop.last %}
   <span class="icon-arrow" aria-hidden="true">&rsaquo;</span>
   <button onclick="myFunction()" class="dropbtn">{{ crumb | replace:'-',' ' | remove:'.html' | capitalize }}</button>
-  <div id="myDropdown" class="dropdown-content">{{N_CHILDREN}}{% endfor %}</div>
+  <div id="myDropdown" class="dropdown-content">{{N_CHILDREN}}</div>
 {% else %}
 <span class="icon-arrow" aria-hidden="true">&rsaquo;</span>
 <a href="{% assign crumb_limit = forloop.index | plus: 1 %}{% for crumb in crumbs limit: crumb_limit %}{{ crumb | append: '/' }}{% endfor %}">{{ crumb | replace:'-',' ' | remove:'.html' | capitalize }}</a>
