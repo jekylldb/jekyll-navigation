@@ -1,37 +1,3 @@
-{% capture R_PATH %}/{% endcapture %}
-{% capture P_PATH %}{{page.url | strip }}{% endcapture %}
-{% capture P_DEPTH %}{{page.url | split: '/' | size | minus:1 | strip }}{% endcapture %}
-{% capture P_TITLE %}{% for section in page.url %}{{page.url | split: '/' | last | strip }}{% endfor %}{% endcapture %}
-
-{% for node in site.pages %}
-{% capture N_PATH %}{{node.url}}{% endcapture %}
-{% capture N_DEPTH %}{{ node.url | split: '/' | size | minus:1 }}{% endcapture %}
-{% capture N_DEPTH_PARENT %}{{ node.url | split: '/' | size | minus:2 }}{% endcapture %}
-{% capture N_DEPTH_CHILD %}{{ N_DEPTH | plus:1 }}{% endcapture %}
-
-{% for section in node.url %}
-{% capture N_TITLE %}{{ node.url | split: '/' | last }}{% endcapture %}
-{% capture N_PARENT %}{% if N_DEPTH == '1' %}root{% else %}{% assign reversed = section | split: '/' | reverse %}{% for unit in reversed %}{% if forloop.index == 2 %}{{ unit | strip }}{% endif %}{% endcapture %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <style>
 .dropbtn {background-color: #4CAF50;  color: white;  padding: 16px;  font-size: 16px;  border: none;  cursor: pointer;}
 .dropbtn:hover, .dropbtn:focus {background-color: #3e8e41;}
@@ -47,30 +13,44 @@
 a {margin:0 4.25em;}
 </style>
 
-<div class="dropdown">
+{% capture R_PATH %}{{site.baseurl}}{% endcapture %}
+{% capture R_TITLE %}{% for section in node.url %}{% if N_DEPTH == '1' %}Home{% endif %}{% endfor %}{% endcapture %}
+{% capture R_CHILDREN %}{% for node in site.pages %}{% if N_DEPTH == 1 %}{{node.title}}{% endif %}{% endfor %}{% endcapture %}
 
-{% if site.baseurl == page.url %}<button onclick="myFunction()" class="dropbtn">Home</button>
-<div id="myDropdown" class="dropdown-content">
-  {% assign parts = page.url | split: '/' %}{% assign level = parts | size %}{% assign subdir_level = level | plus:1 %}{% assign current = parts | last %}{% capture parent %}{% for part in urlparts %}{{ part | remove: current }}{% endfor %}{% endcapture %} 
-  {% for node in site.pages %}{% assign node_parts = node.url | split: '/' %}{% assign node_level = node_parts | size %}{% assign node_subdir_level = node_level | plus:1 %}{% assign node_current = node_parts | last %}{% capture node_parent %}{% for part in node_parts %}{{ part | remove: node_current }}{% endfor %}{% endcapture %}{% if node_level == 2 %}<a href='{{node.url}}'>{{node.title}}</a>{% endif %}{% if current == node_parent and subdir_level == node_level %}<a href='{{node.url}}'>{{node.title}}</a>{% endif %}{% endfor %}
-</div>{% else %}<a>Home</a>{% endif %}
+{% capture P_PATH %}{{page.url | strip }}{% endcapture %}
+{% capture P_PATH_PARTS %}{{ page.url | split: '/' }}{% endcapture %}
+{% capture P_TITLE %}{% for section in page.url %}{{page.url | split: '/' | last | strip }}{% endfor %}{% endcapture %}
+{% capture P_DEPTH %}{{page.url | split: '/' | size | minus:1 | strip }}{% endcapture %}
+{% capture P_LEVEL %}{{ P_PATH_PARTS | size }}{% endcapture %}
+{% capture P_LEVEL_CHILDREN %}{{ P_LEVEL | plus:1 }}{% endcapture %}
+{% capture P_PARENT %}{% if site.baseurl == page.url %}{% for part in P_PATH_PARTS %}{{ part | remove: P_TITLE }}{% endfor %}{% endif %}{% endcapture %}
+{% capture P_CRUMBS %}{{ page.url | remove:'/index.html' | split: '/' %}{% endcapture %}
 
-{% assign crumbs = page.url | remove:'/index.html' | split: '/' %}
-
-{% for crumb in crumbs offset: 1 %}{% if forloop.last %}
-<span class="icon-arrow" aria-hidden="true">&rsaquo;</span>
-<button onclick="myFunction()" class="dropbtn">{{ crumb | replace:'-',' ' | remove:'.html' | capitalize }}</button>
-
-<div id="myDropdown" class="dropdown-content">
-{% assign parts = page.url | split: '/' %}{% assign level = parts | size %}{% assign subdir_level = level | plus:1 %}{% assign current = parts | last %}{% capture parent %}{% for part in urlparts %}{{ part | remove: current }}{% endfor %}{% endcapture %}
-{% for node in site.pages %}{% assign node_parts = node.url | split: '/' %}{% assign node_level = node_parts | size %}{% assign node_subdir_level = node_level | plus:1 %}{% assign node_current = node_parts | last %}{% capture node_parent %}{% for part in node_parts %}{{ part | remove: node_current }}{% endfor %}{% endcapture %}
-  {% if node_level == 2 %}<a href='{{node.url}}'>{{node.title}}</a>{% endif %}
-  {% if current == node_parent and subdir_level == node_level %}<a href='{{node.url}}'>{{node.title}}</a>{% endif %}
+{% for node in site.pages %}
+  {% capture N_TITLE %}{% for section in node.url %}{{ node.url | split: '/' | last }}{% endfor %}{% endcapture %}
+  {% capture N_PATH %}{{node.url}}{% endcapture %}
+  {% capture N_DEPTH %}{{ node.url | split: '/' | size | minus:1 }}{% endcapture %}
+  {% capture N_DEPTH_PARENT %}{{ node.url | split: '/' | size | minus:2 }}{% endcapture %}
+  {% capture N_DEPTH_CHILD %}{{ N_DEPTH | plus:1 }}{% endcapture %}
+  {% capture N_PATH_PARTS %}{{ node.url | split: '/' }}{% endcapture %}
+  {% capture N_LEVEL %}{{ N_PATH_PARTS | size }}{% endcapture %}
+  {% capture N_LEVEL_CHILD %}{{ N_LEVEL | plus:1 }}{% endcapture %}
+  {% capture N_PARENT %}{% for part in node_parts %}{{ part | remove: node_current }}{% endfor %}{% endcapture %}
+  {% capture _N_PARENT %}{% for unit in section | split: '/' | reverse %}{% if forloop.index == 2 %}{{ unit | strip }}{% endif %}{% endfor %}{% endcapture %}
+  {% capture N_CHILDREN %}{% if P_TITLE == N_PARENT and P_LEVEL_CHILDREN == N_LEVEL %}{{N_TITLE | join: ' ' }}{% endif %}{% endcapture %}
 {% endfor %}
-</div>
 
+<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Home</button>
+  <div id="myDropdown" class="dropdown-content"></div>
+{% for crumb in crumbs offset: 1 %}
+{% if forloop.last %}
+  <span class="icon-arrow" aria-hidden="true">&rsaquo;</span>
+  <button onclick="myFunction()" class="dropbtn">{{ crumb | replace:'-',' ' | remove:'.html' | capitalize }}</button>
+  <div id="myDropdown" class="dropdown-content">{{N_CHILDREN}}{% endfor %}</div>
 {% else %}
-
-<span class="icon-arrow" aria-hidden="true">&rsaquo;</span><a href="{% assign crumb_limit = forloop.index | plus: 1 %}{% for crumb in crumbs limit: crumb_limit %}{{ crumb | append: '/' }}{% endfor %}">{{ crumb | replace:'-',' ' | remove:'.html' | capitalize }}</a>
-{% endif %}{% endfor %}
+<span class="icon-arrow" aria-hidden="true">&rsaquo;</span>
+<a href="{% assign crumb_limit = forloop.index | plus: 1 %}{% for crumb in crumbs limit: crumb_limit %}{{ crumb | append: '/' }}{% endfor %}">{{ crumb | replace:'-',' ' | remove:'.html' | capitalize }}</a>
+{% endif %}
+{% endfor %}
 </div>
