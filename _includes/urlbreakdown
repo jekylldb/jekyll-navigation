@@ -18,5 +18,5 @@ PARENT_MINUS_URL_SIZE. {% capture PARENT_PATH_SIZE %}{{ URL_SIZE | minus:LAST_SI
 11. {{ node.url | split: '/' | last | remove:'.html' }} <br>
 12. {% for part in node.url | split: '/' %}{{ part }}{% endfor %} <br>
 13. {% capture URL_END %}{% for item in node.url %}{{ item | slice: PARENT_PATH_SIZE, URL_SIZE }}{% endfor %}{% endcapture %}{{URL_END}}<br>
-14. {{ node.url | remove_last: 'URL_END' }}
+14. {{ node.url | turncate: PARENT_PATH_SIZE }}
 {% endfor %}
