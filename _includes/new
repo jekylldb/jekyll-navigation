@@ -1,6 +1,7 @@
 {% assign sorted = site.pages | sort:"url" %}{% 
 for node in sorted offset:1 %}
-  {% capture PATH %}{{ node.dir }}{% endcapture %}
+  {% capture PATH %}{% if node.url contains .html %}{{ node.url | remove: .html}}{% else %}{{node.url}}{% endif %}{% endcapture %}
+  {{PATH}}
   {% assign slugs = node.url | split: '/' %}
   {% for slug in slugs %}
     {% capture SLUG %}{{ slug | remove: .html}}{% endcapture %}
