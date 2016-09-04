@@ -1,5 +1,4 @@
 {% assign sorted_pages = site.pages | sort:"url" %}
 {% for node in sorted_pages offset:1 %}
-{{node}}<br>
 {{node.url}}<br>
 {% endfor %}
