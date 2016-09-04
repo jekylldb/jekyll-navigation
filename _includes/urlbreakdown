@@ -8,7 +8,7 @@
 6. {{forloop.index0}} <br>
 7. {{forloop.first}} <br>
 8. {{forloop.last}} <br>
-9. {{ node.url | split: '/' }}
+9. {{ node.url | split: '/' }} <br>
 10. {{ node.url | split: '/' | size }} <br>
 11. {{ node.url | split: '/' | last }} <br>
 12. {% for part in node.url | split: '/' %}{{ part }}<br>{% endfor %} <br>
