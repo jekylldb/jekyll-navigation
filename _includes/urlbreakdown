@@ -2,55 +2,17 @@
 
 {% for node in sorted_pages %}
 1. {{node.url | split: '/' | number_of_words }}<br>
+2. {{node.url}} <br>
+3. {{node.url | split: '/'}} <br>
+4. {{node.url | split: '/' | size | minus:1 }} <br>
+5. {{forloop.length}} <br>
+6. {{forloop.index0}} <br>
+7. {{forloop.first}} <br>
+8. {{forloop.last}} <br>
+9. {{ node.url | split: '/' }}
+10. {{ node.url | split: '/' | size }}
+11. {{ node.url | split: '/' | last }}
+12. {% for part in node.url | split: '/' %}{{ part }}<br>{% endfor %}
 {% endfor %}
 
-{% for section in node.url %}
-node url = {{node.url}} <br>
-node url split = {{node.url | split: '/'}} <br>
-node url split size = {{node.url | split: '/' | size | minus:1 }} <br>
-forloop length = {{forloop.length}} <br>
-forloop index0 = {{forloop.index0}} <br>
-forloop first = {{forloop.first}} <br>
-forloop last = {{forloop.last}} <br>
-{% if forloop.last == true %}
-if forloop last = true = {{section}} 
-{% endif %} <br>
-{% endfor %} <br>
-{% endfor %} <br>
-
-<br>
-{% for i in (1..5) %}
-  {% if i != 2 %}
-    {% continue %}
-  {% else %}
-    {{ i }}
-  {% endif %}
-{% endfor %}
-<br>
-
-{% for section in node.url %}
-{% assign parts = node.url | split: '/' %}
-{% assign level = parts | size %} 
-{% assign subdir_level = level | minus:1 %}
-{% assign subdir_lvl = forloop.index0 %}
-{% assign current = parts | last %}
-{{parts}}<br>
-{{level}}<br>
-{{subdir_level}}<br>
-{{subdir_lvl}}<br>
-{{current}}<br>
-  {% for part in urlparts %}
-    {% assign parent = part | remove: current %}
-    {{parent}}<br>
-  {% endfor %}
-{% endfor %}
-<br>
-
-{% assign sorted_pages = site.pages | sort:"url" %}
-{% for node in sorted_pages %}{% assign nodeurl_split = {{ node.url | split: '/' }} <br>
-{% for section in node.url | split: '/' %}section = {{section}}<br>
-{% for part in urlparts %}part = {{part}}<br>
-{% if forloop.last%} partlast= {{part}}{% endif %} <br>
-{% endfor %}
-{% endfor %}
-{% endfor %}
+99. {% for i in (1..5) %}{% if i != 2 %}{% continue %}{% else %}{{ i }}{% endif %}{% endfor %}<br>
