@@ -1,8 +1,10 @@
-{% assign SORTED = site.pages | sort:"url" %}
-{% for node in SORTED offset:1 %}
-  {{ node.url }}<br>
-  {% assign SLUGS = node.url | split: '/' %}
-  {% for slug in SLUGS %}
-    {{ slug }}<br>
+{% assign sorted = site.pages | sort:"url" %}
+{% for node in sorted offset:1 %}
+  {% capture PATH %}{{ node.url }}{% endcapture %}
+  {{PATH}}<br>
+  {% assign slugs = node.url | split: '/' %}
+  {% for slug in slugs %}
+    {% capture SLUG %}{{ slug }}{% capture SLUG %}
+    {{SLUG}}<br>
   {% endfor %}
 {% endfor %}
