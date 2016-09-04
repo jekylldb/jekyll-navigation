@@ -18,7 +18,7 @@
 {% assign _nexturl = node.url %}{% assign _retval = false %}
 {% assign _childmenu = "" %}
 {% unless node.url == "" %}
-{% capture _childmenu %}{% include automenu url=_nexturl sort=include.sort reverse=include.reverse all=include.all %}{% endcapture %}
+{% capture _childmenu %}{% include selfloop url=_nexturl sort=include.sort reverse=include.reverse all=include.all %}{% endcapture %}
 {% endunless %}
 {% endfor %}
 {% endcapture %}
