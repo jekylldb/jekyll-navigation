@@ -5,10 +5,10 @@
   {{node.url}}<br>
   {{forloop.length}}<br>
   
-  {% for item in node.url %}
+  {% for item in node.url | split: '/' %}
   
     {{forloop.length}}<br>
-    {{node}}<br>
+    {{node.size}}<br>
   {% endfor %}
   
 {% endfor %}
