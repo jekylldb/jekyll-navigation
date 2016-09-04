@@ -1,0 +1,7 @@
+{% for page in site.pages %}
+  {{page.url}}
+{% endfor %}
+<br>
+{% for node in site.pages %}
+  {{node.url}}
+{% endfor %}
