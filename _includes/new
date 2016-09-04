@@ -4,7 +4,7 @@
   {{PATH}}
   {% assign slugs = node.url | split: '/' %}
   {% for slug in slugs %}
-    {% capture SLUG %}{{ slug | remove: '.html'}}{% capture SLUG %}
+    {% capture SLUG %}{{ slug | remove: '.html'}}{% endcapture %}
     {{SLUG}}<br>
   {% endfor %}
 {% endfor %}
