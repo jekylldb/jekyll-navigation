@@ -2,5 +2,5 @@
 
 <br>
 {% for node in site.pages %}
-  {{node.url sort="url"}}<br>
+  {{node.url sort:"url"}}<br>
 {% endfor %}
