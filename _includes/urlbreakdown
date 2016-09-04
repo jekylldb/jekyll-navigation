@@ -7,7 +7,7 @@ PARENT_SIZE_PLUS. {% capture LAST_SIZE %}{% for item in node.url %}{{item | spli
 URL_SIZE. {% capture URL_SIZE %}{% for item in node.url %}{{item | size}}{% endfor %}{% endcapture %}{{URL_SIZE}}<br>
 PARENT_MINUS_URL_SIZE. {% capture PARENT_PATH_SIZE %}{{ URL_SIZE | minus:LAST_SIZE }}{% endcapture %}{{PARENT_PATH_SIZE}}<br>
 3. {{node.url | split: '/' | remove: .html }} <br>
-4. {{ forloop.index[3]
+4. {{ forloop.index[3] }}
 5. {{forloop.length}} <br>
 6. {% for item in node.url' %}{% assign each = item | split: '/' %}{% for node in each %}{{forloop.index0}}{% endfor %}{% endfor %} <br>
 7. {{forloop.first}} <br>
