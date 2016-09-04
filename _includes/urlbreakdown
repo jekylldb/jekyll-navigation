@@ -6,7 +6,9 @@
 3. {{node.url | split: '/' | remove: '.html' }} <br>
 4. {{node.url | split: '/' | size | minus:1 }} <br>
 5. {{forloop.length}} <br>
-6. {% for item in node.url' %}{% assign each = item | split: '/' %}{% for node in each %}{{forloop.index0 }}{% endfor %}{% endfor %} <br>
+6. {% for item in node.url' %}{% assign each = item | split: '/' %}{% for node in each %}{{forloop.index0}}{% endfor %}{% endfor %} <br>
+6.5. {% for item in node.url' %}{% assign each = item | split: '/' %}{% for node in each %}{{forloop.last}}{% endfor %}{% endfor %} <br>
+
 7. {{forloop.first}} <br>
 8. {{forloop.last}} <br>
 9. {{ node.url | split: '/' }} <br>
