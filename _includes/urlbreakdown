@@ -3,7 +3,7 @@
 {% for node in sorted_pages offset:1 %}
 1. {% for item in node.url %}{{item | split: '/' | last | remove:'.html' }}<br>{% endfor %}
 2. {{node.url }} <br>
-3. {{node.url | split: '/' | remove:'.html' | offset:1  }} <br>
+3. {{node.url | split: '/' | remove: .html }} <br>
 4. {{node.url | split: '/' | size | minus:1 }} <br>
 5. {{forloop.length}} <br>
 6. {{forloop.index0}} <br>
