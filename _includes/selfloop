@@ -1,0 +1,32 @@
+{% capture _menu_inside %}
+{% assign _pages = site.pages %}
+{% if include.sort %}
+{% assign _pages = _pages | sort: include.sort %}
+{% else %}
+{% assign _pages = _pages | sort: "url" %}
+{% endif %}
+{% if include.reverse %}
+{% assign _pages = _pages | reverse %}
+{% endif %}
+{% for node in _pages %}{% assign _url_start = node.url | truncate: include.url.size, "" %}
+{% unless include.url == _url_start %}
+{% continue %}
+{% endunless %}
+{% assign _url_rest = node.url | remove_first: _url_start %}
+{% assign _url_rest_size = _url_rest | split: "/" | size %}
+{% assign _lastchar = node.url | split: "" | last %}
+{% assign _nexturl = node.url %}{% assign _retval = false %}
+{% assign _childmenu = "" %}
+{% unless node.url == "" %}
+{% capture _childmenu %}{% include automenu url=_nexturl sort=include.sort reverse=include.reverse all=include.all %}{% endcapture %}
+{% endunless %}
+{% endfor %}
+{% endcapture %}
+{% unless _menu_inside == "" %}{{ _menu_inside }}{% endunless %}
+{% assign _retval = _pass_active %}
+{% assign _tmp = _pass_stash | split: "" | last %}
+{% if _tmp == "1" %}{% assign _pass_active = true %}
+{% else %}{% assign _pass_active = false %}
+{% endif %}
+{% assign _tmp = _pass_stash.size | minus: 1 %}
+{% assign _pass_stash = _pass_stash | truncate: _tmp, "" %}
