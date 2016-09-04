@@ -1,6 +1,7 @@
 {% assign sorted_pages = site.pages | sort:"url" %}
 
 {% for node in sorted_pages %}
+1. {% for item in node.url | split: '/' | length %}{{item}}<br>{% endfor %}
 2. {{node.url }} <br>
 3. {{node.url | split: '/'}} <br>
 4. {{node.url | split: '/' | size | minus:1 }} <br>
@@ -12,4 +13,5 @@
 10. {{ node.url | split: '/' | size }} <br>
 11. {{ node.url | split: '/' | last }} <br>
 12. {% for part in node.url | split: '/' %}{{ part }}<br>{% endfor %} <br>
+
 {% endfor %}
