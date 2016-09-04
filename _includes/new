@@ -1,8 +1,8 @@
 {% assign SORTED = site.pages | sort:"url" %}
 {% for node in SORTED offset:1 %}
-  {{ node.url }}
+  {{ node.url }}<br>
   {% assign SLUGS = node.url | split: '/' %}
   {% for slug in SLUGS %}
-    {{ slug }}
+    {{ slug }}<br>
   {% endfor %}
 {% endfor %}
