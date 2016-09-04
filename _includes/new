@@ -1,7 +1,6 @@
-{% for page in site.pages %}
-  {{page.url}}<br>
-{% endfor %}
+{{page.url}}
+
 <br>
 {% for node in site.pages %}
-  {{node.url}}<br>
+  {{node.url sort="url"}}<br>
 {% endfor %}
