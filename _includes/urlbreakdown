@@ -1,7 +1,7 @@
 {% assign sorted_pages = site.pages | sort:"url" %}
 
 {% for node in sorted_pages offset:1 %}
-PARENT. {% for item in node.url %}{{item | split: '/' | last | remove:'.html' | append: '/'}}{% endfor %}<br>
+PARENT. {% for item in node.url %}{{item | split: '/' | last | remove:'.html' }}{% endfor %}<br>
 PARENT_SIZE. {% for item in node.url %}{{item | split: '/' | last | remove:'.html' | size }}{% endfor %}<br>
 PARENT_SIZE_PLUS. {% capture LAST_SIZE %}{% for item in node.url %}{{item | split: '/' | last | size | plus:1 }}{% endfor %}{% endcapture %}{{LAST_SIZE}}<br>
 URL_SIZE. {% capture URL_SIZE %}{% for item in node.url %}{{item | size}}{% endfor %}{% endcapture %}{{URL_SIZE}}<br>
