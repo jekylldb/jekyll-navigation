@@ -7,4 +7,5 @@ for node in sorted offset:1 %}
     {% capture SLUG %}{{ slug | remove: .html}}{% endcapture %}
     {{SLUG}}<br>
   {% endfor %}
+  <br>
 {% endfor %}
