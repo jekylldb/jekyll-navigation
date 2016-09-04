@@ -11,18 +11,6 @@
         {% assign _pages = _pages | reverse %}
     {% endif %}
     {% for node in _pages %}
-        {% comment %}
-            The main difference between datamenu and automenu is that automenu (By
-            virtue of it generating the menu automatically) doesn't know ahead of
-            time what it's children are.
-
-            Because of that, this entire first part is dedicated to looping
-            through *all* pages and filtering out the ones that are not
-            children of the current node.
-
-            We also have to take special care with the "/" page as this could
-            result in infinite recursion.
-        {% endcomment %}
 
         {% unless node.title %}
             {% continue %}
@@ -64,7 +52,7 @@
         {% assign _childmenu = "" %}
 
         {% unless node.url == "/" %}
-            {% capture _childmenu %}{% include automenu url=_nexturl sort=include.sort reverse=include.reverse all=include.all %}{% endcapture %}
+            {% capture _childmenu %}{% include selfloop url=_nexturl sort=include.sort reverse=include.reverse all=include.all %}{% endcapture %}
         {% endunless %}
 
         {% capture _classes %}
