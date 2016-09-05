@@ -9,25 +9,25 @@ slug={{slug}}<br>
 {% endif %}
 {% endfor %}
 {% endfor %}
-
-
+<br>
 {% for node in sorted offset:1 %}
 {% if (site.url) contains (node.url) %}{{site.url}} CONTAINS {{node.url}} <br>
-{% else %}{{site.url}} doesn't contain {{node.url}} =<br>
+{% else %}{{site.url}} doesn't contain {{node.url}}<br>
 {% endif %}{% endfor %}
-
+<br>
 pagepath {{ page.path }}<br>
 pageurl {{ page.url }}<br>
-
+<br>
 {% for node in sorted offset:1 %}
 {% assign slugs = node.url | split: '/' %}
 {% for slug in slugs offset:1 %}
 slugwhereone! = {{ slug | where:"(forloop.index)","1" }}<br>
 {% endfor %}
 {% endfor %}
-
+<br>
 {% for node in sorted offset:1 %}{% assign slugs = node.url | split: '/' %}
 {% for slug in slugs[node.first] %}
 {% if node.url == page.url %}
 <br>nodefirst={{ node.url }}<br>
 {% endif %}{% endfor %}{% endfor %}
+<br>
