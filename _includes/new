@@ -10,30 +10,26 @@ slug={{slug}}<br>
 {% endfor %}
 {% endfor %}
 <br>
+
 {% for node in sorted offset:1 %}
-{% if (site.url) contains (node.url) %}{{site.url}} CONTAINS {{node.url}} <br>
-{% else %}{{site.url}} doesn't contain {{node.url}}<br>
-{% endif %}{% endfor %}
-<br>
+{% if (site.url) contains (node.url) %}{{site.url}} s_CONTAINS_n {{node.url}}{% else %}{{continue}}{% endif %}<br>
+{% if (node.url) contains (site.url) %}{{node.url}} n_CONTAINS_s {{site.url}}{% else %}{{continue}}{% endif %}<br>
+{% endif %}{% endfor %}<br>
+
+
 pagepath {{ page.path }}<br>
 pageurl {{ page.url }}<br>
 <br>
+
 {% for node in sorted offset:1 %}
 {% assign slugs = node.url | split: '/' %}
-
-wn = {{ node.url | where:"(forloop.index)","5" }}<br>
-
+wn5 = {{ node.url | where:"(forloop.index)","5" }}<br>
+wn1 = {{ node.url | where:"(forloop.index)","1" }}<br>
 {% for slug in slugs offset:1 %}
-
-ws = {{ slug | where:"(forloop.index)","5" }}<br>
-
+ws5 = {{ slug | where:"(forloop.index)","5" }}<br>
+ws1 = {{ slug | where:"(forloop.index)","1" }}<br>
 {% endfor %}
-wherenode = {{ node.url | where:"(forloop.index)","5" }}<br>
+wherenode5 = {{ node.url | where:"(forloop.index)","5" }}<br>
+wherenode1 = {{ node.url | where:"(forloop.index)","1" }}<br>
 {% endfor %}
-<br>
-{% for node in sorted offset:1 %}{% assign slugs = node.url | split: '/' %}
-{% for slug in slugs[node.first] %}
-{% if node.url != page.url %}
-<br>nodefirst={{ node.url }}<br>
-{% endif %}{% endfor %}{% endfor %}
 <br>
