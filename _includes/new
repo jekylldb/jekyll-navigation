@@ -8,8 +8,8 @@
     {% if (forloop.index) == (sizes) %}
     {% capture myarray %}array{{forloop.index}}{% endcapture %}myarray = {{myarray}}<br>
     {% assign myarray = site.array %}
-    {% assign myarray = my_array | push: object %}
-    {{ my_array }}
+    {% assign myarray = my_array | push: "(object)" %}
+    my_array {{ my_array }}<br>
     {% endif %}
     {% endfor %}<br>
 {% endfor %}
