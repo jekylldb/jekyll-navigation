@@ -3,9 +3,13 @@
 {% for node in sorted offset:1 %}{{node.url}}<br>
   {% assign slugs = node.url | split: '/' %}
   {% for slug in slugs offset:1 %}
-  {% assign sizes = node.url | split: '/' | size | minus: 1 %}
-  {{forloop.index}}. {{slug}}. {{sizes}} <br>
-  {% if (forloop.index) == (sizes) %}{% assign array(forloop.index) = "" | split: "|"  %}{% assign array(forloop.index) = array(forloop.index) | push: (slug) %}{% endif %}array: array{{forloop.index}}<br>
-  item: {% for item in "array(forloop.index)" %}{{item}}<br>{% endfor %}<br>
+    {% assign sizes = node.url | split: '/' | size | minus: 1 %}
+    {{forloop.index}}. {{slug}}. {{sizes}} <br>
+    {% if (forloop.index) == (sizes) %}
+      {% capture array %}array{{forloop.index}}{% endcapture %}{{array}}
+      {% if array != 0 %}{% assign array = array | push: (slug) %}
+      {% else %}{% assign array = "" | split: "|"  %}{% assign array = array | push: (slug) %}
+      {% endif %}
+      {% for item in "array(forloop.index)" %}{{item}}<br>{% endfor %}<br>
   {% endfor %}<br>
 {% endfor %}
