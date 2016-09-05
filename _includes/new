@@ -2,17 +2,27 @@
 node.url={{node.url}}<br>
 slug={{slug}}<br>{% endif %}{% endfor %}{% endfor %}
 <br>
-{% for node in sorted offset:1 %}{% if (page.url) contains (node.url) %}
-Page contains Node = {{page.url}} contains {{node.url}}<br>{% elsif (node.url) contains (page.url)%}
-Node contains Page = {{node.url}} contains {{page.url}}<br>{% else %}{{ continue }}{% endif %}{% endfor %}
+{% for node in sorted offset:1 %}
+  {% if (page.url) contains (node.url) %}
+    Page contains Node = {{page.url}} contains {{node.url}}<br>
+  {% elsif (node.url) contains (page.url) %}
+    Node contains Page = {{node.url}} contains {{page.url}}<br>
+  {% else %}
+    {{ continue }}
+  {% endif %}
+{% endfor %}
 <br>
-pagepath {{ page.path }}<br>
-pageurl {{ page.url }}<br>
+
 <br>
-{% for node in sorted offset:1 %}{% assign slugs = node.url | split: '/' %}
-wherepreslug = {{ node.url | where:"(forloop.index)","0" }}<br>{% for slug in slugs offset:1 %}
-wherepostslug = {{ slug | where:"(forloop.index)","0" }}{% endfor %}<br>
-wherepostendfor = {{ node.url | where:"(forloop.index)","0" }}{% endfor %}<br>
+
+{% for node in sorted offset:1 %}
+{% assign slugs = node.url | split: '/' %}
+nodeurl_where_forloop_index = {{ node.url | where:"(forloop.index)","9" }}<br>
+{% for slug in slugs offset:1 %}
+slug_where_forloop_index = {{ slug | where:"(forloop.index)","9" }}
+{% endfor %}<br>
+{% endfor %}<br>
+
 <br>
 {% assign sorted_pages = site.pages | sort:"url" %}
 {% for node in sorted_pages offset:1 %}
@@ -41,4 +51,6 @@ wherepostendfor = {{ node.url | where:"(forloop.index)","0" }}{% endfor %}<br>
 15. {{ node.url | split: '/' | size }} <br>
 16. {{ node.url | split: '/' | last | remove:'.html' }} <br>
 17. {% for part in node.url | split: '/' %}{{ part }}{% endfor %} <br>
+18. pagepath = {{ page.path }}<br>
+19. pageurl = {{ page.url }}<br>
 {% endfor %}<br>
