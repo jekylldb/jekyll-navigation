@@ -1,12 +1,10 @@
 {% assign sorted = site.pages | sort:"url" %}
-
+{% assign slugs = node.url | split: '/' %}
+{% assign depth = node.url | split: '/' | size | minus:1 %}
+  
 {% for node in sorted offset:1 %}
-{{node.url}}<br>
-  {% assign slugs = node.url | split: '/' %}
-  {% assign depth = node.url | split: '/' | size | minus:1 %}
   {% for slug in slugs offset:1 %}
-    {% if (forloop.index) == (depth) %}{{slug}}{% endif %}<br>
-    {{ slug | where:"(forloop.index)","1" }}
+    {% if (forloop.index) == (depth) %}node.url={{node.url}}<br>slug={{slug}}<br>{% endif %}slugwhere={{ slug | where:"(forloop.index)","1" }}<br>
   {% endfor %}
 {% endfor %}
 
