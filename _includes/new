@@ -24,6 +24,6 @@ arr = {{arr.size}}
 
 {% for node in sorted offset:1 %}
     {% if (forloop.index) == (num) %}
-    {{node.url | split: '/' | last }}
+    {{node.url}}
     {% endif %}
 {% endfor %}
