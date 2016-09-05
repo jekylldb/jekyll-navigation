@@ -7,18 +7,6 @@
   {% assign sizes = node.url | split: '/' | size | minus:1 %}
     {% if (forloop.index) == (sizes) and (forloop.last) == true %}
     {% capture num %}{{forloop.index}}{% endcapture %}{% endif %}
-    {{num}}{{slug}}
-   {% if (forloop.index) == (depth) %}{{slug}}{% endif %}
+   {% if (forloop.index) == (depth) %}{{slug}}<br>{% endif %}
   {% endfor %}
 {% endfor %}
-{% endcapture %}
-
-{{stringarr}}
-
-{% assign arr = (stringarr) | split: ' ' %}
-arr = {{arr}}
-
-
-  {% for item in arr %}
-  {{item | truncate: 1, "" }}
-  {%endfor%}
