@@ -8,6 +8,9 @@
 node.url={{node.url}}<br>
 slug={{slug}}<br>{% endif %}
 slugwhere={{ slug | where:"(forloop.index)","1" }}<br>
+slugwhere={{ slug | where:"(forloop.index)","1" }}<br>
+slugwhere={{ slug | where:"(forloop.index)","1" }}<br>
+slugwhere={{ slug | where:"(forloop.index)","1" }}<br>
 {% endfor %}
 {% endfor %}
 
