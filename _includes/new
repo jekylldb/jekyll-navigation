@@ -14,7 +14,7 @@
 
 {{string}}
 
-{% assign array = string | split: ' ' %}
+{% assign array = (string) | split: ' ' %}
 {% for object in array %}
 {{oject}}<br>
 {% endfor %}
