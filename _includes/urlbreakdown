@@ -1,23 +1,29 @@
+
 {% assign sorted_pages = site.pages | sort:"url" %}
-
 {% for node in sorted_pages offset:1 %}
-{% capture TITLE %}{% for item in node.url %}{{item | split: '/' | last | remove:'.html' }}{% endfor %}{% endcapture %}TITLE > {{TITLE}}<br>
-{% capture PARENT_SIZE %}{% for item in node.url %}{{item | split: '/' | last | remove:'.html' | size }}{% endfor %}{% endcapture %}PARENT_SIZE > {{PARENT_SIZE}}<br>
-{% capture LAST_SIZE %}{% for item in node.url %}{{item | split: '/' | last | size | plus:1 }}{% endfor %}{% endcapture %}LAST_SIZE > {{LAST_SIZE}}<br>
-{% capture URL_SIZE %}{% for item in node.url %}{{item | size}}{% endfor %}{% endcapture %}URL_SIZE > {{URL_SIZE}}<br>
-{% capture PARENT_PATH_SIZE %}{{ URL_SIZE | minus:LAST_SIZE }}{% endcapture %}PARENT_PATH_SIZE > {{PARENT_PATH_SIZE}}<br>
-{% capture URL_END %}{% for item in node.url %}{{ item | slice: PARENT_PATH_SIZE, URL_SIZE }}{% endfor %}{% endcapture %}URL_END > {{URL_END}}<br>
-{% capture PARENT_PATH %}{{ node.url | remove: URL_END }}{% endcapture %}PARENT_PATH > {{PARENT_PATH}} <br>
-
-4. {{ forloop.index }}<br>
-5. {{forloop.length}} <br>
-6. {% for item in node.url' %}{% assign each = item | split: '/' %}{% for node in each %}{{forloop.index0}}{% endfor %}{% endfor %} <br>
-7. {{forloop.first}} <br>
-8. {{forloop.last}} <br>
-9. {{ node.url | split: '/' }} <br>
-10. {{ node.url | split: '/' | size }} <br>
-11. {{ node.url | split: '/' | last | remove:'.html' }} <br>
-12. {% for part in node.url | split: '/' %}{{ part }}{% endfor %} <br>
-
-{% endfor %}
+{% capture last_slug  %}{% for item in node.url %}{{item | split: '/' | last | remove:'.html' }}{% endfor %}{% endcapture %}
+{% capture parent_slug_size %}{% for item in node.url %}{{item | split: '/' | last | remove:'.html' | size }}{% endfor %}{% endcapture %}
+{% capture last_slug_size %}{% for item in node.url %}{{item | split: '/' | last | size | plus:1 }}{% endfor %}{% endcapture %}
+{% capture url_size %}{% for item in node.url %}{{item | size}}{% endfor %}{% endcapture %}
+{% capture parent_depth %}{{ url_size | minus:last_slug_size }}{% endcapture %}
+{% capture last_slug_dir %}{% for item in node.url %}{{ item | slice: parent_depth, url_size }}{% endfor %}{% endcapture %}
+{% capture parent_path %}{{ node.url | remove: URL_END }}{% endcapture %}
 <br>
+1. node url = {{ node.url }}<br>
+2. last_slug = {{last_slug }}<br>
+3. parent_size = {{parent_size}}<br>
+4. last_slug_size = {{last_slug_size}}<br>
+5. url_size = {{url_size}}<br>
+6. parent_depth = {{parent_depth}}<br>
+7. last_slug_dir = {{last_slug_dir}}<br>
+8. parent_path = {{parent_path}}<br>
+9. {{ forloop.index }}<br>
+10. {{forloop.length}} <br>
+11. {% for item in node.url' %}{% assign each = item | split: '/' %}{% for node in each %}{{forloop.index0}}{% endfor %}{% endfor %} <br>
+12. {{forloop.first}} <br>
+13. {{forloop.last}} <br>
+14. {{ node.url | split: '/' }} <br>
+15. {{ node.url | split: '/' | size }} <br>
+16. {{ node.url | split: '/' | last | remove:'.html' }} <br>
+17. {% for part in node.url | split: '/' %}{{ part }}{% endfor %} <br>
+{% endfor %}<br>
