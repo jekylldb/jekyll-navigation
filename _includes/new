@@ -5,7 +5,7 @@
   {% assign slugs = node.url | split: '/' %}
   {% for slug in slugs %}
     {% capture SLUG %}{{ slug | remove: '.html' }}{% endcapture %}
-    index: {{forloop.index}}<br>
+    index: {{forloop.index0}}<br>
     slug: {{SLUG}}<br>
   {% endfor %}
   <br>
