@@ -4,8 +4,6 @@
   {% for slug in slugs offset:1 %}
   {{forloop.index}}. {{slug}}<br>
   {% endfor %}<br>
-{% capture array %}{{forloop.index}}{% endcapture %}
-{% assign array = "" | split:"|"  %}
-{% assign array = array | push: "slug" %}
+{% capture array %}{{forloop.index | join: '|'}}{% endcapture %}
 {{array}}
 {% endfor %}
