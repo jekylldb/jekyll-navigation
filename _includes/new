@@ -1,5 +1,5 @@
 {% assign sorted = site.pages | sort:"url" %}
-{% capture string %}
+{% capture stringarr %}
 {% for node in sorted offset:1 %}
   {% assign slugs = node.url | split: '/' %}
   {% for slug in slugs offset:1 %}
@@ -12,9 +12,8 @@
 {% endfor %}
 {% endcapture %}
 
-{{string}}
+{{stringarr}}
 
-{% assign array = (string) | split: ' ' %}
-{% for object in array %}
-{{oject}}<br>
-{% endfor %}
+{% assign arr = (stringarr) | split: '' %}
+arr = {{arr}}
+arr = {{arr.size}}
