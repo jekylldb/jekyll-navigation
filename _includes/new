@@ -1,11 +1,14 @@
 {% assign sorted = site.pages | sort:"url" %}
-  {% assign array = "" | split: ""  %}
+  {% assign array = "" | split: "|"  %}
 {% for node in sorted offset:1 %}{{node.url}}<br>
+  {% assign sizes = node.url | split: '/' | size %}
   {% assign slugs = node.url | split: '/' %}
   {% for slug in slugs offset:1 %}
   {{forloop.index}}. {{slug}}<br>
-  {% assign (forloop.index) = array | push: (slug) %}
-  {% for item in (forloop.index) %}{{item}}{% endfor %}<br>
-  {% for item in array %}{{item}}{% endfor %}<br>
+  {% if (forloop.index) == (sizes) %} 
+  {{ array | push: (slug) }}
+  {% endif %}
+  {{array}}<br>
+  {% for item in array %} {{item}}{% endfor %}<br>
   {% endfor %}<br>
 {% endfor %}
