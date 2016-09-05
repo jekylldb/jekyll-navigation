@@ -15,6 +15,9 @@ slug = {{slug}}<br>
 
 {% for node in sorted offset:1 %}
   {% if (page.url) contains (node.url) %}Page contains Node = {{page.url}} contains {{node.url}}{% endif %}<br>
+{% endfor %}
+<br>
+{% for node in sorted offset:1 %}
   {% if (node.url) contains (page.url) %}Node contains Page = {{node.url}} contains {{page.url}}{% endif %}<br>
 {% endfor %}
 <br>
