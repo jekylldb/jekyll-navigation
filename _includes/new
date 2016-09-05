@@ -10,8 +10,9 @@
 {% endfor %}
 
 {% for node in sorted offset:1 %}{{node.url}}<br>
-{% assign slugs = node.url | split: '/' %}
-  {% for slug in slugs offset:1 %}
-  {{ slug[forloop.index] }}
-  {% endfor %}
-{% endfor %}
+ {% if page.url contains node.url %}
+ {{node.url}} is contained within page.url
+ {% else %
+ {{node.url}} is not contained within page.url
+ {% endif %}
+ {% endfor %}
