@@ -7,7 +7,7 @@
     {% if (forloop.index) == (sizes) %}
       {% capture array %}array{{forloop.index}}{% endcapture %}{{array}}<br>
     {% endif %}
-    {% if slug in forloop.last == true %}{{slug}}{% endif %}
+    {% if forloop.last == true %}{{slug}}{% endif %}
   {% endfor %}<br>
   
 {% endfor %}
