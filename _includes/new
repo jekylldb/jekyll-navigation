@@ -22,9 +22,16 @@ pageurl {{ page.url }}<br>
 {% assign slugs = node.url | split: '/' %}
 {% for slug in slugs offset:1 %}
 <br>
+0. where = {{ slug | where:"(forloop.index)","0" }}<br>
 1. where = {{ slug | where:"(forloop.index)","1" }}<br>
 2. where = {{ slug | where:"(forloop.index)","2" }}<br>
 3. where = {{ slug | where:"(forloop.index)","3" }}<br>
+<br>
+<br>
+0. where = {{ slug | where:"(forloop.index[0])" }}<br>
+1. where = {{ slug | where:"(forloop.index[1])" }}<br>
+2. where = {{ slug | where:"(forloop.index[2])" }}<br>
+3. where = {{ slug | where:"(forloop.index[3])" }}<br>
 <br>
 {% endfor %}
 {% endfor %}
