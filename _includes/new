@@ -20,11 +20,13 @@ pageurl {{ page.url }}<br>
 <br>
 {% for node in sorted offset:1 %}
 {% assign slugs = node.url | split: '/' %}
+
+where5_first = {{ slug | where:"(forloop.index)","5" }}<br>
+
 {% for slug in slugs offset:1 %}
-<br>
-0. where = {{ slug | where:"(forloop.index)","4" }}<br>
-<br>
-<br>
+
+where5 = {{ slug | where:"(forloop.index)","5" }}<br>
+
 {% endfor %}
 {% endfor %}
 <br>
