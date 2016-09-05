@@ -13,3 +13,8 @@
 {% endcapture %}
 
 {{string}}
+
+{% assign array = string | split: ' ' %}
+{% for object in array %}
+{{oject}}<br>
+{% endfor %}
