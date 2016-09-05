@@ -14,6 +14,6 @@
 
 {{stringarr}}
 
-{% assign arr = (stringarr) | split: '' %}
+{% assign arr = (stringarr) | split: ' ' %}
 arr = {{arr}}
 arr = {{arr.size}}
