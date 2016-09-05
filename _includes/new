@@ -6,8 +6,8 @@
     {% assign sizes = node.url | split: '/' | size | minus: 1 %}
     {% if (forloop.index) == (sizes) %}
       {% capture array %}array{{forloop.index}}{% endcapture %}{{array}}<br>
-      {% for slug in forloop.last == true %}{{slug}{% endfor %}
+      {% for slug in forloop.last == true %}{{slug}}{% endfor %}
     {% endif %}
   {% endfor %}<br>
-  {% for slug in forloop.last == true %}{{slug}{% endfor %}
+  {% for slug in forloop.last == true %}{{slug}}{% endfor %}
 {% endfor %}
