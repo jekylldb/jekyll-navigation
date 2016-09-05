@@ -4,43 +4,40 @@
 {% assign slugs = node.url | split: '/' %}
 {% assign depth = node.url | split: '/' | size | minus:1 %}
 {% for slug in slugs offset:1 %}
-{% if (forloop.index) == (depth) %}
-node.url={{node.url}}<br>
-slug={{slug}}<br>{% endif %}
+{% if (forloop.index) == (depth) %}node.url={{node.url}} and slug={{slug}}<br>{% endif %}
+slugwhere={{ slug | where:"(forloop.index)","0" }}<br>
 slugwhere={{ slug | where:"(forloop.index)","1" }}<br>
-slugwhere={{ slug | where:"(forloop.index)","1" }}<br>
-slugwhere={{ slug | where:"(forloop.index)","1" }}<br>
-slugwhere={{ slug | where:"(forloop.index)","1" }}<br>
+slugwhere={{ slug | where:"(forloop.index)","2" }}<br>
+slugwhere={{ slug | where:"(forloop.index)","3" }}<br>
+slugwhere={{ slug | where:"(forloop.index)","4" }}<br>
+slugwhere={{ slug | where:"(forloop.index)","5" }}<br>
+slugwhere={{ slug | where:"(forloop.index)","6" }}<br>
+slugwhere={{ slug | where:"(forloop.index)","7" }}<br>
 {% endfor %}
 {% endfor %}
 
-- {% for node in sorted offset:1 %}{% if (page.url) contains (node.url) %}{{node.url}} is contained within {{page.url}}<br>{% else %}{{node.url}} is not contained within {{page.url}}<br>{% endif %}{% endfor %}
-- {% for node in sorted offset:1 %}{% if (node.url) contains (site.url) %}N < S = {{node.url}}{% else %}N != S {{node.url}} is not contained within {{page.url}}<br>{% endif %}{% endfor %}
-- {{ paginator.page }}
-- {{paginator.per_page}}
-- {{paginator.posts}}
-- {{paginator.total_posts}}
-- {{paginator.total_pages}}
-- {{paginator.page}}
-- {{paginator.previous_page}}
-- {{paginator.previous_page_path}}
-- {{paginator.next_page}}
-- {{paginator.next_page_path}}
-- {{ page.path }}
-- {{ page.url }}
-- {{ page.next }}
-- {{ page.previous }}
+1 {% for node in sorted offset:1 %}{% if (page.url) contains (node.url) %}{{node.url}} is contained within {{page.url}}<br>{% else %}{{node.url}} is not contained within {{page.url}}<br>{% endif %}{% endfor %}
+2 {% for node in sorted offset:1 %}{% if (node.url) contains (site.url) %}N < S = {{node.url}}{% else %}N != S {{node.url}} is not contained within {{page.url}}<br>{% endif %}{% endfor %}
+3 {{ paginator.page }}
+4 {{paginator.per_page}}
+5 {{paginator.posts}}
+6 {{paginator.total_posts}}
+7 {{paginator.total_pages}}
+8 {{paginator.page}}
+9 {{paginator.previous_page}}
+10 {{paginator.previous_page_path}}
+11 {{paginator.next_page}}
+12 {{paginator.next_page_path}}
+13 {{ page.path }}
+14 {{ page.url }}
+15 {{ page.next }}
+16 {{ page.previous }}
+
 {% for node in sorted offset:1 %}
 {% assign slugs = node.url | split: '/' %}
 {% for slug in slugs offset:1 %}
-{{ slug | where:"(forloop.index)","1" }}<br>
+slugwhereone! = {{ slug | where:"(forloop.index)","1" }}<br>
 {% endfor %}
 {% endfor %}
 
-<ul>
-{% for node in sorted offset:1 %}{% assign slugs = node.url | split: '/' %}
-{% for slug in slugs[node.first] offset:1 %}
-<li {% if node.url == page.url %}class="active"{% endif %}><a href="{{ node.url }}">{{ slug }}</a></li>
-{% endfor %}
-{% endfor %}
-</ul>
+{% for node in sorted offset:1 %}{% assign slugs = node.url | split: '/' %}{% for slug in slugs[node.first] offset:1 %}{% if node.url == page.url %}nodefirst={{ node.url }}<br>{% endif %}{% endfor %}{% endfor %}
