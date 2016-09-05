@@ -16,3 +16,11 @@
  {{node.url}} is not contained within {{page.url}}<br>
  {% endif %}
  {% endfor %}
+
+{% for node in sorted offset:1 %}
+ {% if (node.url) contains (site.url) %}
+ N < S = {{node.url}}
+ {% else %}
+ N != S {{node.url}} is not contained within {{page.url}}<br>
+ {% endif %}
+ {% endfor %}
