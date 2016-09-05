@@ -1,16 +1,11 @@
-{% assign sorted = site.pages | sort:"url" %}
+
 
 {% for node in sorted offset:1 %}
+{% assign sorted = site.pages | sort:"url" %}
 {% assign slugs = node.url | split: '/' %}
 {% assign node_depth = node.url | split: '/' | size | minus:1 %}
 {% assign page_child_depth = page.url | split: '/' | size %}
-{% for slug in slugs offset:1 %}
-page_child_depth = {{page_child_depth}}<br>
-node_depth = {{node_depth}}<br>
-{% if (page_child_depth) == (node_depth) %}
-{{node.url}}
-{% endif %}
-{% endfor %}
+{% if (page_child_depth) == (node_depth) %}{{node.url}}{% endif %}
 {% endfor %}
 <br>
 
