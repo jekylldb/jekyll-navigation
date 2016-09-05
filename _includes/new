@@ -3,12 +3,13 @@
 {% for node in sorted offset:1 %}
 {% assign slugs = node.url | split: '/' %}
 {% assign depth = node.url | split: '/' | size | minus:1 %}
+{% assign child_depth = node.url | split: '/' | size %}
 {% for slug in slugs offset:1 %}
-{% if (forloop.index) == (depth) %}
-forloop index = {{forloop.index}}<br>
-depth = {{depth}}<br>
-slug = {{slug}}<br>
+{% if (page.child_depth) == (depth) %}
+page.url = {{page.url}}<br>
 node.url = {{node.url}}<br>
+node.slug = {{node.slug}}<br>
+node.depth = {{node.depth}}<br>
 {% endif %}
 {% endfor %}
 {% endfor %}
