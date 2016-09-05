@@ -7,8 +7,9 @@
     {% capture SLUG %}{{ slug | remove: '.html' }}{% endcapture %}
     {% assign index = forloop.index0 offset:1 %}
     {% for level in index offset:1 %}
-    {% capture LEVEL %}{{level}}{% endcapture %}
-    {{LEVEL}}. {{SLUG}}<br>
+      {% capture LEVEL %}{{level}}{% endcapture %}
+      level and slug: {{LEVEL}}. {{SLUG}}<br>
+    {% endfor %}
   {% endfor %}
   <br>
 {% endfor %}
