@@ -5,6 +5,6 @@
   {% assign slugs = node.url | split: '/' %}
   {% assign depth = node.url | split: '/' | size | minus:1 %}
   {% for slug in slugs offset:1 %}
-    {{forloop.index}}-{% if (forloop.index) == (depth) %}{{slug}}{% endif %}<br>
+    {% if (forloop.index) == (depth) %}{{slug}}{% endif %}<br>
   {% endfor %}
 {% endfor %}
