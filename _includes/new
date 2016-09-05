@@ -10,40 +10,21 @@
   {% endfor %}
 {% endfor %}
 
-{% for node in sorted offset:1 %}
- {% if (page.url) contains (node.url) %}
- {{node.url}} is contained within {{page.url}}<br>
- {% else %}
- {{node.url}} is not contained within {{page.url}}<br>
- {% endif %}
- {% endfor %}
-
-{% for node in sorted offset:1 %}
- {% if (node.url) contains (site.url) %}
- N < S = {{node.url}}
- {% else %}
- N != S {{node.url}} is not contained within {{page.url}}<br>
- {% endif %}
- {% endfor %}
- 
- {{ paginator.page }}
- {{paginator.per_page}}
-{{paginator.posts}}
-{{paginator.total_posts}}
-{{paginator.total_pages}}
-{{paginator.page}}
-{{paginator.previous_page}}
-{{paginator.previous_page_path}}
-{{paginator.next_page}}
-{{paginator.next_page_path}}
- {{ page.path }}
-  {{ page.url }}
-  {{ page.next }}
-  {{ page.previous }}
-  
-{% for node in sorted offset:1 %}
-{% assign slugs = node.url | split: '/' %}
-{% for slug in slugs offset:1 %}
-{{ slug | where:"(forloop.index)","1" }}
-{% endfor %}
-{% endfor %}
+- {% for node in sorted offset:1 %}{% if (page.url) contains (node.url) %}{{node.url}} is contained within {{page.url}}<br>{% else %}{{node.url}} is not contained within {{page.url}}<br>{% endif %}{% endfor %}
+- {% for node in sorted offset:1 %}{% if (node.url) contains (site.url) %}N < S = {{node.url}}{% else %}N != S {{node.url}} is not contained within {{page.url}}<br>{% endif %}{% endfor %}
+- {{ paginator.page }}
+- {{paginator.per_page}}
+- {{paginator.posts}}
+- {{paginator.total_posts}}
+- {{paginator.total_pages}}
+- {{paginator.page}}
+- {{paginator.previous_page}}
+- {{paginator.previous_page_path}}
+- {{paginator.next_page}}
+- {{paginator.next_page_path}}
+- {{ page.path }}
+- {{ page.url }}
+- {{ page.next }}
+- {{ page.previous }}
+- {% for node in sorted offset:1 %}{% assign slugs = node.url | split: '/' %}{% for slug in slugs offset:1 %}{{ slug | where:"(forloop.index)","1" }}{% endfor %}{% endfor %}
+- <ul>{% for node in sorted offset:1 %}{% assign slugs = node.url | split: '/' %}{% for slug in slugs[node.first] offset:1 %}<li {% if node.url == page.url %}class="active"{% endif %}><a href="{{ node.url }}">{{ slug }}</a></li>{% endfor %}{% endfor %}</ul>
