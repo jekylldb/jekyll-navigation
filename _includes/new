@@ -1,13 +1,15 @@
 {% assign sorted = site.pages | sort:"url" %}
 {% for node in sorted offset:1 %}
   {% capture PATH %}{{node.url}}{% endcapture %}
-  path: {{PATH}}
+  path: {{PATH}},
   {% assign slugs = node.url | split: '/' %}
   {% for slug in slugs %}
-    {% capture SLUG %}{{ slug | remove: '.html' }}{% endcapture %}slug: {{SLUG}}
+    {% capture SLUG %}{{slug}}{% endcapture %}
+    slug: {{SLUG}},
     {% assign index = forloop.index0 offset:1 %}
     {% for level in index offset:1 %}
-      {% capture LEVEL %}{{level}}{% endcapture %}level: {{LEVEL}}<br>
+      {% capture LEVEL %}{{level}}{% endcapture %}
+      level: {{LEVEL}},
     {% endfor %}
   {% endfor %}
   <br>
