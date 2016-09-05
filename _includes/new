@@ -16,6 +16,8 @@
 
 --->
 
+{% assign myArray = my_array | push: "hello" %}
+{{ my_array }}
 
 {% assign sorted = site.pages | sort:"url" %}
   
