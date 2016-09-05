@@ -36,15 +36,13 @@ slugwhere2={{ slug | where:"(forloop.index[2])","4" }}<br>
 slugwhere3={{ slug | where:"(forloop.index[3])","1" }}<br>
 slugwhere4={{ slug | where:"(forloop.index[4])","2" }}<br>
 slugwhere5={{ slug | where:"(forloop.index[5])","5" }}<br>
-
-<br> END -------------------------------------------------------------
 {% endfor %}
+<br> END -------------------------------------------------------------
 
-2 {% for node in sorted offset:1 %}
-{% if (node.url) contains (site.url) %}
-N CONTAINS S nodeurl ={{node.url}}<br>
-{% else %}
-n doesnt contain s nodeurl ={{node.url}}}<br>
+
+{% for node in sorted offset:1 %}
+{% if (node.url) contains (site.url) %}N CONTAINS S nodeurl ={{node.url}}<br>
+{% else %}n doesnt contain s nodeurl ={{node.url}}<br>
 {% endif %}{% endfor %}
 3 {{ paginator.page }}<br>
 4 {{paginator.per_page}}<br>
