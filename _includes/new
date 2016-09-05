@@ -22,8 +22,10 @@ slug = {{slug}}<br>
 {% for node in sorted offset:1 %}{% assign slugs = node.url | split: '/' %}
 nodewhere = {{ node.url | where:"(forloop.index)","2" }}<br>
 {% for slug in slugs offset:1 %}
-slugwhere = {{ slug | where:"(forloop.index)","2" }}{% endfor %}<br>
-nodewhere = {{ node.url | where:"(forloop.index)","2" }}{% endfor %}<br>
+slugwhere = {{ slug | where:"(forloop.index)","2" }}<br>
+{% endfor %}
+nodewhere = {{ node.url | where:"(forloop.index)","2" }}<br>
+{% endfor %}
 <br>
 
 {% for node in sorted offset:1 %}
