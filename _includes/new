@@ -19,15 +19,6 @@ slug = {{slug}}<br>
 {% endfor %}
 <br>
 
-{% for node in sorted offset:1 %}{% assign slugs = node.url | split: '/' %}
-nodewhere = {{ node.url | where:"(forloop.index)","2" }}<br>
-{% for slug in slugs offset:1 %}
-slugwhere = {{ slug | where:"(forloop.index)","2" }}<br>
-{% endfor %}
-nodewhere = {{ node.url | where:"(forloop.index)","2" }}<br>
-{% endfor %}
-<br>
-
 {% for node in sorted offset:1 %}
 {% capture last_slug %}{% for item in node.url %}{{item | split: '/' | last | remove:'.html' }}{% endfor %}{% endcapture %}
 {% capture parent_slug_size %}{% for item in node.url %}{{item | split: '/' | last | remove:'.html' | size }}{% endfor %}{% endcapture %}
@@ -56,3 +47,13 @@ nodewhere = {{ node.url | where:"(forloop.index)","2" }}<br>
 17. {% for part in node.url | split: '/' %}{{ part }}{% endfor %} <br>
 18. pagepath = {{ page.path }}<br>
 19. pageurl = {{ page.url }}<br>
+
+
+{% for node in sorted offset:1 %}{% assign slugs = node.url | split: '/' %}
+nodewhere = {{ node.url | where:"( node.url | split: '/' | size | minus:1 )","4" }}<br>
+{% for slug in slugs offset:1 %}
+slugwhere = {{ slug | where:"(forloop.index)","2" }}<br>
+{% endfor %}
+nodewhere = {{ node.url | where:"(forloop.index)","2" }}<br>
+{% endfor %}
+<br>
