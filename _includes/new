@@ -1,33 +1,13 @@
-<!---
-
 {% assign sorted = site.pages | sort:"url" %}
   
 {% for node in sorted offset:1 %}{{node.url}}<br>
   {% assign slugs = node.url | split: '/' %}
   {% for slug in slugs offset:1 %}
     {% assign sizes = node.url | split: '/' | size | minus: 1 %}
-    {{forloop.index}}. {{slug}}. {{sizes}} <br>
-    
-      {% capture array %}array{{forloop.index}}{% endcapture %}{{array}}
-      {% endif %}
-  {% endfor %}<br>
-{% endfor %}
-
-
---->
-
-{% assign myArray = my_array | push: "hello" %}
-{{ my_array }}
-
-{% assign sorted = site.pages | sort:"url" %}
-  
-{% for node in sorted offset:1 %}{{node.url}}<br>
-  {% assign slugs = node.url | split: '/' %}
-  {% for slug in slugs offset:1 %}
-    {% assign sizes = node.url | split: '/' | size | minus: 1 %}
-    {% if (forloop.index) == (sizes) %}
-    {% capture array %}array{{forloop.index}}{% endcapture %}array: {{array}}<br>
-    slug: {{slug}}<br>
-    {% endif %}
+    {% for (forloop.index) == (sizes) %}
+    {% capture array %}array{{forloop.index}}{% endcapture %}
+    {{array}}<br>
+    {{slug}}<br>
+    {% endfor %}
   {% endfor %}<br>
 {% endfor %}
