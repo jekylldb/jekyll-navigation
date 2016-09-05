@@ -5,8 +5,8 @@
   {{forloop.index}}. {{slug}}<br>
   {% capture depth %}{{forloop.index}}{% endcapture %}
   {% assign my_array = "" | split: "" %}
-  {% assign my_array = my_array | push: depth %}
-  {{my_array}}
+  {% assign my_array = my_array | push: forloop.index %}
+  = {{my_array}} =
   {% endfor %}<br>
-{{my_array}}
++ {{my_array}} +
 {% endfor %}
