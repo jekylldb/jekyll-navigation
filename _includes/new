@@ -17,13 +17,13 @@
 {% assign arr = (stringarr) | split: ' ' %}
 arr = {{arr}}
 arr = {{arr.size}}
-
+{% capture this %}
   {% for item in arr %}
   {{item | truncate: 1, "" }}
   {%endfor%}
-
+{% endcapture %}
 {% for node in sorted offset:1 %}
-    {% if (forloop.index) == (num) %}
+    {% if (forloop.index) == (this) %}
     {{node.url}}
     {% endif %}
 {% endfor %}
