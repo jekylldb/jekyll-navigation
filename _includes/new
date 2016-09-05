@@ -5,6 +5,7 @@
   {% for slug in slugs offset:1 %}
   {{forloop.index}}. {{slug}}<br>
   {% assign (forloop.index) = array | push: (slug) %}
+  {% for item in (forloop.index) %}{{item}}{% endfor %}<br>
   {% for item in array %}{{item}}{% endfor %}<br>
   {% endfor %}<br>
 {% endfor %}
