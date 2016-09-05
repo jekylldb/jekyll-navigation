@@ -1,63 +1,23 @@
-
 {% assign sorted = site.pages | sort:"url" %}
 {% for node in sorted offset:1 %}
-
 {% assign slugs = node.url | split: '/' %}
-
 {% assign depth = node.url | split: '/' | size | minus:1 %}
 {% for slug in slugs offset:1 %}
-<br>START ----------------------------------------------------
-slugwhere0={{ slug | where:"(forloop.index[0])","0" }}<br>
-slugwhere1={{ slug | where:"(forloop.index[1])","1" }}<br>
-slugwhere2={{ slug | where:"(forloop.index[2])","2" }}<br>
-slugwhere3={{ slug | where:"(forloop.index[3])","3" }}<br>
-slugwhere4={{ slug | where:"(forloop.index[4])","4" }}<br>
-slugwhere5={{ slug | where:"(forloop.index[5])","5" }}<br>
-slugwhere6={{ slug | where:"(forloop.index[6])","6" }}<br>
-slugwhere7={{ slug | where:"(forloop.index[7])","7" }}<br>
-<br>
-{% if (forloop.index) == (depth) %}node.url={{node.url}}<br>slug={{slug}}<br>
-<br>
-slugwhere0={{ slug | where:"(forloop.index[0])","0" }}<br>
-slugwhere1={{ slug | where:"(forloop.index[1])","1" }}<br>
-slugwhere2={{ slug | where:"(forloop.index[2])","2" }}<br>
-slugwhere3={{ slug | where:"(forloop.index[3])","3" }}<br>
-slugwhere4={{ slug | where:"(forloop.index[4])","4" }}<br>
-slugwhere5={{ slug | where:"(forloop.index[5])","5" }}<br>
-slugwhere6={{ slug | where:"(forloop.index[6])","6" }}<br>
-slugwhere7={{ slug | where:"(forloop.index[7])","7" }}<br>
-<br>
+{% if (forloop.index) == (depth) %}
+node.url={{node.url}}<br>
+slug={{slug}}<br>
 {% endif %}
 {% endfor %}
-<br>
-slugwhere0={{ slug | where:"(forloop.index[0])","4" }}<br>
-slugwhere1={{ slug | where:"(forloop.index[1])","2" }}<br>
-slugwhere2={{ slug | where:"(forloop.index[2])","4" }}<br>
-slugwhere3={{ slug | where:"(forloop.index[3])","1" }}<br>
-slugwhere4={{ slug | where:"(forloop.index[4])","2" }}<br>
-slugwhere5={{ slug | where:"(forloop.index[5])","5" }}<br>
 {% endfor %}
-<br> END -------------------------------------------------------------
 
 
 {% for node in sorted offset:1 %}
-{% if (node.url) contains (site.url) %}N CONTAINS S nodeurl ={{node.url}}<br>
-{% else %}n doesnt contain s nodeurl ={{node.url}}<br>
+{% if (site.url) contains (node.url) %}{{site.url}} CONTAINS {{node.url}} <br>
+{% else %}{{site.url}} doesn't contain {{node.url}} =<br>
 {% endif %}{% endfor %}
-3 {{ paginator.page }}<br>
-4 {{paginator.per_page}}<br>
-5 {{paginator.posts}}<br>
-6 {{paginator.total_posts}}<br>
-7 {{paginator.total_pages}}<br>
-8 {{paginator.page}}<br>
-9 {{paginator.previous_page}}<br>
-10 {{paginator.previous_page_path}}<br>
-11 {{paginator.next_page}}<br>
-12 {{paginator.next_page_path}}<br>
-13 {{ page.path }}<br>
-14 {{ page.url }}<br>
-15 {{ page.next }}<br>
-16 {{ page.previous }}<br>
+
+pagepath {{ page.path }}<br>
+pageurl {{ page.url }}<br>
 
 {% for node in sorted offset:1 %}
 {% assign slugs = node.url | split: '/' %}
