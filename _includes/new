@@ -11,8 +11,8 @@
 
 {% for node in sorted offset:1 %}
  {% if (page.url) contains (node.url) %}
- {{node.url}} is contained within {{page.url}}
+ {{node.url}} is contained within {{page.url}}<br>
  {% else %}
- {{node.url}} is not contained within {{page.url}}
+ {{node.url}} is not contained within {{page.url}}<br>
  {% endif %}
  {% endfor %}
