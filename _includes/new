@@ -6,7 +6,7 @@
 
 {% assign depth = node.url | split: '/' | size | minus:1 %}
 {% for slug in slugs offset:1 %}
-<br>
+<br>START ----------------------------------------------------
 slugwhere0={{ slug | where:"(forloop.index[0])","0" }}<br>
 slugwhere1={{ slug | where:"(forloop.index[1])","1" }}<br>
 slugwhere2={{ slug | where:"(forloop.index[2])","2" }}<br>
@@ -30,15 +30,14 @@ slugwhere7={{ slug | where:"(forloop.index[7])","7" }}<br>
 {% endif %}
 {% endfor %}
 <br>
-slugwhere0={{ slug | where:"(forloop.index[0])","0" }}<br>
-slugwhere1={{ slug | where:"(forloop.index[1])","1" }}<br>
-slugwhere2={{ slug | where:"(forloop.index[2])","2" }}<br>
-slugwhere3={{ slug | where:"(forloop.index[3])","3" }}<br>
-slugwhere4={{ slug | where:"(forloop.index[4])","4" }}<br>
+slugwhere0={{ slug | where:"(forloop.index[0])","4" }}<br>
+slugwhere1={{ slug | where:"(forloop.index[1])","2" }}<br>
+slugwhere2={{ slug | where:"(forloop.index[2])","4" }}<br>
+slugwhere3={{ slug | where:"(forloop.index[3])","1" }}<br>
+slugwhere4={{ slug | where:"(forloop.index[4])","2" }}<br>
 slugwhere5={{ slug | where:"(forloop.index[5])","5" }}<br>
-slugwhere6={{ slug | where:"(forloop.index[6])","6" }}<br>
-slugwhere7={{ slug | where:"(forloop.index[7])","7" }}<br>
-<br>
+
+<br> END -------------------------------------------------------------
 {% endfor %}
 
 2 {% for node in sorted offset:1 %}
