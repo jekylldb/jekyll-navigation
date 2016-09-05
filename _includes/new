@@ -2,11 +2,16 @@
 {% capture stringarr %}
 {% for node in sorted offset:1 %}
   {% assign slugs = node.url | split: '/' %}
+  {% assign depth = node.url | split: '/' | size | minus:1 %}{{depth}}
   {% for slug in slugs offset:1 %}
   {% assign sizes = node.url | split: '/' | size | minus:1 %}
     {% if (forloop.index) == (sizes) and (forloop.last) == true %}
     {% capture num %}{{forloop.index}}{% endcapture %}
     {{num}}{{slug}}
+
+   {% if (forloop.index) == (depth) %}
+    {% capture ary %}{{slug}}{% endcapture %}
+    {{ary}}
     {% endif %}
   {% endfor %}
 {% endfor %}
@@ -16,14 +21,8 @@
 
 {% assign arr = (stringarr) | split: ' ' %}
 arr = {{arr}}
-arr = {{arr.size}}
-{% capture this %}
+
+
   {% for item in arr %}
   {{item | truncate: 1, "" }}
   {%endfor%}
-{% endcapture %}
-{% for node in sorted offset:1 %}
-    {% if (forloop.index) == (this) %}
-    {{node.url}}
-    {% endif %}
-{% endfor %}
