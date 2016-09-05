@@ -6,6 +6,6 @@
   {% endfor %}<br>
 {% capture array %}{{forloop.index}}{% endcapture %}
 {% assign array = "" | split:"|"  %}
-{% assign array = array | push: slug %}
+{% assign array = array | push: "slug" %}
 {{array}}
 {% endfor %}
