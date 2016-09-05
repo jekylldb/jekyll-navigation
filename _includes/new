@@ -1,15 +1,21 @@
-{% assign sorted = site.pages | sort:"url" %}{% for node in sorted offset:1 %}{% assign slugs = node.url | split: '/' %}{% assign depth = node.url | split: '/' | size | minus:1 %}{% for slug in slugs offset:1 %}{% if (forloop.index) == (depth) %}
-node.url={{node.url}}<br>
-slug={{slug}}<br>{% endif %}{% endfor %}{% endfor %}
-<br>
+{% assign sorted = site.pages | sort:"url" %}
+
 {% for node in sorted offset:1 %}
-  {% if (page.url) contains (node.url) %}
-    Page contains Node = {{page.url}} contains {{node.url}}<br>
-  {% elsif (node.url) contains (page.url) %}
-    Node contains Page = {{node.url}} contains {{page.url}}<br>
-  {% else %}
-    {{ continue }}
-  {% endif %}
+{% assign slugs = node.url | split: '/' %}
+{% assign depth = node.url | split: '/' | size | minus:1 %}
+{% for slug in slugs offset:1 %}
+{% if (forloop.index) == (depth) %}
+forloop index = {{forloop.index}}<br>
+depth = {{depth}}<br>
+slug = {{slug}}<br>
+{% endif %}
+{% endfor %}
+{% endfor %}
+<br>
+
+{% for node in sorted offset:1 %}
+  {% if (page.url) contains (node.url) %}Page contains Node = {{page.url}} contains {{node.url}}{% endif %}<br>
+  {% if (node.url) contains (page.url) %}Node contains Page = {{node.url}} contains {{page.url}}{% endif %}<br>
 {% endfor %}
 <br>
 
@@ -20,16 +26,16 @@ slugwhere = {{ slug | where:"(forloop.index)","5" }}{% endfor %}<br>
 nodewhere = {{ node.url | where:"(forloop.index)","5" }}{% endfor %}<br>
 <br>
 
-<br>
-{% assign sorted_pages = site.pages | sort:"url" %}
-{% for node in sorted_pages offset:1 %}
-{% capture last_slug  %}{% for item in node.url %}{{item | split: '/' | last | remove:'.html' }}{% endfor %}{% endcapture %}
+{% assign sorted = site.pages | sort:"url" %}
+{% for node in sorted offset:1 %}
+{% capture last_slug %}{% for item in node.url %}{{item | split: '/' | last | remove:'.html' }}{% endfor %}{% endcapture %}
 {% capture parent_slug_size %}{% for item in node.url %}{{item | split: '/' | last | remove:'.html' | size }}{% endfor %}{% endcapture %}
 {% capture last_slug_size %}{% for item in node.url %}{{item | split: '/' | last | size | plus:1 }}{% endfor %}{% endcapture %}
 {% capture url_size %}{% for item in node.url %}{{item | size}}{% endfor %}{% endcapture %}
 {% capture parent_depth %}{{ url_size | minus:last_slug_size }}{% endcapture %}
 {% capture last_slug_dir %}{% for item in node.url %}{{ item | slice: parent_depth, url_size }}{% endfor %}{% endcapture %}
 {% capture parent_path %}{{ node.url | remove: URL_END }}{% endcapture %}
+{% endfor %}<br>
 <br>
 1. node url = {{ node.url }}<br>
 2. last_slug = {{last_slug }}<br>
@@ -41,7 +47,7 @@ nodewhere = {{ node.url | where:"(forloop.index)","5" }}{% endfor %}<br>
 8. parent_path = {{parent_path}}<br>
 9. {{ forloop.index }}<br>
 10. {{forloop.length}} <br>
-11. {% for item in node.url' %}{% assign each = item | split: '/' %}{% for node in each %}{{forloop.index0}}{% endfor %}{% endfor %} <br>
+11. {% for item in node.url %}{% assign each = item | split: '/' %}{% for node in each %}{{forloop.index0}}{% endfor %}{% endfor %} <br>
 12. {{forloop.first}} <br>
 13. {{forloop.last}} <br>
 14. {{ node.url | split: '/' }} <br>
@@ -50,4 +56,3 @@ nodewhere = {{ node.url | where:"(forloop.index)","5" }}{% endfor %}<br>
 17. {% for part in node.url | split: '/' %}{{ part }}{% endfor %} <br>
 18. pagepath = {{ page.path }}<br>
 19. pageurl = {{ page.url }}<br>
-{% endfor %}<br>
