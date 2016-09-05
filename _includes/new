@@ -26,11 +26,11 @@
   {% for slug in slugs offset:1 %}
     {% assign sizes = node.url | split: '/' | size | minus: 1 %}
     {{forloop.index}}. {{slug}}. {{sizes}} <br>
-    {% if (forloop.index) == (sizes) %}
+
       {% capture array %}array{{forloop.index}}{% endcapture %}{{array}}
       {{ (array) | push: (slug) }}
       {% for item in (array) %}{{item}}<br>{% endfor %}<br>
-    {% endif %}
+
     
   {% endfor %}<br>
 {% endfor %}
