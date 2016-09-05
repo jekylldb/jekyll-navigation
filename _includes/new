@@ -4,8 +4,15 @@
 {{node.url}}<br>
   {% assign slugs = node.url | split: '/' %}
   {% assign depth = node.url | split: '/' | size | minus:1 %}
-  {% for each in depth %}{{each | split: "" | uniq }}{% endfor %}
   {% for slug in slugs offset:1 %}
     {% if (forloop.index) == (depth) %}{{slug}}{% endif %}<br>
   {% endfor %}
+{% endfor %}
+
+{% for node in sorted %}
+{{node.url}}<br>
+{% assign slugs = node.url | split: '/' %}
+  {% for slug in slugs offset:1 %}
+    {{ slug.first }}
+    {% endfor %}
 {% endfor %}
