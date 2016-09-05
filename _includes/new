@@ -21,13 +21,17 @@ pageurl {{ page.url }}<br>
 {% for node in sorted offset:1 %}
 {% assign slugs = node.url | split: '/' %}
 {% for slug in slugs offset:1 %}
-slugwhereone! = {{ slug | where:"(forloop.index)","1" }}<br>
+<br>
+1. where = {{ slug | where:"(forloop.index)","1" }}<br>
+2. where = {{ slug | where:"(forloop.index)","2" }}<br>
+3. where = {{ slug | where:"(forloop.index)","3" }}<br>
+<br>
 {% endfor %}
 {% endfor %}
 <br>
 {% for node in sorted offset:1 %}{% assign slugs = node.url | split: '/' %}
 {% for slug in slugs[node.first] %}
-{% if node.url == page.url %}
+{% if node.url != page.url %}
 <br>nodefirst={{ node.url }}<br>
 {% endif %}{% endfor %}{% endfor %}
 <br>
