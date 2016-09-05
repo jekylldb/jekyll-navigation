@@ -4,6 +4,7 @@
   {% for slug in slugs offset:1 %}
   {{forloop.index}}. {{slug}}<br>
   {% capture array %}{{forloop.index | join: '|'}}{% endcapture %}
+  array:  {{array}} <br>
   {% endfor %}<br>
-  {{array}}
+
 {% endfor %}
