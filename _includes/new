@@ -13,4 +13,5 @@
 {% assign slugs = node.url | split: '/' %}
   {% for slug in slugs offset:1 %}
   {{ slug[forloop.index] }}
+  {% endfor %}
 {% endfor %}
