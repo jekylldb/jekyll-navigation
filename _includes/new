@@ -1,12 +1,15 @@
 {% assign sorted = site.pages | sort:"url" %}
-  
+{% capture string %}
 {% for node in sorted offset:1 %}
   {% assign slugs = node.url | split: '/' %}
   {% for slug in slugs offset:1 %}
   {% assign sizes = node.url | split: '/' | size | minus:1 %}
     {% if (forloop.index) == (sizes) and (forloop.last) == true %}
     {% capture array %}{{forloop.index}}{% endcapture %}
-    {{array}}{{slug}}|
+    |{{array}}{{slug}}|
     {% endif %}
   {% endfor %}
 {% endfor %}
+{% endcapture %}
+
+{{string}}
