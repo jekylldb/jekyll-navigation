@@ -6,6 +6,6 @@
   {% assign sizes = node.url | split: '/' | size | minus: 1 %}
   {{forloop.index}}. {{slug}}. {{sizes}} <br>
   {% if (forloop.index) == (sizes) %}{% assign array = array | push: (slug) %}{% endif %}{{array}}<br>
-  {% for item in array %}{{item}}{% endfor %}<br>
+  {% for item in array %}{{item}}<br>{% endfor %}<br>
   {% endfor %}<br>
 {% endfor %}
