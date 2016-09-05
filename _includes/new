@@ -26,8 +26,7 @@
   {% for slug in slugs offset:1 %}
     {% assign sizes = node.url | split: '/' | size | minus: 1 %}
     {{forloop.index}}. {{slug}}. {{sizes}} <br>
-    {% capture array %}array{{forloop.index}}{% endcapture %}{{array}}
-    {% assign array = "" | split:"|"%}{{array}}
-    {{array}}<br>
+    {% capture array %}array{{forloop.index}}{% endcapture %}
+    {% assign array = "" | split:"|"%}{{array | push: (slug) }}<br>
   {% endfor %}<br>
 {% endfor %}
