@@ -3,4 +3,5 @@
   {% assign slugs = node.url | split: '/' %}
   {% assign level = forloop.index %}{{ level }}
   {% for slug in slugs %}{{slug}}{% endfor %}
+  <br>
 {% endfor %}
