@@ -3,6 +3,7 @@
   {% assign slugs = node.url | split: '/' %}
   {% for slug in slugs offset:1 %}
   {{forloop.index}}. {{slug}}<br>
-  {{slug.size}}
-  {% endfor %}<br>  
+
+  {% endfor %}<br> 
+  {{forloop.length}}
 {% endfor %}
