@@ -9,10 +9,10 @@
   {% endfor %}
 {% endfor %}
 
-{% for node in sorted offset:1 %}{{node.url}}<br>
- {% if page.url contains node.url %}
- {{node.url}} is contained within page.url
+{% for node in sorted offset:1 %}
+ {% if (page.url) contains (node.url) %}
+ {{node.url}} is contained within {{page.url}}
  {% else %}
- {{node.url}} is not contained within page.url
+ {{node.url}} is not contained within {{page.url}}
  {% endif %}
  {% endfor %}
