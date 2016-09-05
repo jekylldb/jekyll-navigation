@@ -2,12 +2,10 @@
   
 {% for node in sorted offset:1 %}{{node.url}}<br>
   {% assign slugs = node.url | split: '/' %}
-  {% for slug in slugs offset:1 %}
+  {% for slug in slugs offset:1 %}    {{slug}}<br>
     {% assign sizes = node.url | split: '/' | size | minus: 1 %}
     {% for (forloop.index) == (sizes) %}
-    {% capture array %}array{{forloop.index}}{% endcapture %}
-    {{array}}<br>
-    {{slug}}<br>
+      {% capture array %}array{{forloop.index}}{% endcapture %}{{array}}<br>
     {% endfor %}
   {% endfor %}<br>
 {% endfor %}
