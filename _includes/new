@@ -4,7 +4,7 @@
   {% assign slugs = node.url | split: '/' %}
   {% for slug in slugs offset:1 %}
   {{forloop.index}}. {{slug}}<br>
-  {% assign my_array = my_array | push: "slug" %}
+  {% assign my_array = my_array | push: slug %}
   {% endfor %}<br>
 {% endfor %}
 {{my_array}}
