@@ -10,6 +10,6 @@
       {% if array != 0 %}{% assign array = array | push: (slug) %}
       {% else %}{% assign array = "" | split: "|"  %}{% assign array = array | push: (slug) %}
       {% endif %}
-      {% for item in "array(forloop.index)" %}{{item}}<br>{% endfor %}<br>
+      {% for item in array %}{{item}}<br>{% endfor %}<br>
   {% endfor %}<br>
 {% endfor %}
