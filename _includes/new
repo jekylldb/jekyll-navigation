@@ -26,10 +26,8 @@ pageurl {{ page.url }}<br>
 1. where = {{ slug | where:"(forloop.index)","1" }}<br>
 2. where = {{ slug | where:"(forloop.index)","2" }}<br>
 3. where = {{ slug | where:"(forloop.index)","3" }}<br>
-00. where = {{ slug | where:"(forloop.index[0])" }}<br>
-11. where = {{ slug | where:"(forloop.index[1])" }}<br>
-22. where = {{ slug | where:"(forloop.index[2])" }}<br>
-33. where = {{ slug | where:"(forloop.index[3])" }}<br>
+00. where = {{ slug | where:"(forloop.index)" }}<br>
+
 <br>
 <br>
 {% endfor %}
