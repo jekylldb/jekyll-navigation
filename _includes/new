@@ -1,9 +1,10 @@
 {% assign sorted = site.pages | sort:"url" %}
+{% assign my_array = "" | split: ""  %}
 {% for node in sorted offset:1 %}{{node.url}}<br>
   {% assign slugs = node.url | split: '/' %}
-  {% for slug in slugs offset:1 %}{{forloop.index}}. {{slug}}<br>{% endfor %}<br>
+  {% for slug in slugs offset:1 %}
+  {{forloop.index}}. {{slug}}<br>
+  {% assign my_array = my_array | push: "slug" %}
+  {% endfor %}<br>
 {% endfor %}
-
-{% assign my_array = "" | split: ""  %}
-{% assign my_array = my_array | push: "array_item" %}
 {{my_array}}
