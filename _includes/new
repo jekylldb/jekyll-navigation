@@ -3,8 +3,10 @@
   {% assign slugs = node.url | split: '/' %}
   {% for slug in slugs offset:1 %}
   {{forloop.index}}. {{slug}}<br>
-  {% capture array %}{{forloop.index | join: '|'}}{% endcapture %}
-  array:  {{array}} <br>
+  {% capture depth %}{{forloop.index}}{% endcapture %}
+  {% assign my_array = "" | split: "" %}
+  {% assign my_array = my_array | push: depth %}
+  {{my_array}}
   {% endfor %}<br>
-
+{{my_array}}
 {% endfor %}
