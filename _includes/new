@@ -13,15 +13,12 @@ slug={{slug}}<br>{% endif %}{% endfor %}{% endfor %}
 {% endfor %}
 <br>
 
-<br>
-
-{% for node in sorted offset:1 %}
-{% assign slugs = node.url | split: '/' %}
-nodeurl_where_forloop_index = {{ node.url | where:"(forloop.index)","9" }}<br>
+{% for node in sorted offset:1 %}{% assign slugs = node.url | split: '/' %}
+nodewhere = {{ node.url | where:"(forloop.index)","5" }}<br>
 {% for slug in slugs offset:1 %}
-slug_where_forloop_index = {{ slug | where:"(forloop.index)","9" }}
-{% endfor %}<br>
-{% endfor %}<br>
+slugwhere = {{ slug | where:"(forloop.index)","5" }}{% endfor %}<br>
+nodewhere = {{ node.url | where:"(forloop.index)","5" }}{% endfor %}<br>
+<br>
 
 <br>
 {% assign sorted_pages = site.pages | sort:"url" %}
