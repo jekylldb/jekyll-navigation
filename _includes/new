@@ -9,10 +9,8 @@
   {% endfor %}
 {% endfor %}
 
-{% for node in sorted %}
-{{node.url}}<br>
+{% for node in sorted offset:1 %}{{node.url}}<br>
 {% assign slugs = node.url | split: '/' %}
   {% for slug in slugs offset:1 %}
-    {{ slug.first }}
-    {% endfor %}
+  {{ slug[forloop.index] }}
 {% endfor %}
