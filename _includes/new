@@ -28,10 +28,8 @@
     {{forloop.index}}. {{slug}}. {{sizes}} <br>
     {% if (forloop.index) == (sizes) %}
       {% capture array %}array{{forloop.index}}{% endcapture %}{{array}}
-      {% if array != "" %}{% assign (array) = (array) | push: (slug) %}
-      {% else %}{% assign (array) = "" | split: "|"  %}{% assign (array) = (array) | push: (slug) %}
-      {% endif %}
-      
+      {% if (array) == 0 %}{% assign (array) = "" | push: (slug) %}{% else %}{% (array) | push: (slug) %}{% endif %}
+
     {% endif %}
     {% for item in (array) %}{{item}}<br>{% endfor %}<br>
   {% endfor %}<br>
