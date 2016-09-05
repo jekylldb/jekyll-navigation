@@ -8,19 +8,14 @@
 forloop index = {{forloop.index}}<br>
 depth = {{depth}}<br>
 slug = {{slug}}<br>
+node.url = {{node.url}}<br>
 {% endif %}
 {% endfor %}
 {% endfor %}
 <br>
 
-{% for node in sorted offset:1 %}
-  {% if (page.url) contains (node.url) %}Page contains Node = {{page.url}} contains {{node.url}}{% endif %}<br>
-{% endfor %}
-<br>
-{% for node in sorted offset:1 %}
-  {% if (node.url) contains (page.url) %}Node contains Page = {{node.url}} contains {{page.url}}{% endif %}<br>
-{% endfor %}
-<br>
+{% for node in sorted offset:1 %}{% if (page.url) contains (node.url) %}Page contains Node = {{page.url}} contains {{node.url}}{% endif %}<br>{% endfor %}
+{% for node in sorted offset:1 %}{% if (node.url) contains (page.url) %}Node contains Page = {{node.url}} contains {{page.url}}{% endif %}<br>{% endfor %}<br>
 
 {% for node in sorted offset:1 %}
 {% capture last_slug %}{% for item in node.url %}{{item | split: '/' | last | remove:'.html' }}{% endfor %}{% endcapture %}
