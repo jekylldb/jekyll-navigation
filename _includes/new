@@ -4,16 +4,31 @@
 {% assign slugs = node.url | split: '/' %}
 {% assign depth = node.url | split: '/' | size | minus:1 %}
 {% for slug in slugs offset:1 %}
-{% if (forloop.index) == (depth) %}node.url={{node.url}} and slug={{slug}}<br>{% endif %}
-slugwhere={{ slug | where:"(forloop.index)","0" }}<br>
-slugwhere={{ slug | where:"(forloop.index)","1" }}<br>
-slugwhere={{ slug | where:"(forloop.index)","2" }}<br>
-slugwhere={{ slug | where:"(forloop.index)","3" }}<br>
-slugwhere={{ slug | where:"(forloop.index)","4" }}<br>
-slugwhere={{ slug | where:"(forloop.index)","5" }}<br>
-slugwhere={{ slug | where:"(forloop.index)","6" }}<br>
-slugwhere={{ slug | where:"(forloop.index)","7" }}<br>
+{% if (forloop.index) == (depth) %}node.url={{node.url}} and slug={{slug}}<br>slugwhere0={{ slug | where:"(forloop.index)","0" }}<br>
+slugwhere1={{ slug | where:"(forloop.index)","1" }}<br>
+slugwhere2={{ slug | where:"(forloop.index)","2" }}<br>
+slugwhere3={{ slug | where:"(forloop.index)","3" }}<br>
+slugwhere4={{ slug | where:"(forloop.index)","4" }}<br>
+slugwhere5={{ slug | where:"(forloop.index)","5" }}<br>
+slugwhere6={{ slug | where:"(forloop.index)","6" }}<br>
+slugwhere7={{ slug | where:"(forloop.index)","7" }}<br>{% endif %}
+slugwhere0={{ slug | where:"(forloop.index)","0" }}<br>
+slugwhere1={{ slug | where:"(forloop.index)","1" }}<br>
+slugwhere2={{ slug | where:"(forloop.index)","2" }}<br>
+slugwhere3={{ slug | where:"(forloop.index)","3" }}<br>
+slugwhere4={{ slug | where:"(forloop.index)","4" }}<br>
+slugwhere5={{ slug | where:"(forloop.index)","5" }}<br>
+slugwhere6={{ slug | where:"(forloop.index)","6" }}<br>
+slugwhere7={{ slug | where:"(forloop.index)","7" }}<br>
 {% endfor %}
+slugwhere0={{ slug | where:"(forloop.index)","0" }}<br>
+slugwhere1={{ slug | where:"(forloop.index)","1" }}<br>
+slugwhere2={{ slug | where:"(forloop.index)","2" }}<br>
+slugwhere3={{ slug | where:"(forloop.index)","3" }}<br>
+slugwhere4={{ slug | where:"(forloop.index)","4" }}<br>
+slugwhere5={{ slug | where:"(forloop.index)","5" }}<br>
+slugwhere6={{ slug | where:"(forloop.index)","6" }}<br>
+slugwhere7={{ slug | where:"(forloop.index)","7" }}<br>
 {% endfor %}
 
 1 {% for node in sorted offset:1 %}{% if (page.url) contains (node.url) %}{{node.url}} is contained within {{page.url}}<br>{% else %}{{node.url}} is not contained within {{page.url}}<br>{% endif %}{% endfor %}
