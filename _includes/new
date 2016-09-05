@@ -24,12 +24,12 @@ pageurl {{ page.url }}<br>
 {% for node in sorted offset:1 %}
 {% assign slugs = node.url | split: '/' %}
 wn5 = {{ node.url | where:"(forloop.index)","5" }}<br>
-wn1 = {{ node.url | where:"(forloop.index)","2" }}<br>
+wn1 = {{ node.url | where:"(forloop.index)","3" }}<br>
 {% for slug in slugs offset:1 %}
 ws5 = {{ slug | where:"(forloop.index)","5" }}<br>
-ws1 = {{ slug | where:"(forloop.index)","2" }}<br>
+ws1 = {{ slug | where:"(forloop.index)","3" }}<br>
 {% endfor %}
 wherenode5 = {{ node.url | where:"(forloop.index)","5" }}<br>
-wherenode1 = {{ node.url | where:"(forloop.index)","2" }}<br>
+wherenode1 = {{ node.url | where:"(forloop.index)","3" }}<br>
 {% endfor %}
 <br>
