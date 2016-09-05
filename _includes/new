@@ -1,9 +1,9 @@
 {% assign sorted = site.pages | sort:"url" %}
   {% assign array = "" | split: "|"  %}
 {% for node in sorted offset:1 %}{{node.url}}<br>
-  {% assign sizes = node.url | split: '/' | size %}
   {% assign slugs = node.url | split: '/' %}
   {% for slug in slugs offset:1 %}
+  {% assign sizes = node.url | split: '/' | size %}
   {{forloop.index}}. {{slug}}. {{sizes}} <br>
   {% if (forloop.index) == (sizes) %}{% assign array = array | push: (slug) %}{% endif %}{{array}}<br>
   {% for item in array %}{{item}}{% endfor %}<br>
