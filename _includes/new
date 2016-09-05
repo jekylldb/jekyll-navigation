@@ -12,8 +12,14 @@ slug={{slug}}<br>
 <br>
 
 {% for node in sorted offset:1 %}
-{% if (site.url) contains (node.url) %}{{site.url}} s_CONTAINS_n {{node.url}}{% else %}{{node.url}} n_CONTAINS_s {{site.url}}{% endif %}<br>
-{% endif %}{% endfor %}<br>
+{% if (page.url) contains (node.url) %}
+{{page.url}} p_CONTAINS_n {{node.url}}<br>
+{% elsif (node.url) contains (page.url)%}
+{{node.url}} n_CONTAINS_p {{page.url}}<br>
+{% else %}
+{{ continue }}
+{% endif %}
+{% endfor %}
 
 
 pagepath {{ page.path }}<br>
