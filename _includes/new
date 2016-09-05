@@ -9,5 +9,23 @@
       {% capture array %}array{{forloop.index}}{% endcapture %}{{array}}
       {{ array | push: (slug) }}
       {{array}}
+      {% endif %}
+  {% endfor %}<br>
+{% endfor %}
+
+{% assign sorted = site.pages | sort:"url" %}
+  
+{% for node in sorted offset:1 %}{{node.url}}<br>
+  {% assign slugs = node.url | split: '/' %}
+  {% for slug in slugs offset:1 %}
+    {% assign sizes = node.url | split: '/' | size | minus: 1 %}
+    {{forloop.index}}. {{slug}}. {{sizes}} <br>
+    {% if (forloop.index) == (sizes) %}
+      {% capture array %}array{{forloop.index}}{% endcapture %}{{array}}
+      {% if array != "" %}{% assign array = array | push: (slug) %}
+      {% else %}{% assign array = "" | split: "|"  %}{% assign array = array | push: (slug) %}
+      {% endif %}
+      {% endif %}
+      {% for item in array %}{{item}}<br>{% endfor %}<br>
   {% endfor %}<br>
 {% endfor %}
