@@ -7,7 +7,7 @@
     {{forloop.index}}. {{slug}}. {{sizes}} <br>
     {% if (forloop.index) == (sizes) %}
       {% capture array %}array{{forloop.index}}{% endcapture %}{{array}}
-      {% if array != 0 %}{% assign array = array | push: (slug) %}
+      {% if array != "" %}{% assign array = array | push: (slug) %}
       {% else %}{% assign array = "" | split: "|"  %}{% assign array = array | push: (slug) %}
       {% endif %}
       {% for item in array %}{{item}}<br>{% endfor %}<br>
