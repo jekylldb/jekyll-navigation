@@ -1,10 +1,10 @@
 {% assign sorted = site.pages | sort:"url" %}
 
 {% for node in sorted offset:1 %}
+{{node.url}}<br>
   {% assign slugs = node.url | split: '/' %}
   {% assign depth = node.url | split: '/' | size | minus:1 %}
   {% for slug in slugs offset:1 %}
-    {% assign num = (forloop.index) %}
-    {{num}}-{% if (forloop.index) == (depth) %}{{slug}}{% endif %}
+    {{forloop.index}}-{% if (forloop.index) == (depth) %}{{slug}}{% endif %}<br>
   {% endfor %}
 {% endfor %}
