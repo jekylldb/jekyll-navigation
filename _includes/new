@@ -17,3 +17,7 @@
 {% assign arr = (stringarr) | split: ' ' %}
 arr = {{arr}}
 arr = {{arr.size}}
+
+  {% for item in arr %}
+  {{item | truncate: 1, "" }}
+  {%endfor%}
