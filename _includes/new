@@ -1,11 +1,12 @@
 {% assign sorted = site.pages | sort:"url" %}
 {% for node in sorted offset:1 %}
   {% capture PATH %}{{node.url}}{% endcapture %}
-  {{PATH}}
+  path: {{PATH}}
   {% assign slugs = node.url | split: '/' %}
   {% for slug in slugs %}
     {% capture SLUG %}{{ slug | remove: '.html' }}{% endcapture %}
-    {{SLUG}}<br>
+    index: {{forloop.index}}
+    slug: {{SLUG}}<br>
   {% endfor %}
   <br>
 {% endfor %}
