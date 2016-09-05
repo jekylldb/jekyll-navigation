@@ -4,11 +4,10 @@
   path: {{PATH}}
   {% assign slugs = node.url | split: '/' %}
   {% for slug in slugs %}
-    {% capture SLUG %}{{ slug | remove: '.html' }}{% endcapture %}
+    {% capture SLUG %}{{ slug | remove: '.html' }}{% endcapture %}slug: {{SLUG}}
     {% assign index = forloop.index0 offset:1 %}
     {% for level in index offset:1 %}
-      {% capture LEVEL %}{{level}}{% endcapture %}
-      level and slug: {{LEVEL}}. {{SLUG}}<br>
+      {% capture LEVEL %}{{level}}{% endcapture %}level: {{LEVEL}}<br>
     {% endfor %}
   {% endfor %}
   <br>
