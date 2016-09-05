@@ -5,5 +5,4 @@
   {{forloop.index}}. {{slug}}<br>
   {{forloop.length}}
   {% endfor %}<br>
-  {{my_array}}
 {% endfor %}
