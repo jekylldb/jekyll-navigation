@@ -42,10 +42,10 @@
 				ASSIGNING CURRENT LEVEL
 			{% endcomment %}
 			{% assign level = thisLevels %}
-
+--->
 		{% endfor %}
 
-		</li> --->
+
 	</ul>
 
 {% assign sorted = site.pages | sort:"url" %}
