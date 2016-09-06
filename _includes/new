@@ -1,65 +1,15 @@
-{% comment %}
-	This snippet spits out the HTML navigation derived from the front matter settings in your markdown files.
-	https://gist.github.com/dominikwilkowski/c7d916c9b36e4eebbc90
-
-	Usage:
-		{% include navigation.liquid %}
-
-	Return:
-		HTML direct output
-
-	Required:
-		Front matter needs this element:
-			---
-			weight: "010.030.020"
-			---
-{% endcomment %}
-
-
 {% assign pages = site.pages | sort: "weight" %}
 {% assign levels = 0 %}
 
-<nav class="navigation-wrapper">
-	<ul class="navigation">
-		{% for thisPage in pages %}
-
-
-			{% comment %}
-				GETTING CURRENT LEVEL
-			{% endcomment %}
-			{% assign thisLevels = thisPage.weight | split: "." %}
-			{% assign thisLevels = thisLevels.size %}
-
-
-			{% comment %}
-				SAME LEVEL
-			{% endcomment %}
-			{% if level == thisLevels %}
-				</li>
-			{% endif %}
-
-
-			{% comment %}
-				NEXT HIGHER LEVEL
-			{% endcomment %}
-			{% if level < thisLevels %}
-				<ul class="navigation-subnav">
-			{% endif %}
-
-
-			{% comment %}
-				NEXT LOWER LEVEL
-			{% endcomment %}
-			{% if level > thisLevels %}
-					</li>
-				</ul>
-			{% endif %}
-
-			{% comment %}
-				OUTPUT THE LINK
-			{% endcomment %}
-			<li class="navigation-item">
-				<a class="navigation-link{% if page.url == thisPage.url %} is-active{% endif %}" href="{{ thisPage.url }}">
+<nav>
+<ul>
+{% for thisPage in pages %}
+{% assign thisLevels = thisPage.weight | split: "." %}
+{% assign thisLevels = thisLevels.size %}
+{% if level == thisLevels %}</li>{% endif %}
+{% if level < thisLevels %}<ul>{% endif %}
+{% if level > thisLevels %}</li></ul>{% endif %}
+<li class="navigation-item"><a href="{{ thisPage.url }}">
 					{{ thisPage.title }}
 				</a>
 
