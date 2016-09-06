@@ -56,8 +56,8 @@ node_depth = {{node_depth}}<br>
 19. pageurl = {{ page.url }}<br>
 
 {% capture get_items %}
- {% for cat in site.categories %}
-   {{ cat | first }}
+ {% for node in site.pages %}
+   {{ node.url | first }}
  {% endfor %}
 {% endcapture %}
 {% capture num_words %}
