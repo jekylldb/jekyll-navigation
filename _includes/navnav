@@ -1,36 +1,10 @@
-{% comment %}
-	This snippet spits out the HTML navigation derived from the front matter settings in your markdown files.
-	https://gist.github.com/dominikwilkowski/c7d916c9b36e4eebbc90
+{% assign sorted_pages = site.pages | sort: "url" %}
+<ul>
+{% for page in site.pages offset:1 %}
+{% assign current_level = page.url | split: "/" %}cl1 = {{current_level}}
+{% assign current_level = current_level.size %}clsize = {{current_level}}
 
-	Usage:
-		{% include navigation.liquid %}
-
-	Return:
-		HTML direct output
-
-	Required:
-		Front matter needs this element:
-			---
-			weight: "010.030.020"
-			---
-{% endcomment %}
-
-
-{% assign pages = site.pages | sort: "weight" %}
-{% assign levels = 0 %}
-
-<nav class="navigation-wrapper">
-	<ul class="navigation">
-		{% for thisPage in pages %}
-
-
-			{% comment %}
-				GETTING CURRENT LEVEL
-			{% endcomment %}
-			{% assign thisLevels = thisPage.weight | split: "." %}
-			{% assign thisLevels = thisLevels.size %}
-
-
+<!---
 			{% comment %}
 				SAME LEVEL
 			{% endcomment %}
@@ -71,9 +45,9 @@
 
 		{% endfor %}
 
-		</li>
+		</li> --->
 	</ul>
-</nav>
+
 {% assign sorted = site.pages | sort:"url" %}
 {% for node in sorted offset:1 %}
 {% assign slugs = node.url | split: '/' %}
