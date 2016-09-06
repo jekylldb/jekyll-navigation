@@ -1,0 +1,138 @@
+{% comment %}
+	This snippet spits out the HTML navigation derived from the front matter settings in your markdown files.
+	https://gist.github.com/dominikwilkowski/c7d916c9b36e4eebbc90
+
+	Usage:
+		{% include navigation.liquid %}
+
+	Return:
+		HTML direct output
+
+	Required:
+		Front matter needs this element:
+			---
+			weight: "010.030.020"
+			---
+{% endcomment %}
+
+
+{% assign pages = site.pages | sort: "weight" %}
+{% assign levels = 0 %}
+
+<nav class="navigation-wrapper">
+	<ul class="navigation">
+		{% for thisPage in pages %}
+
+
+			{% comment %}
+				GETTING CURRENT LEVEL
+			{% endcomment %}
+			{% assign thisLevels = thisPage.weight | split: "." %}
+			{% assign thisLevels = thisLevels.size %}
+
+
+			{% comment %}
+				SAME LEVEL
+			{% endcomment %}
+			{% if level == thisLevels %}
+				</li>
+			{% endif %}
+
+
+			{% comment %}
+				NEXT HIGHER LEVEL
+			{% endcomment %}
+			{% if level < thisLevels %}
+				<ul class="navigation-subnav">
+			{% endif %}
+
+
+			{% comment %}
+				NEXT LOWER LEVEL
+			{% endcomment %}
+			{% if level > thisLevels %}
+					</li>
+				</ul>
+			{% endif %}
+
+			{% comment %}
+				OUTPUT THE LINK
+			{% endcomment %}
+			<li class="navigation-item">
+				<a class="navigation-link{% if page.url == thisPage.url %} is-active{% endif %}" href="{{ thisPage.url }}">
+					{{ thisPage.title }}
+				</a>
+
+
+			{% comment %}
+				ASSIGNING CURRENT LEVEL
+			{% endcomment %}
+			{% assign level = thisLevels %}
+
+		{% endfor %}
+
+		</li>
+	</ul>
+</nav>
+{% assign sorted = site.pages | sort:"url" %}
+{% for node in sorted offset:1 %}
+{% assign slugs = node.url | split: '/' %}
+{% assign node_depth = node.url | split: '/' | size | minus:1 %}
+{% assign page_child_depth = page.url | split: '/' | size %}
+{% if (page_child_depth) == (node_depth) %}{{node.url}}{% endif %}
+{% endfor %}
+<br>
+
+{% for node in sorted offset:1 %}{% if (page.url) contains (node.url) %}Page contains Node = {{page.url}} contains {{node.url}}{% endif %}<br>{% endfor %}
+{% for node in sorted offset:1 %}{% if (node.url) contains (page.url) %}Node contains Page = {{node.url}} contains {{page.url}}{% endif %}<br>{% endfor %}<br>
+
+{% for node in sorted offset:1 %}
+{% capture last_slug %}{% for item in node.url %}{{item | split: '/' | last | remove:'.html' }}{% endfor %}{% endcapture %}
+{% capture parent_slug_size %}{% for item in node.url %}{{item | split: '/' | last | remove:'.html' | size }}{% endfor %}{% endcapture %}
+{% capture last_slug_size %}{% for item in node.url %}{{item | split: '/' | last | size | plus:1 }}{% endfor %}{% endcapture %}
+{% capture url_size %}{% for item in node.url %}{{item | size}}{% endfor %}{% endcapture %}
+{% capture parent_depth %}{{ url_size | minus:last_slug_size }}{% endcapture %}
+{% capture last_slug_dir %}{% for item in node.url %}{{ item | slice: parent_depth, url_size }}{% endfor %}{% endcapture %}
+{% capture parent_path %}{{ node.url | remove: last_slug_dir }}{% endcapture %}
+
+1. node url = {{ node.url }}<br>
+2. last_slug = {{last_slug}}<br>
+4. last_slug_size = {{last_slug_size}}<br>
+5. url_size = {{url_size}}<br>
+6. parent_depth = {{parent_depth}}<br>
+7. last_slug_dir = {{last_slug_dir}}<br>
+8. parent_path = {{parent_path}}<br>
+9. {{ forloop.index }}<br>
+10. {{forloop.length}} <br>
+11. {% for item in node.url %}{% assign each = item | split: '/' %}{% for node in each %}{{forloop.index0}}{% endfor %}{% endfor %} <br>
+12. {{forloop.first}} <br>
+13. {{forloop.last}} <br>
+14. {{ node.url | split: '/' }} <br>
+15. {{ node.url | split: '/' | size }} <br>
+16. {{ node.url | split: '/' | last | remove:'.html' }} <br>
+17. {% for part in node.url | split: '/' %}{{ part }}{% endfor %} <br>
+18. pagepath = {{ page.path }}<br>
+19. pageurl = {{ page.url }}<br>
+
+{% capture get_items %}
+ {% for node in site.pages %}
+   {{ node.url | first }}
+ {% endfor %}
+{% endcapture %}
+{% capture num_words %}
+ {{ get_items | split:' ' |  sort | join:' ' | number_of_words }}
+{% endcapture %}
+{% for item in (1..num_words) %}
+ <li>{{ get_items | split:' ' |  sort | join:' ' | truncatewords:item | remove:'.    ..' |    split:' ' | last }}</li>
+
+{% endfor %}{% endfor %}
+ 
+
+{% for node in sorted offset:1 %}{% assign slugs = node.url | split: '/' %}
+nodewhere = {{ node.url | where:"( node.url | split: '/' | size | minus:1 )","4" }}<br>
+{% for slug in slugs offset:1 %}
+slugwhere = {{ slug | where:"(forloop.index)","2" }}<br>
+{% endfor %}
+nodewhere = {{ node.url | where:"(forloop.index)","2" }}<br>
+{% endfor %}
+<br>
