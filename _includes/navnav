@@ -1,52 +1,17 @@
-{% assign sorted_pages = site.pages | sort: "url" %}
+{% assign sorted_nodes = site.pages | sort: "url" %}
+{% for node in sorted_nodes offset:1 %}{% assign node_depth = node.url | split: '/' | size | minus:1 }}{% endfor %}
 <ul>
-{% for page in site.pages offset:1 %}
-{% assign current_level = page.url | split: "/" %}cl1 = {{current_level}}
-{% assign current_level = current_level.size %}clsize = {{current_level}}
-
-<!---
-			{% comment %}
-				SAME LEVEL
-			{% endcomment %}
-			{% if level == thisLevels %}
-				</li>
-			{% endif %}
-
-
-			{% comment %}
-				NEXT HIGHER LEVEL
-			{% endcomment %}
-			{% if level < thisLevels %}
-				<ul class="navigation-subnav">
-			{% endif %}
-
-
-			{% comment %}
-				NEXT LOWER LEVEL
-			{% endcomment %}
-			{% if level > thisLevels %}
-					</li>
-				</ul>
-			{% endif %}
-
-			{% comment %}
-				OUTPUT THE LINK
-			{% endcomment %}
-			<li class="navigation-item">
-				<a class="navigation-link{% if page.url == thisPage.url %} is-active{% endif %}" href="{{ thisPage.url }}">
-					{{ thisPage.title }}
-				</a>
-
-
-			{% comment %}
-				ASSIGNING CURRENT LEVEL
-			{% endcomment %}
-			{% assign level = thisLevels %}
---->
-		{% endfor %}
-
-
-	</ul>
+{% assign page_slug = page.url | split: '/' | last }}
+{% assign sorted_pages = site.pages | sort: "url" %}
+{% for page in sorted_pages offset:1 %}
+{% assign thispage_depth = page.url | split: "/" | size | minus: 1 %}
+{% if node_depth == thispage_depth %}</li>{% endif %}
+{% if node_depth < thispage_depth %}<ul>{% endif %}
+{% if node_depth > thispage_depth %}</li></ul>{% endif %}
+<li><a href="{{ page.url }}">{{page_slug}}</a>
+{% assign node_depth == thispage_depth %}
+{% endfor %}
+</ul>
 
 {% assign sorted = site.pages | sort:"url" %}
 {% for node in sorted offset:1 %}
